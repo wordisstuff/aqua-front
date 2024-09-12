@@ -1,1 +1,1 @@
-# aqua-front
+# React + Vite
