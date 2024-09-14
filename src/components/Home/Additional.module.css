@@ -1,0 +1,240 @@
+.main {
+    height: 353px;
+    background-image: url('../../utils/images/mainPage/drinkingGirl_Mob@x1.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px;
+    position: relative;
+}
+
+.customers {
+    position: absolute;
+    left: 16px;
+    bottom: 96px;
+    padding: 10px 14px;
+    border-radius: 30px;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+}
+
+.loader {
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.happy {
+    display: flex;
+    align-items: center;
+}
+
+.customer {
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    object-fit: cover;
+    margin-left: -8px;
+}
+
+.avater {
+    width: 26.4px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.customers div:first-child {
+    z-index: 5;
+    margin: 0;
+}
+
+.customers div:nth-child(2) {
+    z-index: 3;
+}
+
+.customers div:nth-child(3) {
+    z-index: 1;
+}
+
+.custNum {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    background-color: var(--dark-blue);
+    font-size: 9px;
+    color: var(--white);
+    border-radius: 30px;
+    z-index: 5;
+    position: absolute;
+    left: 80px;
+    bottom: 22px;
+    padding: 10px;
+}
+
+.text {
+    width: 80px;
+    color: var(--dark-blue);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+}
+
+.burnText {
+    color: var(--accent);
+}
+
+.benefits {
+    font-size: 8px;
+    line-height: 1;
+    font-weight: 700;
+    position: absolute;
+    right: 16px;
+    bottom: 32px;
+}
+
+.common {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.firstB {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--dark-blue);
+    border-radius: 30px;
+    padding: 9px 12px;
+    width: max-content;
+}
+
+.icon {
+    width: 8px;
+    height: 8px;
+}
+
+.textB {
+    color: var(--white);
+}
+
+.secB {
+    background-color: var(--accent);
+    color: var(--dark-blue);
+    border-radius: 30px;
+    padding: 9px 12px;
+    width: max-content;
+}
+
+.lastB {
+    background-color: var(--white);
+    color: var(--dark-blue);
+    border-radius: 30px;
+    padding: 9px 12px;
+    width: max-content;
+}
+
+@media screen and (min-resolution: 192dpi) and (min-width: 375px),
+screen and (min-resolution: 2dppx) and (min-width: 375px),
+screen and (min-device-pixel-ratio: 2) and (min-width: 375px) {
+    .main {
+        background-image: url('../../utils/images/mainPage/drinkingGirl_Mob@x2.webp');
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .main {
+        width: 704px;
+        height: 446px;
+        background-image: url('../../utils/images/mainPage/drinkingGirl_Tab@x1.webp');
+    }
+
+    .customers {
+        left: 32px;
+        bottom: 96px;
+        padding: 10px 20px;
+        gap: 24px;
+    }
+
+    .customer {
+        margin-left: -19px;
+    }
+
+    .avater {
+        width: 47px;
+        height: 47px;
+    }
+
+    .benefits {
+        font-size: 12px;
+        right: 32px;
+    }
+
+    .text {
+        font-size: 15px;
+        line-height: 1.49;
+        width: 100px;
+    }
+
+    .common {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .firstB {
+        padding: 11px 16px;
+    }
+
+    .secB {
+        padding: 11px 16px;
+    }
+
+    .lastB {
+        padding: 11px 16px;
+    }
+
+    .custNum {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+        left: 120px;
+        bottom: 30px;
+        padding: 15px;
+    }
+}
+
+@media screen and (min-resolution: 192dpi) and (min-width: 768px),
+screen and (min-resolution: 2dppx) and (min-width: 768px),
+screen and (min-device-pixel-ratio: 2) and (min-width: 768px) {
+    .main {
+        background-image: url('../../utils/images/mainPage/drinkingGirl_Tab@x2.webp');
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .main {
+        width: 672px;
+        height: 736px;
+        background-image: url('../../utils//images/mainPage/drinkingGirl_Desk@x1.webp');
+    }
+
+    .customers {
+        bottom: 132px;
+    }
+
+    .benefits {
+        bottom: 64px;
+    }
+}
+
+@media screen and (min-resolution: 192dpi) and (min-width: 1440px),
+screen and (min-resolution: 2dppx) and (min-width: 1440px),
+screen and (min-device-pixel-ratio: 2) and (min-width: 1440px) {
+    .main {
+        background-image: url('../..//utils//images/mainPage/drinkingGirl_Desk@x2.webp');
+    }
+}

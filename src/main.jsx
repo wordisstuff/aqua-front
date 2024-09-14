@@ -12,6 +12,7 @@ import { TourProvider } from '@reactour/tour';
 import 'modern-normalize';
 import tourSteps from './services/tourSteps.js';
 import tourStyles from './utils/style/tourStyles.js';
+import './i18n/config.js';
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>

@@ -1,0 +1,19 @@
+.wrapSt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.wrapHome {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media screen and (min-width: 1440px) {
+    .wrapHome {
+        flex-direction: row;
+        gap: 32px;
+    }
+}

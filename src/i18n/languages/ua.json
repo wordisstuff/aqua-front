@@ -1,0 +1,15 @@
+{"welcomeSection": {
+        "mainText": "Записуйте щоденне споживання води та відстежуйте",
+        "title": "Трекер споживання води",
+        "tryTracker": "Try tracker",
+        "signIn": "Sign In"
+    },
+"additional":{
+        "our": "Our",
+        "happy": "happy",
+        "customers": "customers",
+        "habit": "Habit drive",
+        "statistics": "View statistics",
+        "setting": "Personal rate setting"
+}
+}

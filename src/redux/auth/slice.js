@@ -1,3 +1,5 @@
+import { createSlice } from '@reduxjs/toolkit';
+
 export const INIT_STATE = {
     user: null,
     token: null,
@@ -10,26 +12,26 @@ export const INIT_STATE = {
 export const authSlice = createSlice({
     name: 'auth',
     initialState: INIT_STATE,
-    extraReducers: builder => {
-        builder
-            .addCase(register.fulfilled, (state, action) => {
-                state.isLoggedIn = true;
-                state.user = action.payload.user;
-                state.token = action.payload.token;
-            })
-            .addCase(login.fulfilled, (state, action) => {
-                state.isLoggedIn = true;
-                state.user = action.payload.user;
-                state.token = action.payload.token;
-            })
-            .addCase(refreshUser.fulfilled, (state, action) => {
-                state.isLoggedIn = true;
-                state.user = action.payload;
-            })
-            .addCase(logout.fulfilled, () => {
-                return INIT_STATE;
-            });
-    },
+    // extraReducers: builder => {
+    //     builder
+    //         .addCase(register.fulfilled, (state, action) => {
+    //             state.isLoggedIn = true;
+    //             state.user = action.payload.user;
+    //             state.token = action.payload.token;
+    //         })
+    //         .addCase(login.fulfilled, (state, action) => {
+    //             state.isLoggedIn = true;
+    //             state.user = action.payload.user;
+    //             state.token = action.payload.token;
+    //         })
+    //         .addCase(refreshUser.fulfilled, (state, action) => {
+    //             state.isLoggedIn = true;
+    //             state.user = action.payload;
+    //         })
+    //         .addCase(logout.fulfilled, () => {
+    //             return INIT_STATE;
+    //         });
+    // },
 });
 
 export const authReducer = authSlice.reducer;
