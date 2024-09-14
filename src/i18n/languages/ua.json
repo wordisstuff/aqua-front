@@ -1,15 +1,41 @@
-{"welcomeSection": {
+{
+    "welcomeSection": {
         "mainText": "Записуйте щоденне споживання води та відстежуйте",
         "title": "Трекер споживання води",
         "tryTracker": "Try tracker",
         "signIn": "Sign In"
     },
-"additional":{
+    "additional": {
         "our": "Our",
         "happy": "happy",
         "customers": "customers",
         "habit": "Habit drive",
         "statistics": "View statistics",
         "setting": "Personal rate setting"
-}
+    },
+    "ChooseDate": {
+        "today": "Сьогодні",
+        "january": "Січень",
+        "february": "Лютий",
+        "march": "Березень",
+        "april": "Квітень",
+        "may": "Травень",
+        "june": "Червень",
+        "july": "Липень",
+        "august": "Серпень",
+        "september": "Вересень",
+        "october": "Жовтень",
+        "november": "Листопад",
+        "december": "Грудень"
+    },
+    "DailyInfo": {
+        "info": "Ви поки ще не пили воду, можливо, саме час випити?"
+    },
+    "UserBar": {
+        "user": "Користувач",
+        "welkome": "Привіт",
+        "settings": "Налаштування",
+        "logOut": "Вийти"
+    },
+    "WaterMainInfo": { "today": "Сьогодні" }
 }

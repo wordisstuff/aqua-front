@@ -123,3 +123,5 @@ return (
         </form>
     </>
 );
+
+export default UserSettings;

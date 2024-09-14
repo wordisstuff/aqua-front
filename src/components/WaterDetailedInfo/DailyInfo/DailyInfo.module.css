@@ -1,0 +1,39 @@
+.dailyInfoWrapper {
+    padding: 20px;
+}
+
+.dataWriteContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.scrollContainer {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin;
+}
+
+.scrollContainer::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.waterBootle {
+    text-align: center;
+    font-size: 16px;
+    color: #6c757d;
+    margin-top: 20px;
+}
+
+.bootleText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
