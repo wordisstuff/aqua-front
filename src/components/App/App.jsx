@@ -5,6 +5,8 @@ import Layout from '../ShareComponents/Layout/Layout';
 
 import { lazy, Suspense, useEffect } from 'react';
 import Loader from '../Loader/Loader.jsx';
+import { RestrictedRoute } from '../RestrictedRoute.jsx';
+import { PrivateRoute } from '../PrivateRoute.jsx';
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage.jsx'));
 
 const App = () => {
@@ -18,6 +20,33 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Layout />} />
                     <Route index element={<HomePage />} />
+                    <Route
+                        path="/register"
+                        element={
+                            <RestrictedRoute
+                                redirectTo="/water"
+                                component={<SignupPage />}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/login"
+                        element={
+                            <RestrictedRoute
+                                redirectTo="/water"
+                                component={<SigninPage />}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/water"
+                        element={
+                            <PrivateRoute
+                                redirectTo="/login"
+                                component={<HomePage />}
+                            />
+                        }
+                    />
                 </Routes>
             </Suspense>
         </>
