@@ -1,0 +1,110 @@
+.modalWindCont {
+    background: var(--white);
+    padding: 40px 14px;
+
+    border-radius: 15px;
+    text-align: center;
+    max-width: 375px;
+    min-width: 320px;
+}
+
+.titleText {
+    margin-bottom: 28px;
+}
+
+.title {
+    font-size: 20px;
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.text {
+    font-size: 14px;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+}
+
+.modalButtonCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+}
+
+.logoutButton {
+    width: 100%;
+    background-color: var(--accent);
+    color: var(--dark-blue);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.28;
+    border: none;
+    border-radius: 30px;
+
+    padding: 14px 0;
+    transition: background-color var(--animation);
+}
+
+.logoutButton:hover,
+.logoutButton:active {
+    background-color: var(--accent-secondary);
+}
+
+.cancelButton {
+    width: 100%;
+    background-color: var(--light-gray);
+    color: var(--color-light-grey);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.28;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 0;
+
+    transition: color var(--animation);
+}
+
+.cancelButton:hover {
+    color: var(--dark-blue);
+}
+
+.closeButton {
+    padding: 0;
+    height: 24px;
+}
+
+@media only screen and (min-width: 768px) {
+    .modalWindCont {
+        width: 516px;
+        max-width: 516px;
+        padding: 40px 78px;
+    }
+
+    .title {
+        margin-bottom: 24px;
+        font-size: 28px;
+        line-height: 1.14;
+    }
+
+    .text {
+        font-size: 18px;
+        margin-bottom: 24px;
+        line-height: 1.33;
+    }
+
+    .modalButtonCont {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .cancelButton {
+        padding: 18px 0;
+        line-height: 1.5;
+    }
+
+    .logoutButton {
+        line-height: 1.5;
+        padding: 18px 0;
+    }
+}
