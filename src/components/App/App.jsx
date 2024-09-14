@@ -20,7 +20,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Layout />} />
                     <Route index element={<HomePage />} />
-                    <Route
+{/*                     <Route
                         path="/register"
                         element={
                             <RestrictedRoute
@@ -46,7 +46,7 @@ const App = () => {
                                 component={<HomePage />}
                             />
                         }
-                    />
+                    /> */}
                 </Routes>
             </Suspense>
         </>
