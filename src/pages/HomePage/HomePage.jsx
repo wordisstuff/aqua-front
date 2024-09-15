@@ -1,7 +1,15 @@
-import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import Home from './../../components/Home/Hame';//<= Гена тут разва не та (Hame.jsx!!) 
 
 const HomePage = () => {
-    return <div>HomePage</div>;
+    return (
+        <>
+        <Helmet>
+                <title>HomePage</title>
+            </Helmet>
+            <Home/>
+        </>
+    );
 };
 
 export default HomePage;
