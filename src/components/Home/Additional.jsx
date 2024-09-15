@@ -4,12 +4,15 @@ import { icons } from '../../utils/icons';
 import { useTranslation } from 'react-i18next';
 import { Hearts } from 'react-loader-spinner';
 import getRandomColor from '../../services/getRandomColor';
+import customer1 from '../../utils/images/mainPage/customer1_Desk_Tab@x2.png';
+import customer2 from '../../utils/images/mainPage/customer2_Desk_Tab@x2.webp';
+import customer3 from '../../utils/images/mainPage/customer3_Desk_Tab@x2.webp';
 
 const Additional = () => {
     const { t } = useTranslation();
-    const [avatars, setAvatars] = useState([]);
+    const [avatars, setAvatars] = useState([customer1, customer2, customer3]);
     const usersCount = 12;
-    const loading = Math.random() < 0.5;
+    const loading = false; //Math.random() < 0.5;
     const avBasePath = '../../utils/images/mainPage/';
     const userAvatar = [1, 2, 3];
 

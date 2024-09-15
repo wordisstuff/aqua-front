@@ -5,16 +5,17 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { icons as sprite } from '../../utils/icons/index.js';
 import { yupResolver } from '@hookform/resolvers/yup';
-import GoogleBtn from '../GoogleBtn';
 import { NavLink } from 'react-router-dom';
+
+
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import { logIn, refreshUser } from '../../redux/auth/operation';
-import WrapperWelcome from '../../utils/'; //треба додати
-import style from '../SigninForm/SigninForm.module.css';
-import { signInSchema, formValuesSignIn } from '..//SigninForm/SigninShema.js';
+import WelcomeWrap from '../ShareComponents/WelcomeWrap'; 
+import style from './SignInForm.module.css';
+import { signInSchema, formValuesSignIn } from './SigninShema.js';
 
 const SignInForm = () => {
-    const { t } = useTranslation(); //багато мов
+    const { t } = useTranslation(); 
     const [openPassword, setOpenPassword] = useState(false);
 
     const emailId = useId();
@@ -34,9 +35,7 @@ const SignInForm = () => {
         mode: 'onTouched',
     });
 
-    const handelClickPassword = () => {
-        setOpenPassword(prevState => !prevState);
-    };
+    const togglePasswordVisibility = () => setOpenPassword(prev => !prev);
 
     const onSubmit = async data => {
         try {
@@ -62,78 +61,103 @@ const SignInForm = () => {
     }, [isLoggedIn, dispatch]);
 
     return (
-        <WrapperWelcome>
-            <div>
-                <h2>{t('signInPage.title')}</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div>
-                        <label htmlFor={emailId}>{t('signInPage.email')}</label>
-                        <input
-                            type="text"
-                            name="email"
-                            id={emailId}
-                            placeholder={t('signInPage.emailPlaceholder')}
-                            {...register('email')}
-                        />
-                        {errors.email && (
-                            <span className="error-message">
-                                {t('signInPage.emailSpanError')}
-                            </span>
-                        )}
-                    </div>
-                    <div className="password-field">
-                        <label htmlFor={passwordId}>
-                            {t('signInPage.password')}
-                        </label>
-                        <div className="password-input-wrapper">
-                            <input
-                                type={openPassword ? 'text' : 'password'}
-                                name="password"
-                                id={passwordId}
-                                placeholder={t(
-                                    'signInPage.passwordPlaceholder',
-                                )}
-                                {...register('password')}
-                            />
-                            <button
-                                type="button"
-                                onClick={handelClickPassword}
-                                className="password-toggle-btn"
-                            >
-                                <svg className="icon">
-                                    <use
-                                        xlinkHref={`${sprite}#${openPassword ? 'icon-eye' : 'icon-eye-off'}`}
-                                    />
-                                </svg>
-                            </button>
-                        </div>
-                        {errors.password && (
-                            <span className="error-message">
-                                {t('signInPage.passwordSpanError')}
-                            </span>
-                        )}
-                    </div>
-                    <button
-                        type="submit"
-                        className="submit-btn"
-                        disabled={!isDirty || !isValid}
-                    >
-                        {t('signInPage.signIn')}
-                    </button>
-                </form>
-                <GoogleBtn type="In" />
-                <div className="extra-links">
-                    <div>
-                        <p>{t('signInPage.dontAccount')}</p>
-                        <NavLink to="/signup">{t('signInPage.signUp')}</NavLink>
-                    </div>
-                    <div>
-                        <p>{t('signInPage.forgotPassword')}</p>
-                        <NavLink to="/forgot">{t('signInPage.renew')}</NavLink>
-                    </div>
-                </div>
+        <WelcomeWrap   
+        classNameLogo={style.form}
+        classNameWelcom={style.welcomPadding}
+      >
+        <div className={`${style.formBlock} ${style.formPosition}`}>
+          <h2 className={style.formTitle}>{t('signInPage.signIn')}</h2>
+
+          <form className={style.mainForm} onSubmit={handleSubmit(onSubmit)}>
+            <div className={style.fieldThumb}>
+              <label className={style.formLabel} htmlFor={emailId}>
+                {t('signInPage.email')}
+              </label>
+              <input
+                className={`${style.formInput} ${errors.email && style.errorName}`}
+                type="text"
+                name="email"
+                id={emailId}
+                placeholder={t('signInPage.emailPlaceholder')}
+                {...register('email')}
+              />
+              {errors.email && (
+                <span className={style.errorSpan}>
+                  {t('signInPage.emailSpanError')}
+                </span>
+              )}
             </div>
-        </WrapperWelcome>
+
+            <div className={style.fieldThumb}>
+              <label className={style.formLabel} htmlFor={passwordId}>
+                {t('signInPage.password')}
+              </label>
+              <div className={style.passwordWrapper}>
+                <input
+                  className={`${style.formInput} ${errors.password && style.errorName}`}
+                  type={openPassword ? 'text' : 'password'}
+                  name="password"
+                  id={passwordId}
+                  placeholder={t('signInPage.passwordPlaceholder')}
+                  {...register('password')}
+                />
+                {openPassword ? (
+                  <button
+                    onClick={togglePasswordVisibility}
+                    className={style.eyeBtn}
+                  >
+                    <svg className={`${style.iconeye}`}>
+                      <use xlinkHref={`${sprite}#eye`} />
+                    </svg>
+                  </button>
+                ) : (
+                  <button
+                    onClick={togglePasswordVisibility}
+                    className={style.eyeBtn}
+                  >
+                    <svg className={`${style.iconeye}`}>
+                      <use xlinkHref={`${sprite}#eye-off`} />
+                    </svg>
+                  </button>
+                )}
+              </div>
+
+              {errors.password && (
+                <span className={style.errorSpan}>
+                  {t('signInPage.passwordSpanError')}
+                </span>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className={style.btnform}
+              disabled={!isDirty || !isValid}
+            >
+              {t('signInPage.signIn')}
+            </button>
+          </form>
+
+          <div className={style.haveAccountSignIn}>
+            <div className={style.question}>
+              <p className={style.haveAccountText}>
+                {t('signInPage.dontAccount')}
+              </p>{' '}
+              <NavLink to="/signup" className={style.haveAccountForm}>
+                {t('signInPage.signUp')}
+              </NavLink>
+            </div>
+            <div className={style.question}>
+              <p className={style.haveAccountText}>
+                {t('signInPage.forgotPassword')}
+              </p>{' '}
+              <NavLink to="/forgot" className={style.haveAccountForm}>
+                {t('signInPage.renew')}
+              </NavLink>
+            </div>
+          </div>
+        </div>
+        </WelcomeWrap>
     );
 };
 export default SignInForm;

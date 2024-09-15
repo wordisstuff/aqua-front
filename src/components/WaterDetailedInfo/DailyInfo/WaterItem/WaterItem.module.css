@@ -1,0 +1,98 @@
+.waterItemWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 149px;
+    max-height: 74px;
+    padding: 18px 14px;
+    background-color: var(--white);
+    border-radius: 15px;
+}
+
+.svgCup {
+    width: 38px;
+    height: 38px;
+}
+
+.dataFormat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+}
+
+.dataMl {
+    font-size: 13px;
+    line-height: 1.49;
+    font-weight: 700;
+}
+
+.dataHours {
+    font-size: 11px;
+    line-height: 1.87;
+    color: var(--grey-text);
+}
+
+.btnsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn {
+    border: none;
+    background-color: var(--white);
+    padding: 0;
+}
+
+.svgEdit,
+.svgBin {
+    width: 14px;
+    height: 14px;
+    fill: var(--white);
+    stroke: var(--dark-blue);
+
+    transition: stroke var(--animation);
+}
+
+.svgEdit:hover,
+.svgEdit:active,
+.svgBin:hover,
+.svgBin:active {
+    stroke: var(--accent);
+}
+
+@media (min-width: 768px) {
+    .waterItemWrapper {
+        min-width: 192px;
+        max-height: 86px;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .svgCup {
+        width: 44px;
+        height: 45px;
+    }
+
+    .svgEdit,
+    .svgBin {
+        width: 16px;
+        height: 16px;
+    }
+
+    .dataMl {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .waterItemWrapper {
+        min-width: 192px;
+        max-height: 86px;
+        padding: 20px;
+        gap: 20px;
+    }
+}

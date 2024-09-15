@@ -1,0 +1,241 @@
+.form {
+    margin-bottom: 70px;
+}
+
+.formTitle {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+
+    margin-bottom: 32px;
+}
+
+.mainForm {
+    margin-bottom: 16px;
+}
+
+.fieldThumb {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.formLabel {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+}
+
+.formInput {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    outline: transparent;
+    background-color: transparent;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+
+    padding: 16px;
+
+    transition: border-color var(--animation)
+}
+
+.formInput:hover,
+.formInput:focus {
+    border-color: var(--accent-secondary);
+}
+
+.passwordWrapper {
+    position: relative;
+}
+
+.eyeBtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+}
+
+.iconeye {
+    width: 20px;
+    height: 20px;
+    fill: transparent;
+    stroke: var(--dark);
+    transition: stroke var(--animation);
+}
+
+.iconeye:hover,
+.iconeye:active {
+    stroke: var(--accent);
+}
+
+.errorName {
+    border-color: var(--error);
+}
+
+.errorSpan {
+    font-size: 10px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    color: var(--error);
+}
+
+.btnform {
+    width: 100%;
+    background-color: var(--accent);
+    border-radius: 30px;
+    border: transparent;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+
+    padding: 16px 0;
+    transition: background-color var(--animation);
+}
+
+.btnform:hover,
+.btnform:active {
+    background-color: var(--accent-secondary);
+}
+
+.btnform:disabled {
+    background-color: var(--disabled-color);
+    color: var(--secondary-text);
+    cursor: not-allowed;
+}
+
+.haveAccount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.haveAccountText {
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    color: var(--grey-text);
+}
+
+.haveAccountForm {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    text-decoration: underline;
+    color: var(--dark);
+}
+
+@media (min-width: 768px) {
+    .form {
+        margin-bottom: 100px;
+    }
+
+    .formBlock {
+        width: 436px;
+        margin: 0 auto;
+    }
+
+    .formTitle {
+        font-size: 36px;
+        line-height: 1.06;
+        letter-spacing: -0.01em;
+    }
+
+    .formLabel {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+    }
+
+    .formInput {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+    }
+
+    .eyeBtn {
+        top: 18px;
+        right: 20px;
+    }
+
+    .btnform {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+
+        padding: 18px 0;
+    }
+
+    .haveAccount {
+        gap: 8px;
+    }
+
+    .haveAccountText {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+    }
+
+    .haveAccountForm {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+    }
+}
+
+@media (min-width: 1440px) {
+    .welcomPadding {
+        padding-bottom: 100px;
+    }
+
+    .form {
+        margin-bottom: 74px;
+    }
+
+    .formTitle {
+        margin-bottom: 20px;
+    }
+
+    .formPosition {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+}
+
+.formInput:-webkit-autofill,
+.formInput:-webkit-autofill:hover,
+.formInput:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--dark);
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+    background-color: transparent;
+}
+
+.haveAccountSignIn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question {
+    display: flex;
+    gap: 5px;
+}

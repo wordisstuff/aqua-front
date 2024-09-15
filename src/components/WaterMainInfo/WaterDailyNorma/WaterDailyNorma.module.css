@@ -1,0 +1,59 @@
+.normabox{
+    width: 102px;
+    height: 54px;
+    border-radius: 15px;
+    padding: 12px;
+    margin-bottom: 49px;
+
+    box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+@media only screen and (min-width: 768px) {
+.normabox{
+    padding: 14px 18px;
+    width: 130px;
+    height: 78px;
+
+    margin-bottom: 87px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+.normabox {
+    margin-bottom: 215px;
+    margin-left: 32px;
+  }
+}
+
+.normaAmount{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    color: #323f47;
+
+    margin-bottom: 6px;
+}
+
+@media only screen and (min-width: 768px) {
+.normaAmount {
+    font-size: 15px;
+    line-height: 1.5;
+
+  }
+}
+
+.normaText{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1;
+    color: rgba(47, 47, 47, 0.6);
+}
+
+@media only screen and (min-width: 768px){
+    .normaText{
+        font-size: 12px;
+        line-height: 1.8;
+    }
+}
