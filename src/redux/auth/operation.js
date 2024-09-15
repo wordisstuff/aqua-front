@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from '../../services/axios.js';
+import axios, { clearAuthHeader } from '../../services/axios.js';
 import toast from 'react-hot-toast';
 
 export const registerUser = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
@@ -47,6 +47,18 @@ export const refreshUser = createAsyncThunk(
             setAuthHeader(persistedToken);
             const res = await axios.get('/users/profile');
             return res.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
+
+export const logOutUser = createAsyncThunk(
+    'auth/logout',
+    async (_, thunkAPI) => {
+        try {
+            await axios.post('users/logout');
+            clearAuthHeader();
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
