@@ -38,9 +38,8 @@
         "settings": "Settings",
         "logOut": "LogOut"
     },
-    "WaterMainInfo": { "today": "Today" }
-}
-},
+    "WaterMainInfo": { "today": "Today" },
+
 "modals": {
         "logOut": {
             "title": "Log Out",
