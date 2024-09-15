@@ -1,0 +1,59 @@
+.mainbox{
+    border-radius: 30px;
+    width: 343px;
+    height: 415px;
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-bottom: 32px;
+    padding-top: 24px;
+
+    background-color: #9be1a0;
+    background-image: url(../../utils/images/homeScreenPage/waterBottle_allDev@x1.webp);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media only screen and (max-width: 767px) and (min-resolution: 192dpi){
+    .mainbox{
+         background-image: url(../../utils/images/homeScreenPage/waterBottle_allDev@x2.webp);
+    }
+}
+
+ @media only screen and (min-width: 768px){
+    .mainbox{
+        width: 704px;
+        height: 578px;
+        padding-right: 32px;
+        padding-left: 32px;
+        padding-bottom: 64px;
+        padding-top: 32px;
+
+       
+        background-size: 374px;
+    }
+ }
+
+ @media only screen and (min-width: 1440px) {
+.mainbox {
+    width: 672px;
+    height: 736px;
+
+    background-size: 472px;
+   }
+ }
+
+.logoicon{
+   
+    fill: #323f47;
+    margin-bottom: 78px;
+}
+
+@media only screen and (min-width: 768px){
+    .logoicon{
+        width: 155px;
+        height: 24px;
+       
+    }
+}
+
