@@ -30,7 +30,8 @@
         "december": "December"
     },
     "DailyInfo": {
-        "info": "You havent drunk water yet, maybe its time to drink?"
+        "info": "You havent drunk water yet, maybe its time to drink?",
+        "ml": "ml"
     },
     "UserBar": {
         "user": "User",
@@ -38,8 +39,8 @@
         "settings": "Settings",
         "logOut": "LogOut"
     },
+    "WaterMainInfo": {"today": "Today"},
     "WaterMainInfo": { "today": "Today" },
-
 "modals": {
         "logOut": {
             "title": "Log Out",
@@ -54,11 +55,11 @@
             "cancel": "Cancel",
             "error": "Failed to delete the entry",
             "success": "Entry deleted successfully"
-        }
+        },
 },
  "toast": {
         "forgot": "Password recovery email has been sent",
         "reset": "Password has been reset successfully! You can sign in with a new password",
         "logOut": "See you soon ❤️!"
-    }
+    },
 }

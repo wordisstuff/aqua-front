@@ -1,0 +1,21 @@
+.iconBtn {
+    display: grid;
+    place-items: center;
+    transition: all 0.3s;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+.svg {
+    width: 24px;
+    height: 24px;
+}
+.active {
+    opacity: 0.5;
+}
+@media screen and (max-width: 376px) {
+    .svg {
+        width: 20px;
+        height: 20px;
+    }
+}

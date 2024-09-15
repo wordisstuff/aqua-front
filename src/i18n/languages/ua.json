@@ -29,7 +29,8 @@
         "december": "Грудень"
     },
     "DailyInfo": {
-        "info": "Ви поки ще не пили воду, можливо, саме час випити?"
+        "info": "Ви поки ще не пили воду, можливо, саме час випити?",
+        "ml": "мл"
     },
     "UserBar": {
         "user": "Користувач",
@@ -37,8 +38,10 @@
         "settings": "Налаштування",
         "logOut": "Вийти"
     },
-    "WaterMainInfo": { "today": "Сьогодні" }
-},
+    "WaterMainInfo": {
+        "today": "Сьогодні"
+    },
+    "WaterMainInfo": { "today": "Сьогодні" },
 "modals":{
         "logOut": {
                 "title": "Вийти",

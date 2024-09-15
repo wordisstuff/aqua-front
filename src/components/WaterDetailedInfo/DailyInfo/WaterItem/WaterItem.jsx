@@ -14,7 +14,7 @@ function WaterItem({ data }) {
 
     const formatWaterCount = count => {
         const mlCount = count * 1000;
-        return `${mlCount} ${t('dailyInfo.ml')}`;
+        return `${mlCount} ${t('DailyInfo.ml')}`;
     };
     const formatTime = isoString => {
         const date = subHours(parseISO(isoString), 3);
