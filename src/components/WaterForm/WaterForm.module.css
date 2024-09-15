@@ -1,0 +1,215 @@
+.spanFormWater {
+    display: block;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: -0.0014em;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.addWaterForm {
+    margin-bottom: 16px;
+}
+
+.timeWaterForm {
+    margin-bottom: 24px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.enterWaterForm {
+    margin-bottom: 24px;
+}
+
+.inputWaterForm[type="number"]::-webkit-outer-spin-button,
+.inputWaterForm[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputWaterForm:hover,
+.inputWaterForm:active {
+    border-color: var(--accent-secondary);
+}
+
+.wrapperInput {
+    position: relative;
+}
+
+.inputAddWater {
+    max-width: 88px;
+    height: 40px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--white);
+    background-color: var(--dark-blue);
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    padding: 11px 20px;
+}
+
+.wrapperInput::after {
+    content: 'ml';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--white);
+}
+
+
+.waterAmountInputContainer {
+    display: flex;
+    gap: 8px;
+    margin-right: auto;
+}
+
+.btnWater {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--dark-blue);
+    border-radius: 30px;
+    background-color: transparent;
+    cursor: pointer;
+
+    transition: border var(--animation);
+}
+
+.btnWater:hover,
+.btnWater:active {
+    border: 2px solid var(--accent-secondary);
+}
+
+.iconOperator {
+    width: 20px;
+    height: 20px;
+    fill: transparent;
+    stroke: var(--dark-blue);
+
+    transition: stroke var(--animation);
+}
+
+.btnWater:hover .iconOperator,
+.btnWater:active .iconOperator {
+    stroke: var(--accent-secondary);
+}
+
+
+.inputWaterForm {
+    height: 46px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: -0.0014em;
+    outline: none;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 14px 16px;
+
+    transition: border-color var(--animation);
+}
+
+.btnWaterForm {
+    max-width: 116px;
+    width: 100%;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--accent);
+    color: var(--dark-blue);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+
+    transition: backgraund-color var(--animation);
+}
+
+.btnWaterForm:hover,
+.btnWaterForm:active {
+    background-color: var(--accent-secondary)
+}
+
+@media (768px <=width) {
+    .spanFormWater {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+    }
+
+    .addWaterForm {
+        margin-bottom: 16px;
+    }
+
+    .timeWaterForm {
+        margin-bottom: 24px;
+    }
+
+    input[type="time"]::-webkit-calendar-picker-indicator {
+        display: none;
+    }
+
+    .enterWaterForm {
+        margin-bottom: 24px;
+    }
+
+    .inputAddWater {
+        max-width: 92px;
+        height: 43px;
+        font-size: 16px;
+        line-height: 1.3;
+        letter-spacing: 0.01em;
+    }
+
+    .waterAmountInputContainer {
+        display: flex;
+        gap: 8px;
+        margin-right: auto;
+    }
+
+    .btnWater {
+        width: 43px;
+        height: 43px;
+    }
+
+    .iconOperator {
+        width: 22px;
+        height: 22px;
+    }
+
+    .inputWaterForm {
+        height: 56px;
+        width: 100%;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+        border-radius: 15px;
+        padding: 16px;
+    }
+
+    .btnWaterForm {
+        height: 60px;
+        padding: 18px 50px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.0016em;
+    }
+
+}
