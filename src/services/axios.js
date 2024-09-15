@@ -9,3 +9,5 @@ export const setAuthHeader = token => {
 export const clearAuthHeader = () => {
     axios.defaults.headers.common.Authorization = '';
 };
+
+export default axios;

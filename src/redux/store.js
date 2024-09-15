@@ -1,7 +1,6 @@
 import { authReducer } from './auth/slice';
 import { waterReducer } from './water/slice';
 import { usersReducer } from './users/slice';
-import { setupAxiosInterceptors } from './auth/operation';
 
 import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
@@ -57,7 +56,5 @@ export const store = configureStore({
             },
         }),
 });
-
-setupAxiosInterceptors(store);
 
 export const persistor = persistStore(store);

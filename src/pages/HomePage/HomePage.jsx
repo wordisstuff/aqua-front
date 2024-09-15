@@ -1,13 +1,13 @@
-import { Helmet } from 'react-helmet-async';
-import Home from './../../components/Home/Hame';//<= Гена тут разва не та (Hame.jsx!!) 
 
+import { Helmet } from 'react-helmet-async';
+import Home from './../../components/Home/Home';//<= Гена тут разва не та в компоненті з якого імпорт був (Hame.jsx!!) 
 const HomePage = () => {
     return (
         <>
-        <Helmet>
-                <title>HomePage</title>
+            <Helmet>
+                <title>AquaTrack</title>
             </Helmet>
-            <Home/>
+            <Home />
         </>
     );
 };

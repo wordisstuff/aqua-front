@@ -1,0 +1,50 @@
+.lang {
+    display: flex;
+    gap: 4px;
+    margin-left: 10px;
+}
+
+.langBtn {
+    /* width: 22px;
+    height: 22px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: transparent;
+    /* border: none; */
+    border-radius: 50px;
+    transform: scale(1);
+
+    transition: transform var(--animation);
+}
+
+.langBtn:hover,
+.langBtn:active {
+    transform: scale(1.2);
+}
+
+@media (min-width: 768px) {
+    .lang {
+        margin-right: 15px;
+    }
+
+    .icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    
+}
+
+@media (min-width: 1440px) {
+    .lang {
+        margin-right: 25px;
+    }
+
+    .icon {
+        width: 42px;
+        height: 42px;
+    }
+
+}

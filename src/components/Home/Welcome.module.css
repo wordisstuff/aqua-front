@@ -1,0 +1,129 @@
+.logoWrap {
+    margin-bottom: 74px;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: 0.01em;
+
+    margin-bottom: 16px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+
+    margin-bottom: 32px;
+}
+
+.btn {
+    display: flex;
+    gap: 10px;
+}
+
+.tryTracker {
+    background-color: var(--accent);
+    border-radius: 30px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    color: var(--dark-blue);
+
+    padding: 14px 19px;
+
+    transition: background-color var(--animation);
+}
+
+.tryTracker:hover,
+.tryTracker:active {
+    background-color: var(--accent-secondary);
+}
+
+.signIn {
+    border: 1px solid var(--dark-blue);
+    border-radius: 30px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    color: var(--dark-blue);
+
+    padding: 14px 28px;
+    transition: border-color var(--animation), color var(--animation);
+}
+
+.signIn:hover,
+.signIn:active {
+    border-color: var(--accent-secondary);
+    color: var(--accent-secondary);
+}
+
+@media (min-width: 768px) {
+    .logoWrap {
+        margin-bottom: 50px;
+    }
+
+    .info {
+        padding-left: 32px;
+    }
+
+    .text {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.06em;
+    }
+
+    .title {
+        width: 435px;
+        font-size: 64px;
+        line-height: 1.09;
+        letter-spacing: -0.01em;
+    }
+
+    .btn {
+        gap: 16px;
+    }
+
+    .tryTracker {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+
+        padding: 18px 40px;
+    }
+
+    .signIn {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+        padding: 18px 40px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .logoWrap {
+        margin-bottom: 0;
+    }
+
+    .info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+
+    .title {
+        width: 558px;
+        font-size: 80px;
+        line-height: 0.95;
+        letter-spacing: -0.01em;
+    }
+}
