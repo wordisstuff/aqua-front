@@ -5,13 +5,42 @@
         "tryTracker": "Try tracker",
         "signIn": "Sign In"
     },
-"additional":{
+    "additional": {
         "our": "Our",
         "happy": "happy",
         "customers": "customers",
         "habit": "Habit drive",
         "statistics": "View statistics",
         "setting": "Personal rate setting"
+    },
+    "ChooseDate": {
+        "today": "Today",
+        "en": "uk-UA",
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December"
+    },
+    "DailyInfo": {
+        "info": "You havent drunk water yet, maybe its time to drink?"
+    },
+    "UserBar": {
+        "user": "User",
+        "welkome": "Hello",
+        "settings": "Settings",
+        "logOut": "LogOut"
+    },
+    "WaterMainInfo": { "today": "Today" }
+}
+=======
 },
 "modals": {
         "logOut": {
@@ -35,4 +64,3 @@
         "logOut": "See you soon ❤️!"
     }
 }
-        
