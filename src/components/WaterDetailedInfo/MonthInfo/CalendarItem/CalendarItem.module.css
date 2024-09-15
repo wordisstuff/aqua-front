@@ -1,0 +1,68 @@
+.calendarItemWripper {
+    margin: 0;
+    padding: 0;
+    flex-basis: calc((100% - 108px) / 7);
+    min-width: 27.5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.number {
+    width: 28px;
+    height: 28px;
+    color: #323f47;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.number.active,
+.number:hover {
+    background: #323f47;
+    color: #9be1a0;
+}
+.bgHighlighted {
+    background-color: #323f4733;
+}
+
+.current {
+    background: #323f47;
+    color: #9be1a0;
+}
+
+.percentages {
+    color: rgba(47, 47, 47, 0.6);
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+@media (min-width: 768px) {
+    .calendarItemWripper {
+        flex-basis: calc((100% - 336px) / 8);
+        gap: 4px;
+    }
+
+    .number {
+        font-size: 16px;
+        line-height: 38px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .percentages {
+        font-size: 12px;
+        line-height: 1.87;
+    }
+}
+
+@media (min-width: 1440px) {
+    .calendarItemWripper {
+        flex-basis: calc((100% - 301px) / 8);
+    }
+}

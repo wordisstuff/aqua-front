@@ -30,7 +30,8 @@
         "december": "December"
     },
     "DailyInfo": {
-        "info": "You havent drunk water yet, maybe its time to drink?"
+        "info": "You havent drunk water yet, maybe its time to drink?",
+        "ml": "ml"
     },
     "UserBar": {
         "user": "User",
@@ -38,5 +39,7 @@
         "settings": "Settings",
         "logOut": "LogOut"
     },
-    "WaterMainInfo": { "today": "Today" }
+    "WaterMainInfo": {
+        "today": "Today"
+    }
 }
