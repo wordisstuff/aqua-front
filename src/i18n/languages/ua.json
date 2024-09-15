@@ -1,5 +1,5 @@
 {
-"welcomeSection":
+"welcomeSection":{
         "mainText": "Записуйте щоденне споживання води та відстежуйте",
         "title": "Трекер споживання води",
         "tryTracker": "Try tracker",
@@ -38,7 +38,6 @@
         "logOut": "Вийти"
     },
     "WaterMainInfo": { "today": "Сьогодні" }
-=======
 },
 "modals":{
         "logOut": {
