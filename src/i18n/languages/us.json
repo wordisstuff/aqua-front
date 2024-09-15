@@ -1,5 +1,5 @@
 {
-    "welcomeSection": {
+"welcomeSection": {
         "mainText": "Record daily water intake and track",
         "title": "Water consumption tracker",
         "tryTracker": "Try tracker",
@@ -39,7 +39,27 @@
         "settings": "Settings",
         "logOut": "LogOut"
     },
-    "WaterMainInfo": {
-        "today": "Today"
-    }
+    "WaterMainInfo": {"today": "Today"},
+    "WaterMainInfo": { "today": "Today" },
+"modals": {
+        "logOut": {
+            "title": "Log Out",
+            "text": "Do you really want to leave?",
+            "logOut": "Log Out",
+            "cancel": "Cancel"
+        },
+        "delete": {
+            "title": "Delete entry",
+            "text": "Are you sure you want to delete the entry?",
+            "delete": "Delete",
+            "cancel": "Cancel",
+            "error": "Failed to delete the entry",
+            "success": "Entry deleted successfully"
+        },
+},
+ "toast": {
+        "forgot": "Password recovery email has been sent",
+        "reset": "Password has been reset successfully! You can sign in with a new password",
+        "logOut": "See you soon ❤️!"
+    },
 }
