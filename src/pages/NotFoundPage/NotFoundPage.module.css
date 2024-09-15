@@ -1,0 +1,152 @@
+.containerPage404 {
+    position: relative;
+    height: 100vh;
+    background-color: #87d28d; 
+    color: black 
+}
+
+.table {
+    background-color: #ef5050; 
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    color: black; 
+}
+
+.arrow {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    /* background-color:wheat; не знаю що вийшло непобачу поки що */
+    border: solid black; 
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 10px;
+    animation: point 4s infinite;
+}
+
+@keyframes point {
+    0%, 50%, 100% {
+        transform: rotate(45deg) translateX(-50%);
+    }
+    25% {
+        transform: rotate(135deg) translateX(-50%);
+    }
+    75% {
+        transform: rotate(90deg) translateX(-50%);
+    }
+}
+
+.message {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+.goBack {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    text-align: center;
+    color: black; 
+    background-color: #9be1a0; 
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.goBack:hover {
+    background-color: #87d28d; 
+}
+
+/* Media Queries */
+@media (max-width: 375.99px) {
+    .message {
+        font-size: 16px;
+        margin-top: 30px;
+    }
+
+    .arrow {
+        width: 30px;
+        height: 30px;
+    }
+
+    .table {
+        font-size: 16px;
+    }
+
+    .goBack {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 768.98px) {
+    .message {
+        font-size: 18px;
+        margin-top: 40px;
+    }
+
+    .arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .table {
+        font-size: 18px;
+    }
+
+    .goBack {
+        font-size: 13px;
+        padding: 9px 18px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1440px) {
+    .message {
+        font-size: 20px;
+        margin-top: 50px;
+    }
+
+    .arrow {
+        width: 50px;
+        height: 50px;
+    }
+
+    .table {
+        font-size: 20px;
+    }
+
+    .goBack {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+@media (min-width: 1441px) {
+    .message {
+        font-size: 22px;
+        margin-top: 60px;
+    }
+
+    .arrow {
+        width: 60px;
+        height: 60px;
+    }
+
+    .table {
+        font-size: 22px;
+    }
+
+    .goBack {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+}
