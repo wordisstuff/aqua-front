@@ -8,8 +8,7 @@
     align-items: center;
     width: 100vw;
     height: 100dvh;
-    
-    background: rgb(149, 215, 169);
+    background: rgba(199, 236, 210, 1);
     background: linear-gradient(
         45deg,
         rgba(199, 236, 210, 1),
