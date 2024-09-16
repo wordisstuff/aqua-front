@@ -1,11 +1,12 @@
-import getRandomColor from '../../services/getRandomColor';
+// import getRandomColor from '../../services/getRandomColor';
 import CSS from './Loader.module.css';
-import { Triangle } from 'react-loader-spinner';
+// import { Triangle } from 'react-loader-spinner';
 
 const Loader = () => {
     return (
         <div className={CSS.loader}>
-            <Triangle
+            <span class="loader"></span>
+            {/* <Triangle
                 visible={true}
                 height="80"
                 width="80"
@@ -13,7 +14,7 @@ const Loader = () => {
                 ariaLabel="triangle-loading"
                 wrapperStyle={{}}
                 wrapperClass=""
-            />
+            /> */}
         </div>
     );
 };
