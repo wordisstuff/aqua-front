@@ -1,4 +1,4 @@
-// import getRandomColor from '../../services/getRandomColor';
+import getRandomColor from '../../services/getRandomColor';
 import CSS from './Loader.module.css';
 import { Vortex } from 'react-loader-spinner';
 
@@ -13,7 +13,7 @@ const Loader = () => {
                 ariaLabel="vortex-loading"
                 wrapperStyle={{}}
                 wrapperClass="vortex-wrapper"
-                colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+                color={getRandomColor()}
             />
         </div>
     );
