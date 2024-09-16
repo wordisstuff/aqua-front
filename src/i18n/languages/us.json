@@ -1,5 +1,13 @@
 {
-"welcomeSection": {
+    "page": {
+        "reset": "Reset your password",
+        "forgot": "Forgot page",
+        "notFound": "Wrong place",
+        "signIn": "Sign In",
+        "signUp": "Sign Up",
+        "tracker": "Tracker Page"
+    },
+    "welcomeSection": {
         "mainText": "Record daily water intake and track",
         "title": "Water consumption tracker",
         "tryTracker": "Try tracker",
@@ -40,8 +48,7 @@
         "logOut": "LogOut"
     },
     "WaterMainInfo": {"today": "Today"},
-    "WaterMainInfo": { "today": "Today" },
-"modals": {
+    "modals": {
         "logOut": {
             "title": "Log Out",
             "text": "Do you really want to leave?",
@@ -55,11 +62,42 @@
             "cancel": "Cancel",
             "error": "Failed to delete the entry",
             "success": "Entry deleted successfully"
-        },
+        }
 },
- "toast": {
+    "toast": {
         "forgot": "Password recovery email has been sent",
         "reset": "Password has been reset successfully! You can sign in with a new password",
         "logOut": "See you soon ❤️!"
     },
+"signUpPage": {
+        "signUp": "Sign Up",
+        "name": "Name",
+        "namePlaceholder": "Enter your name",
+        "nameSpanError": "A comment can only contain Latin characters",
+        "email": "Enter your email",
+        "emailPlaceholder": "Enter your email",
+        "emailSpanError": "Invalid email format",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "passwordSpanError": "Password must be at least 6 characters long, include one uppercase letter, one number, and one special character",
+        "repeatPassword": "Repeat Password",
+        "repeatPasswordPlaceholder": "Repeat password",
+        "repeatPasswordpanError": "Required",
+        "repeatPasswordpanErrorTwo": "Passwords must match",
+        "textAlready": "Already have account?",
+        "signIn": "Sign In"
+    },
+    "signInPage": {
+        "signIn": "Sign In",
+        "email": "Enter your email",
+        "emailPlaceholder": "Enter your email",
+        "emailSpanError": "Invalid email format",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "passwordSpanError": "Password must be at least 6 characters long, include one uppercase letter, one number, and one special character",
+        "dontAccount": "Don’t have an account?",
+        "forgotPassword": "Forgot your password?",
+        "signUp": "Sign Up",
+        "renew": "Renew"
+    }
 }

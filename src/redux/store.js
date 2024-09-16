@@ -14,6 +14,7 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
+import { globalReducer } from './global/slice';
 
 const authPersistConfig = {
     key: 'auth',
@@ -38,6 +39,7 @@ const persistedWaterReducer = persistReducer(waterPersistConfig, waterReducer);
 
 export const store = configureStore({
     reducer: {
+        global: globalReducer,
         auth: persistedAuthReducer,
         water: persistedWaterReducer,
         users: usersReducer,

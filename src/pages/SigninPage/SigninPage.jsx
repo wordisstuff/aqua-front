@@ -1,36 +1,30 @@
-import { Helmet } from 'react-helmet-async'
+import { Helmet } from 'react-helmet-async';
 import css from './SignInPage.module.css';
-import SigninForm from '../../components/SignInForm/SigninForm.jsx';
+import SignInForm from '../../components/SignInForm/SigninForm.jsx';
 import { useTranslation } from 'react-i18next';
-{/* ============================ */}
-{/* ЦИХ КОMПОНЕНТІВ ЩЕ НЕ CТВОРИЛИ(в роботі) */ }
-// import { useMedia } from 'hooks/useMedia';(приблизні імпорти) щоб зрозуміло звідки воно прийде
-//import Languages from 'shared/components/Languages/Languages';//<=ця не підтяглась мені
-// import Container from 'shared/components/Container/Container';
-// import AdvantagesSection from 'components/Home/AdvantagesSection/AdvantagesSection';
-{/* ============================ */}
+import useMedia from '../../helpers/useHooks/useMedia.js';
+import Languages from '../../components/ShareComponents/Languages/Languages.jsx';
+import Container from '../../components/ShareComponents/Container/Container.jsx';
+import Additional from '../../components/Home/Additional.jsx';
 
 const SignInPage = () => {
     const { t } = useTranslation();
-    const { isDesktop } = useMedia();
+    const { desktop } = useMedia();
     return (
         <>
             <Helmet>
-                <title>
-                    {t('page.signIn')}
-                    </title>
+                <title>{t('page.signIn')}</title>
             </Helmet>
-        <Container >
-                <div className={css.containerPageIn }>
-                    <languages />
-                    <div className={css.containerHomeIn} >
-                        <SigninForm />
-                        {isDesktop && <AdvantagesSection/>}
+            <Container>
+                <div className={css.containerPageIn}>
+                    <Languages />
+                    <div className={css.containerHomeIn}>
+                        <SignInForm />
+                        {desktop && <Additional />}
                     </div>
                 </div>
             </Container>
         </>
-    )
-
-}
+    );
+};
 export default SignInPage;

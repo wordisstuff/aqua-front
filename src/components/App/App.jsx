@@ -7,6 +7,8 @@ import { lazy, Suspense, useEffect } from 'react';
 import Loader from '../Loader/Loader.jsx';
 import { RestrictedRoute } from '../RestrictedRoute.jsx';
 import { PrivateRoute } from '../PrivateRoute.jsx';
+const SignUpPage = lazy(() => import('../../pages/SignUpPage/SignUpPage.jsx'));
+const SigninPage = lazy(() => import('../../pages/SignInPage/SignInPage.jsx'));
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage.jsx'));
 
 const App = () => {
@@ -20,17 +22,9 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Layout />} />
                     <Route index element={<HomePage />} />
-{/*                     <Route
-                        path="/register"
-                        element={
-                            <RestrictedRoute
-                                redirectTo="/water"
-                                component={<SignupPage />}
-                            />
-                        }
-                    />
+                    <Route path="signup" element={<SignUpPage />} />
                     <Route
-                        path="/login"
+                        path="signin"
                         element={
                             <RestrictedRoute
                                 redirectTo="/water"
@@ -46,7 +40,7 @@ const App = () => {
                                 component={<HomePage />}
                             />
                         }
-                    /> */}
+                    />{' '}
                 </Routes>
             </Suspense>
         </>
