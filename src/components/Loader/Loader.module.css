@@ -8,10 +8,11 @@
     align-items: center;
     width: 100vw;
     height: 100dvh;
-    background: rgba(199, 236, 210, 1);
+    
+    background: rgb(235, 235, 235);
     background: linear-gradient(
         45deg,
-        rgba(199, 236, 210, 1),
-        rgba(255, 255, 255, 1)
+        rgb(235, 238, 236),
+        rgb(142, 234, 171)
     );
 }

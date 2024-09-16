@@ -13,7 +13,8 @@ const Loader = () => {
                 ariaLabel="vortex-loading"
                 wrapperStyle={{}}
                 wrapperClass="vortex-wrapper"
-                color={getRandomColor()}
+                colors = {['#ffffff', '#9BE1A0','#51B687', '#D5F0D9', '#296248']}
+                // color={getRandomColor()}
             />
         </div>
     );
