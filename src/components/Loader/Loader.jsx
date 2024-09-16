@@ -8,12 +8,11 @@ const Loader = () => {
             <Vortex
                 visible={true}
                 height="500"
-                width="500"
+                width="550"
                 ariaLabel="vortex-loading"
                 wrapperStyle={{}}
                 wrapperClass="vortex-wrapper"
                 color={getRandomColor()}
-                // colors ={['#F0EFF4', '#9BE1A0', '#B5B4BF']}
             />
         </div>
     );
