@@ -1,0 +1,41 @@
+.container {
+    padding: 0 20px 40px;
+    position: relative;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.loaderContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+.containerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.containerToggle {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 32px 35px;
+    }
+    .containerToggle {
+        gap: 20px;
+    }
+}
+@media (min-width: 1440px) {
+    /*  */
+}

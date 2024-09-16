@@ -1,0 +1,144 @@
+.userBarWrapper {
+    background-color: var(--light-gray);
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    color: var(--white);
+}
+
+.userBarPanel {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 8px;
+    position: relative;
+}
+
+.userWelcome {
+    font-family: Gilroy;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--dark-blue);
+}
+
+.name {
+    font-weight: 700;
+}
+
+.userBarBtn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    border-color: transparent;
+    gap: 8px;
+    opacity: 1px;
+    background-color: var(--dark-blue);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    padding: 6px 12px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+}
+
+.avatarData {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.userBarOpenPanel {
+    position: absolute;
+    top: 110%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    border-radius: 15px;
+    padding: 15px 20px;
+    font-weight: 700;
+    opacity: 0px;
+    background-color: var(--white);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chevron {
+    width: 16px;
+    height: 16px;
+    fill: transparent;
+    stroke: var(--white);
+    transition: transform 0.3s;
+}
+
+.chevron.open {
+    transform: rotate(180deg);
+}
+
+.wrapperModal {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.userBarModal {
+    color: var(--userbar-color);
+    display: block;
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+
+    transition: color var(--animation);
+}
+
+.userBarModal:hover {
+    color: var(--dark-blue);
+}
+
+@media (min-width: 768px) {
+    .userBarWrapper {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .userBarBtn {
+        margin-top: 0;
+    }
+
+    .userWelcome {
+        font-size: 36px;
+        line-height: 38px;
+    }
+
+    .chevron {
+        width: 20px;
+        height: 20px;
+    }
+
+    .userBarBtn {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+    }
+
+    .userBarOpenPanel {
+        right: 0;
+        font-weight: 700;
+        opacity: 0px;
+    }
+}
