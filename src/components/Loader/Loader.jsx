@@ -1,20 +1,20 @@
 // import getRandomColor from '../../services/getRandomColor';
 import CSS from './Loader.module.css';
-// import { Triangle } from 'react-loader-spinner';
+import { Vortex } from 'react-loader-spinner';
+
 
 const Loader = () => {
     return (
         <div className={CSS.loader}>
-            <span class="loader"></span>
-            {/* <Triangle
+            <Vortex
                 visible={true}
-                height="80"
-                width="80"
-                color={getRandomColor()}
-                ariaLabel="triangle-loading"
+                height="550"
+                width="550"
+                ariaLabel="vortex-loading"
                 wrapperStyle={{}}
-                wrapperClass=""
-            /> */}
+                wrapperClass="vortex-wrapper"
+                colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+            />
         </div>
     );
 };
