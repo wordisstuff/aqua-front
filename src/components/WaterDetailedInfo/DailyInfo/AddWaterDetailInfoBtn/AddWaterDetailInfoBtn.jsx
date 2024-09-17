@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import css from './AddWaterDetailInfoBtn.module.css';
 import Context from '../../../../context/Context';
-import WaterModal from 'WATERMODALCOMPONENT';
+import WaterForm from '../../../WaterForm';
 import { icons as sprite } from '../../../../utils/icons/index';
 
 const AddWaterDetailInfoBtn = () => {
@@ -10,10 +10,10 @@ const AddWaterDetailInfoBtn = () => {
     const { t } = useTranslation;
 
     return (
-        <div className={css.waterBtnWrapper} data-tour="step-5">
+        <div className={css.waterBtnWrapper}>
             <button
                 className={css.waterBtn}
-                onClick={() => openModal(<WaterModal operationType={'add'} />)}
+                onClick={() => openModal(<WaterForm operationType={'add'} />)}
             >
                 <svg className={css.svg}>
                     <use xlinkHref={`${sprite}#plus-add-water`} />

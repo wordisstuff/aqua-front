@@ -19,7 +19,7 @@ function DailyInfo() {
     }, [todayDate, dispatch]);
 
     return (
-        <div className={css.dailyInfoWrapper} data-tour="step-4">
+        <div className={css.dailyInfoWrapper}>
             <div className={css.dataWriteContainer}>
                 <ChooseData />
                 <AddWaterDetailInfoBtn />
@@ -29,7 +29,7 @@ function DailyInfo() {
                     <WaterList />
                 </div>
             ) : (
-                <div className={css.bootleText} data-tour="step-6">
+                <div className={css.bootleText}>
                     <p className={css.waterBootle}>{t('DailyInfo.info')}</p>
                 </div>
             )}

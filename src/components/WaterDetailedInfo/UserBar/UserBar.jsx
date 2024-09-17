@@ -7,33 +7,15 @@ import Context from '../../../context/Context';
 import LogOut from '../../Modals/LogOut/LogOut';
 import UserSettings from '../../Modals/UserSettings/UserSettings';
 import { refreshUser } from '../../../redux/auth/operation';
-import {
-    selectUser,
-    selectIsLoggedIn,
-    selectIsRefreshing,
-    selectToken,
-} from '../../../redux/auth/selectors';
-
-const useUserAuth = () => {
-    const isLoggedIn = useSelector(selectIsLoggedIn);
-    const isRefreshing = useSelector(selectIsRefreshing);
-    const user = useSelector(selectUser);
-    const token = useSelector(selectToken);
-
-    return {
-        isLoggedIn,
-        isRefreshing,
-        user,
-        token,
-    };
-};
+import { selectUser } from '../../../redux/auth/selectors';
+import useAuth from '../../../helpers/useHooks/useAuth';
 
 const UserBar = () => {
     const { t } = useTranslation();
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const { openModal } = useContext(Context);
     const dispatch = useDispatch();
-    const { user } = useUserAuth();
+    const { user } = useAuth();
     const userMainInfo = useSelector(selectUser);
     const [isUserRefreshed, setIsUserRefreshed] = useState(false);
 
