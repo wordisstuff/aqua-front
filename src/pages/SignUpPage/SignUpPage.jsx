@@ -1,25 +1,26 @@
 import { Helmet } from 'react-helmet-async';
-import css from './SignInPage.module.css';
-import SignInForm from '../../components/si/SigninForm.jsx';
+import css from './SignUpPage.module.css';
 import { useTranslation } from 'react-i18next';
-import useMedia from '../../helpers/useHooks/useMedia.js';
-import Languages from '../../components/ShareComponents/Languages/Languages.jsx';
-import Container from '../../components/ShareComponents/Container/Container.jsx';
 import Additional from '../../components/Home/Additional.jsx';
+import useMedia from '../../helpers/useHooks/useMedia.js';
+import Container from '../../components/ShareComponents/Container/Container.jsx';
+import Languages from '../../components/ShareComponents/Languages/Languages.jsx';
+import SignUpForm from '../../components/su/SignUpForm.js';
 
-const SignInPage = () => {
+const SignUpPage = () => {
     const { t } = useTranslation();
     const { desktop } = useMedia();
+
     return (
         <>
             <Helmet>
-                <title>{t('page.signIn')}</title>
+                <title>{t('page.signUp')}</title>
             </Helmet>
             <Container>
-                <div className={css.containerPageIn}>
+                <div className={css.containerPageUp}>
                     <Languages />
-                    <div className={css.containerHome}>
-                        <SignInForm />
+                    <div className={css.containerHomeUp}>
+                        <SignUpForm />
                         {desktop && <Additional />}
                     </div>
                 </div>
@@ -27,4 +28,5 @@ const SignInPage = () => {
         </>
     );
 };
-export default SignInPage;
+
+export default SignUpPage;
