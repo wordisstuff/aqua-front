@@ -5,7 +5,7 @@ import useMedia from '../../helpers/useHooks/useMedia.js';
 import Languages from '../../components/ShareComponents/Languages/Languages.jsx';
 import Container from '../../components/ShareComponents/Container/Container.jsx';
 import Additional from '../../components/Home/Additional.jsx';
-import SigninForm from '../../components/SignInForm/SigninForm.jsx';
+import SignInForm from '../../components/SignInForm/SignInForm.jsx';
 
 const SignInPage = () => {
     const { t } = useTranslation();
@@ -19,7 +19,7 @@ const SignInPage = () => {
                 <div className={css.containerPageIn}>
                     <Languages />
                     <div className={css.containerHome}>
-                        <SigninForm />
+                        <SignInForm />
                         {desktop && <Additional />}
                     </div>
                 </div>
