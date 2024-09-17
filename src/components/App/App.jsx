@@ -9,8 +9,8 @@ import RestrictRoute from '../RestrictedRoute.jsx';
 import { PrivateRoute } from '../PrivateRoute.jsx';
 import VerifyEmail from '../VerifyEmail/VerifyEmail.jsx';
 // import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.jsx';
-const SignUpPage = lazy(() => import('../../pages/su/SignUpPage.jsx'));
-const SignInPage = lazy(() => import('../../pages/si/SignInPage.jsx'));
+const SignUpPage = lazy(() => import('../../pages/SignUpPage/SignUpPage.jsx'));
+const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage.jsx'));
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage.jsx'));
 const TrackerPage = lazy(
     () => import('../../pages/TrackerPage/TrackerPage.jsx'),
