@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectDate, SELECTOR } from '../../../redux/water/selectors';
-import { FUNCTION } from '../../../redux/';
+// import { FUNCTION } from '../../../redux/';
 import WaterList from './WaterList/WaterList';
 import ChooseData from './ChooseDate/ChooseDate';
 import AddWaterDetailInfoBtn from './AddWaterDetailInfoBtn/AddWaterDetailInfoBtn';

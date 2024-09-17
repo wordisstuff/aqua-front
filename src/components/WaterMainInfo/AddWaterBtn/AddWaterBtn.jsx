@@ -1,16 +1,16 @@
-import css from './AddWaterBtn.module.css'
-import myIcon from '../../utils/icons/homeScreenPage/sprite.svg'
+import css from './AddWaterBtn.module.css';
+import { icons } from '../../../utils/icons';
 
-export default function AddWaterButton({openModal}) {
-
-
-
+export default function AddWaterButton({ openModal }) {
     return (
-        <button type='button' className={css.btnbox} onClick={openModal}>
+        <button type="button" className={css.btnbox} onClick={openModal}>
             <svg className={css.btnicon} width={16} height={16}>
-                <use className={css.btniconUse} href={`${myIcon}#icon-plus`}></use>
+                <use
+                    className={css.btniconUse}
+                    href={`${icons}#icon-plus`}
+                ></use>
             </svg>
             <p className={css.btntext}>Add water</p>
         </button>
     );
-} 
+}
