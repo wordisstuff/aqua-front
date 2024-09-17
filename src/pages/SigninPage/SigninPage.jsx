@@ -18,7 +18,7 @@ const SignInPage = () => {
             <Container>
                 <div className={css.containerPageIn}>
                     <Languages />
-                    <div className={css.containerHomeIn}>
+                    <div className={css.containerHome}>
                         <SignInForm />
                         {desktop && <Additional />}
                     </div>

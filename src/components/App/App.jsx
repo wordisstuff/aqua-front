@@ -5,11 +5,16 @@ import Layout from '../ShareComponents/Layout/Layout';
 
 import { lazy, Suspense, useEffect } from 'react';
 import Loader from '../Loader/Loader.jsx';
-import { RestrictedRoute } from '../RestrictedRoute.jsx';
+import RestrictRoute from '../RestrictedRoute.jsx';
 import { PrivateRoute } from '../PrivateRoute.jsx';
+import VerifyEmail from '../VerifyEmail/VerifyEmail.jsx';
+import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.jsx';
 const SignUpPage = lazy(() => import('../../pages/SignUpPage/SignUpPage.jsx'));
-const SigninPage = lazy(() => import('../../pages/SignInPage/SignInPage.jsx'));
+const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage.jsx'));
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage.jsx'));
+const TrackerPage = lazy(
+    () => import('../../pages/TrackerPage/TrackerPage.jsx'),
+);
 
 const App = () => {
     useEffect(() => {
@@ -22,25 +27,27 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Layout />} />
                     <Route index element={<HomePage />} />
-                    <Route path="signup" element={<SignUpPage />} />
+                    <Route path="/signup" element={<SignUpPage />} />
                     <Route
-                        path="signin"
+                        path="/signin"
                         element={
-                            <RestrictedRoute
+                            <RestrictRoute
                                 redirectTo="/water"
-                                component={<SigninPage />}
+                                element={<SignInPage />}
                             />
                         }
                     />
+                    <Route path="/verify/:token" element={<VerifyEmail />} />
                     <Route
                         path="/water"
                         element={
                             <PrivateRoute
-                                redirectTo="/login"
-                                component={<HomePage />}
+                                redirectTo="/signin"
+                                element={<TrackerPage />}
                             />
                         }
                     />{' '}
+                    {/* <Route path="*" element={<NotFoundPage />} /> */}
                 </Routes>
             </Suspense>
         </>

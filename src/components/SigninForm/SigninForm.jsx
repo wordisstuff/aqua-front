@@ -1,10 +1,8 @@
 import React, { useEffect, useId, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { icons as sprite } from '../../utils/icons/index.js';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { icons } from '../../utils/icons/index.js';
 import { NavLink } from 'react-router-dom';
 
 import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
@@ -35,7 +33,7 @@ const SignInForm = () => {
 
     const onSubmit = async data => {
         try {
-            await dispatch(logIn(data)).unwrap();
+            dispatch(logIn(data));
             reset();
         } catch (error) {
             console.error(error);
@@ -104,20 +102,22 @@ const SignInForm = () => {
                             />
                             {openPassword ? (
                                 <button
+                                    type="button"
                                     onClick={togglePasswordVisibility}
                                     className={style.eyeBtn}
                                 >
                                     <svg className={`${style.iconeye}`}>
-                                        <use xlinkHref={`${sprite}#eye`} />
+                                        <use xlinkHref={`${icons}#eye`} />
                                     </svg>
                                 </button>
                             ) : (
                                 <button
+                                    type="button"
                                     onClick={togglePasswordVisibility}
                                     className={style.eyeBtn}
                                 >
                                     <svg className={`${style.iconeye}`}>
-                                        <use xlinkHref={`${sprite}#eye-off`} />
+                                        <use xlinkHref={`${icons}#eye-off`} />
                                     </svg>
                                 </button>
                             )}
@@ -148,14 +148,14 @@ const SignInForm = () => {
                             {t('signInPage.signUp')}
                         </NavLink>
                     </div>
-                    <div className={style.question}>
+                    {/* <div className={style.question}>
                         <p className={style.haveAccountText}>
                             {t('signInPage.forgotPassword')}
                         </p>{' '}
                         <NavLink to="/forgot" className={style.haveAccountForm}>
                             {t('signInPage.renew')}
                         </NavLink>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </WelcomeWrap>

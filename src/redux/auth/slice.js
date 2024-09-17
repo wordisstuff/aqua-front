@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser } from './operation';
+import { logIn, refreshUser, registerUser } from './operation';
 
 export const INIT_STATE = {
     user: {
@@ -36,25 +36,36 @@ export const INIT_STATE = {
 export const authSlice = createSlice({
     name: 'auth',
     initialState: INIT_STATE,
-    extraReducers: builder => {
-        builder.addCase(registerUser.fulfilled, (state, action) => {
-            console.log(action);
-            state.user = action.payload.user;
+    reducers: {
+        setToken(state, action) {
             state.token = action.payload.token;
-        });
-        //         .addCase(login.fulfilled, (state, action) => {
-        //             state.isLoggedIn = true;
-        //             state.user = action.payload.user;
-        //             state.token = action.payload.token;
-        //         })
-        //         .addCase(refreshUser.fulfilled, (state, action) => {
-        //             state.isLoggedIn = true;
-        //             state.user = action.payload;
-        //         })
+            state.refreshToken = action.payload.refreshToken;
+            state.isLoggedIn = true;
+        },
+    },
+    extraReducers: builder => {
+        builder
+            .addCase(registerUser.fulfilled, (state, action) => {
+                console.log(action);
+                state.user = action.payload.user;
+                state.token = action.payload.token;
+            })
+            .addCase(logIn.fulfilled, (state, action) => {
+                console.log(action.payload);
+                console.log(state.isLoggedIn);
+                state.isLoggedIn = true;
+                console.log(state.isLoggedIn);
+                state.user = action.payload.user;
+                state.token = action.payload.token;
+            })
+            .addCase(refreshUser.fulfilled, (state, action) => {
+                state.isLoggedIn = true;
+                state.user = action.payload;
+            });
         //         .addCase(logout.fulfilled, () => {
         //             return INIT_STATE;
         //         });
     },
 });
-
+export const { setToken } = authSlice.actions;
 export const authReducer = authSlice.reducer;
