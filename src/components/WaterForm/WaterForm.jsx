@@ -18,9 +18,11 @@ import {
 } from '../../redux/water/operation'; 
 import {
     selectDate,
-    selectLoading,
     selectMonth,
 } from '../../redux/water/selectors'; 
+import {
+    selectLoading
+} from '../../redux/global/selectors';
 
 const WaterForm = ({ operationType, waterId, initialData }) => {
     const { t } = useTranslation();
