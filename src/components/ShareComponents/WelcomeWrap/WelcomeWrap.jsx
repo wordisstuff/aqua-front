@@ -4,7 +4,7 @@ const WelcomeWrap = ({ children, logoClass }) => {
     return (
         <>
             <div
-                data-aos="fade-top"
+                data-aos="fade-up"
                 data-aos-anchor="#example-anchor"
                 data-aos-offset="360"
                 data-aos-duration="360"

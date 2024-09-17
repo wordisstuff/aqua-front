@@ -8,13 +8,7 @@ const Welcome = () => {
 
     const isLoggedIn = false;
     return (
-        <div
-            data-aos="fade-down"
-            data-aos-anchor="#example-anchor"
-            data-aos-offset="600"
-            data-aos-duration="600"
-            //className={CSS.main}
-        >
+       
             <WelcomeWrap logoClass={CSS.logoWrap}>
                 <div className={CSS.info}>
                     <p className={CSS.text}>{t('welcomeSection.mainText')}</p>
@@ -35,7 +29,7 @@ const Welcome = () => {
                     </div>
                 </div>
             </WelcomeWrap>
-        </div>
+        
     );
 };
 
