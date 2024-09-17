@@ -5,7 +5,7 @@ import Additional from '../../components/Home/Additional.jsx';
 import useMedia from '../../helpers/useHooks/useMedia.js';
 import Container from '../../components/ShareComponents/Container/Container.jsx';
 import Languages from '../../components/ShareComponents/Languages/Languages.jsx';
-import SignUpForm from '../../components/SignupForm/SignupForm.jsx';
+import SignUpForm from '../../components/SignupForm/SignUpForm.jsx';
 
 const SignUpPage = () => {
     const { t } = useTranslation();
