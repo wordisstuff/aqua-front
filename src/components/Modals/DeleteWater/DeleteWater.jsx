@@ -1,7 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { useContext } from '../../../context/useContext.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDate, selectMonth } from '../../../redux/water/selectors.js';
+import {
+    selectDate,
+    selectMonth,
+    selectLoading,
+} from '../../../redux/water/selectors.js';
 import {
     apiDeleteWater,
     apiGetWaterDay,
@@ -16,6 +20,7 @@ const DeleteWater = ({ onDelete }) => {
     const dispatch = useDispatch();
     const selectedDate = useSelector(selectDate);
     const currentMonth = useSelector(selectMonth);
+    const loading = useSelector(selectLoading);
 
     const handleDelete = async () => {
         try {
@@ -45,6 +50,7 @@ const DeleteWater = ({ onDelete }) => {
                     className={css.btnDelete}
                     onClick={handleDelete}
                     type="button"
+                    disabled={loading}
                 >
                     {t('modals.delete.cancel')}
                 </button>

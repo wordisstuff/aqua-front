@@ -6,12 +6,21 @@ import Loader from '../../components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
 import { Context } from '../../context/Context';
 import { icons as sprite } from '../../utils/icons/sprite';
-import { waterSchema } from './WaterSchema'; 
+import { waterSchema } from './WaterSchema';
 import style from './WaterForm.module.css';
 import toast from 'react-hot-toast';
 
-import { addWater } from '../../redux/water/operation'; // operation.js - добавить импорт фаилов
-import { selectDate } from '../../redux/water/selectors'; // selectors.js - добавить импорт фаилов
+import {
+    addWater,
+    updateWaterAmount,
+    apiGetWaterMonth,
+    apiGetWaterDay,
+} from '../../redux/water/operation'; 
+import {
+    selectDate,
+    selectLoading,
+    selectMonth,
+} from '../../redux/water/selectors'; 
 
 const WaterForm = ({ operationType, waterId, initialData }) => {
     const { t } = useTranslation();
@@ -234,6 +243,5 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
         </div>
     );
 };
-
 
 export default WaterForm;
