@@ -1,15 +1,14 @@
-import { useContext } from 'react';
+import { useModalContext } from '../../../../context/useContext';
 import { useTranslation } from 'react-i18next';
 import { format, parseISO, subHours } from 'date-fns';
 import css from './WaterItem.module.css';
 import { icons as sprite } from '../../../../utils/icons/index';
-import Context from '../../../../../context/Context';
 import WaterForm from '../../../WaterForm/WaterForm';
 import DeleteWater from '../../../Modals/DeleteWater/DeleteWater';
 
 function WaterItem({ data }) {
     const { t } = useTranslation();
-    const { openModal } = useContext(Context);
+    const { openModal } = useModalContext();
     const { _id: id, count, date } = data;
 
     const formatWaterCount = count => {
