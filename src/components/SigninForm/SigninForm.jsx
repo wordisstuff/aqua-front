@@ -22,7 +22,7 @@ const SignInForm = () => {
     const passwordId = useId();
 
     const dispatch = useDispatch();
-    const isLoggedIn = useSelector(selectIsLoggedIn);
+    const isLoggedIn = useSelector(selectIsLoggedIn );
 
     const {
         register,
