@@ -9,7 +9,7 @@ import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import { logIn, refreshUser } from '../../redux/auth/operation.js';
 import WelcomeWrap from '../ShareComponents/WelcomeWrap/WelcomeWrap.jsx';
 import style from './SignInForm.module.css';
-import { signInSchema, formValuesSignIn } from './SignInShema.js';
+import { signInSchema, formValuesSignIn } from './SigninShema.js';
 import useCustomForm from '../../helpers/useHooks/useCustomForm.js';
 
 const SignInForm = () => {
