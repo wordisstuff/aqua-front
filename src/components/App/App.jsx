@@ -8,6 +8,8 @@ import Loader from '../Loader/Loader.jsx';
 import RestrictRoute from '../RestrictedRoute.jsx';
 import { PrivateRoute } from '../PrivateRoute.jsx';
 import VerifyEmail from '../VerifyEmail/VerifyEmail.jsx';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from '../../redux/auth/operation.js';
 // import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.jsx';
 const SignUpPage = lazy(() => import('../../pages/SignUpPage/SignUpPage.jsx'));
 const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage.jsx'));
@@ -17,10 +19,16 @@ const TrackerPage = lazy(
 );
 
 const App = () => {
+    const dispatch = useDispatch();
     useEffect(() => {
         AOS.init();
     }, []);
     console.log('APPPP');
+
+    useEffect(() => {
+        dispatch(refreshUser());
+    }, [dispatch]);
+
     return (
         <>
             <Suspense fallback={<Loader />}>

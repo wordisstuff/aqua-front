@@ -15,19 +15,19 @@ import tourStyles from './utils/style/tourStyles.js';
 import './i18n/config.js';
 
 createRoot(document.getElementById('root')).render(
-    <StrictMode>
-        <Provider store={store}>
-            <PersistGate persistor={persistor} loading={null}>
-                <BrowserRouter>
-                    <HelmetProvider>
-                        <ModalProvider>
-                            <TourProvider steps={tourSteps} styles={tourStyles}>
-                                <App />
-                            </TourProvider>
-                        </ModalProvider>
-                    </HelmetProvider>
-                </BrowserRouter>
-            </PersistGate>
-        </Provider>
-    </StrictMode>,
+    // <StrictMode>
+    <Provider store={store}>
+        <PersistGate persistor={persistor} loading={null}>
+            <BrowserRouter>
+                <HelmetProvider>
+                    <ModalProvider>
+                        <TourProvider steps={tourSteps} styles={tourStyles}>
+                            <App />
+                        </TourProvider>
+                    </ModalProvider>
+                </HelmetProvider>
+            </BrowserRouter>
+        </PersistGate>
+    </Provider>,
+    // </StrictMode>,
 );

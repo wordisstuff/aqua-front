@@ -9,7 +9,8 @@ export const INIT_STATE = {
         avatar: null,
         weight: null,
         activeTime: null,
-        waterRate: null,
+        recommendedWater: null,
+        verifyByEmail: false,
     },
     token: null,
     refreshToken: null,
@@ -38,17 +39,15 @@ export const authSlice = createSlice({
     initialState: INIT_STATE,
     reducers: {
         setToken(state, action) {
+            state.isLoggedIn = true;
             state.token = action.payload.token;
             state.refreshToken = action.payload.refreshToken;
-            state.isLoggedIn = true;
         },
     },
     extraReducers: builder => {
         builder
             .addCase(registerUser.fulfilled, (state, action) => {
                 console.log(action);
-                state.user = action.payload.user;
-                state.token = action.payload.token;
             })
             .addCase(logIn.fulfilled, (state, action) => {
                 console.log(action.payload);
@@ -60,6 +59,8 @@ export const authSlice = createSlice({
             })
             .addCase(refreshUser.fulfilled, (state, action) => {
                 state.isLoggedIn = true;
+                console.log(state.isLoggedIn);
+                state.token = action.payload.token;
                 state.user = action.payload;
             });
         //         .addCase(logout.fulfilled, () => {
