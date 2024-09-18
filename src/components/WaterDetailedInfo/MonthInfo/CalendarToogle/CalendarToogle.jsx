@@ -1,4 +1,4 @@
-import css from './CalendarToggle.module.css';
+import css from './CalendsrToogle.module.css';
 import { icons as sprite } from '../../../../utils/icons/index';
 
 const CalendarToggle = ({ isActive, setIsActive }) => {

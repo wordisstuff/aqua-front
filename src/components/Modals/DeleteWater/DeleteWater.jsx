@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useContext } from '../../../context/useContext.jsx';
+import { useModalContext } from '../../../context/useContext.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     selectDate,
@@ -16,7 +16,7 @@ import css from './DeleteWater.module.css';
 
 const DeleteWater = ({ onDelete }) => {
     const { t } = useTranslation();
-    const { closeModal } = useContext();
+    const { closeModal } = useModalContext();
     const dispatch = useDispatch();
     const selectedDate = useSelector(selectDate);
     const currentMonth = useSelector(selectMonth);

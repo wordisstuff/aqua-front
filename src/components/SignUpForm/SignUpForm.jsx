@@ -5,7 +5,7 @@ import { formValuesSignUp, signUpSchema } from './SignupShema.js';
 import { useTranslation } from 'react-i18next';
 import WelcomeWrap from '../ShareComponents/WelcomeWrap/WelcomeWrap.jsx';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { icons } from '..//../utils/icons';
+import { icons } from '../../utils/icons/index.js';
 import useCustomForm from '../../helpers/useHooks/useCustomForm.js';
 import toast from 'react-hot-toast';
 

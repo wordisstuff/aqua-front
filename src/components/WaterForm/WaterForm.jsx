@@ -4,12 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { parseISO, subHours } from 'date-fns';
 import Loader from '../../components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
+<<<<<<< HEAD
 import { Context } from '../../context/Context';
 import { icons as sprite } from '../../utils/icons/sprite';
+=======
+import { icons } from '../../utils/icons';
+>>>>>>> f96dd8b9e8400401e29c8aa7ab17e29eb384c005
 import { waterSchema } from './WaterSchema';
 import style from './WaterForm.module.css';
 import toast from 'react-hot-toast';
 
+<<<<<<< HEAD
 import {
     addWater,
     updateWaterAmount,
@@ -23,11 +28,16 @@ import {
 import {
     selectLoading
 } from '../../redux/global/selectors';
+=======
+import { addWater } from '../../redux/water/operation'; // operation.js - добавить импорт фаилов
+import { selectDate } from '../../redux/water/selectors'; // selectors.js - добавить импорт фаилов
+import { useModalContext } from '../../context/useContext';
+>>>>>>> f96dd8b9e8400401e29c8aa7ab17e29eb384c005
 
 const WaterForm = ({ operationType, waterId, initialData }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const { closeModal } = Context();
+    const { closeModal } = useModalContext();
     const loading = useSelector(selectLoading);
     const selectedDate = useSelector(selectDate);
     const currentMonth = useSelector(selectMonth);
@@ -173,7 +183,7 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
                                 >
                                     <use
                                         className={style.icon}
-                                        xlinkHref={`${sprite}#minus`}
+                                        xlinkHref={`${icons}#minus`}
                                     />
                                 </svg>
                             </div>
@@ -195,7 +205,7 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
                                 >
                                     <use
                                         className={style.icon}
-                                        xlinkHref={`${sprite}#plus`}
+                                        xlinkHref={`${icons}#plus`}
                                     />
                                 </svg>
                             </div>

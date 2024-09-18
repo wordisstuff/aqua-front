@@ -9,7 +9,7 @@ export const registerUser = createAsyncThunk(
         try {
             const { data } = await aquaApi.post('/auth/signup', formData);
             toast.success(data.message);
-            return data;
+            return;
         } catch (e) {
             toast.error(e.response.data.data.message);
             return rejectWithValue(e.message);
@@ -47,20 +47,21 @@ export const logOutUser = createAsyncThunk(
 );
 export const refreshUser = createAsyncThunk(
     'auth/refresh',
-    async (_, thunkAPI) => {
-        // setToken(data.token);
-        const state = thunkAPI.getState();
-        const persistedToken = state.auth.token;
-
-        if (persistedToken === null) {
-            return thunkAPI.rejectWithValue('Unable to fetch user');
+    async (_, { getState, rejectWithValue }) => {
+        const { auth, dispatch } = getState();
+        const token = auth.token;
+        console.log(token);
+        if (!token) {
+            return rejectWithValue('Unable user');
         }
         try {
-            setAuthHeader(persistedToken);
-            const res = await axios.get('/users/profile');
-            return res.data;
+            setAuthHeader(token);
+            const { data } = await aquaApi.get('/auth/refresh');
+            console.log('SERVER USER DATA', res);
+            dispatch(setToken({ token: data.token }));
+            return res;
         } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     },
 );

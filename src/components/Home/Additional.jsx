@@ -28,7 +28,7 @@ const Additional = () => {
 
     return (
         <div
-            data-aos="fade-up"
+            data-aos="fade-down"
             data-aos-anchor="#example-anchor"
             data-aos-offset="600"
             data-aos-duration="600"

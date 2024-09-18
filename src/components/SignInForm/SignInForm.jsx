@@ -9,10 +9,10 @@ import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import { logIn, refreshUser } from '../../redux/auth/operation.js';
 import WelcomeWrap from '../ShareComponents/WelcomeWrap/WelcomeWrap.jsx';
 import style from './SignInForm.module.css';
-import { signInSchema, formValuesSignIn } from './SignInShema.js';
+import { signInSchema, formValuesSignIn } from './Shema.js';
 import useCustomForm from '../../helpers/useHooks/useCustomForm.js';
 
-const SignInForm = () => {
+const SigninForm = () => {
     const { t } = useTranslation();
     const [openPassword, setOpenPassword] = useState(false);
 
@@ -161,4 +161,4 @@ const SignInForm = () => {
         </WelcomeWrap>
     );
 };
-export default SignInForm;
+export default SigninForm;

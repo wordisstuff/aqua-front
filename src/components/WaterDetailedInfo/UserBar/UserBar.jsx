@@ -8,7 +8,7 @@ import LogOut from '../../Modals/LogOut/LogOut';
 import UserSettings from '../../Modals/UserSettings/UserSettings';
 import { refreshUser } from '../../../redux/auth/operation';
 import { selectUser } from '../../../redux/auth/selectors';
-import useAuth from '../../../helpers/useHooks/useAuth';
+import { useAuth } from '../../../helpers/useHooks/useAuth';
 
 const UserBar = () => {
     const { t } = useTranslation();

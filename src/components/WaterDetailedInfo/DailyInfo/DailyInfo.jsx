@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { selectDate, SELECTOR } from '../../../redux/water/selectors';
+// import { selectDate, SELECTOR } from '../../../redux/water/selectors';
 // import { FUNCTION } from '../../../redux/';
 import WaterList from './WaterList/WaterList';
 import ChooseData from './ChooseDate/ChooseDate';
@@ -10,7 +10,7 @@ import css from './DailyInfo.module.css';
 
 function DailyInfo() {
     const { t } = useTranslation();
-    const waterPerDay = useSelector(SELECTOR);
+    // const waterPerDay = useSelector(SELECTOR);
     const todayDate = useSelector(selectDate);
     const dispatch = useDispatch();
 

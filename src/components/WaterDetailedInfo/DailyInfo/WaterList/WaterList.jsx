@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import css from './WaterList.module.css';
 import WaterItem from '../WaterItem/WaterItem';
-import { FUNCTION } from '../../../../redux/water/operation';
-import { selectDate, SELECTOR } from '../../../../redux/water/selectors';
+// import { FUNCTION } from '../../../../redux/water/operation';
+// import { selectDate, SELECTOR } from '../../../../redux/water/selectors';
 
 function WaterList() {
     const todayDay = useSelector(selectDate);
-    const waterPerDay = useSelector(SELECTOR);
+    // const waterPerDay = useSelector(SELECTOR);
     const dispatch = useDispatch();
 
     useEffect(() => {

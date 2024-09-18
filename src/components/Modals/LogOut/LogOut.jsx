@@ -1,12 +1,12 @@
 import css from './LogOut.module.css';
-import { useContext } from '../../../context/useContext.jsx';
+import { useModalContext } from '../../../context/useContext.jsx';
 import { useDispatch } from 'react-redux';
 import { logOutUser } from '../../../redux/auth/operation.js';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 
 const LogOutModalWind = () => {
-    const { closeModal } = useContext();
+    const { closeModal } = useModalContext();
     const dispatch = useDispatch();
     const { t } = useTranslation();
 

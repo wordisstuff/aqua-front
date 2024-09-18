@@ -13,6 +13,7 @@ const globalSlice = createSlice({
             .addMatcher(
                 action => action.type.endsWith('pending'),
                 handlePending,
+                console.log('PENDING'),
             )
             .addMatcher(
                 action => action.type.endsWith('rejected'),

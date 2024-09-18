@@ -7,7 +7,7 @@ import { icons } from '../../utils/icons';
 import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo';
 import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo';
 import Container from '../../components/ShareComponents/Container/Container';
-import Modals from '../../components/Modals/modals';
+import Modals from '../../components/Modals/Modals';
 
 const TrackerPage = () => {
     const { t } = useTranslation();

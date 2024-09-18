@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import Calendar from './Calendar/Calendar.jsx';
 import CalendarPagination from './CalendarPagination/CalendarPagination.jsx';
 import CalendarTitle from './CalendarTitle/CalendarTitle.jsx';
-import CalendarToggle from './CalendarToggle/CalendarToggle.jsx';
+import CalendarToggle from './CalendarToogle/CalendarToogle.jsx';
 import Loader from './Loader/Loader.jsx';
 import css from './MonthInfo.module.css';
 import { useState, useEffect } from 'react';
