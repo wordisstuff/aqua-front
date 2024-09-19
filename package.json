@@ -28,6 +28,7 @@
     "i18next": "^23.15.1",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.6.1",
+    "joi": "^17.13.3",
     "modern-normalize": "^3.0.1",
     "nanoid": "^5.0.7",
     "overlayscrollbars": "^2.10.0",

@@ -47,7 +47,7 @@
         "settings": "Settings",
         "logOut": "LogOut"
     },
-    "WaterMainInfo": {"today": "Today"},
+    "WaterMainInfo": { "today": "Today" },
     "modals": {
         "logOut": {
             "title": "Log Out",
@@ -63,13 +63,13 @@
             "error": "Failed to delete the entry",
             "success": "Entry deleted successfully"
         }
-},
+    },
     "toast": {
         "forgot": "Password recovery email has been sent",
         "reset": "Password has been reset successfully! You can sign in with a new password",
         "logOut": "See you soon ❤️!"
     },
-"signUpPage": {
+    "signUpPage": {
         "signUp": "Sign Up",
         "name": "Name",
         "namePlaceholder": "Enter your name",
@@ -96,8 +96,28 @@
         "passwordPlaceholder": "Enter your password",
         "passwordSpanError": "Password must be at least 6 characters long, include one uppercase letter, one number, and one special character",
         "dontAccount": "Don’t have an account?",
-        "forgotPassword": "Forgot your password?",
+        "forgotAccount": "If you forgot account?",
+        "forgotPassword": "Forgot password",
         "signUp": "Sign Up",
         "renew": "Renew"
+    },
+    "forgotPage": {
+        "signIn": "Sign In",
+        "email": "Enter your email",
+        "emailPlaceholder": "Enter your email",
+        "emailSpanError": "Invalid email format",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "passwordSpanError": "Password must be at least 6 characters long, include one uppercase letter, one number, and one special character",
+        "dontAccount": "Don’t have an account?",
+        "forgotAccount": "If you forgot account?",
+        "forgotPassword": "Forgot password",
+        "signUp": "Sign Up",
+        "renew": "Renew",
+        "sendResetLink": "ResetLink",
+        "backToSignIn": "Back to sign in",
+        "resetPassword": "Forgot password",
+        "newPassword": "Enter new password",
+        "newPasswordPlaceholder": "Enter new password"
     }
 }

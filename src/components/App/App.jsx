@@ -9,6 +9,7 @@ import RestrictRoute from '../RestrictedRoute.jsx';
 import { PrivateRoute } from '../PrivateRoute.jsx';
 import VerifyEmail from '../VerifyEmail/VerifyEmail.jsx';
 // import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.jsx';
+const ForgotPage = lazy(() => import('../../pages/ForgotPage/ForgotPage.jsx'));
 const SignUpPage = lazy(() => import('../../pages/SignUpPage/SignUpPage.jsx'));
 const SignInPage = lazy(() => import('../../pages/SignInPage/SignInPage.jsx'));
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage.jsx'));
@@ -27,6 +28,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Layout />} />
                     <Route index element={<HomePage />} />
+                    <Route path="/forgotPassword" element={<ForgotPage />} />
                     <Route path="/signup" element={<SignUpPage />} />
                     <Route
                         path="/signin"
