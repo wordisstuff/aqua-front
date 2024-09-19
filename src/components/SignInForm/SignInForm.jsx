@@ -106,7 +106,7 @@ const SigninForm = () => {
                                     onClick={togglePasswordVisibility}
                                     className={style.eyeBtn}
                                 >
-                                    <svg className={`${style.iconeye}`}>
+                                    <svg className={`${style.iconEye}`}>
                                         <use xlinkHref={`${icons}#eye`} />
                                     </svg>
                                 </button>
@@ -116,7 +116,7 @@ const SigninForm = () => {
                                     onClick={togglePasswordVisibility}
                                     className={style.eyeBtn}
                                 >
-                                    <svg className={`${style.iconeye}`}>
+                                    <svg className={`${style.iconEye}`}>
                                         <use xlinkHref={`${icons}#eye-off`} />
                                     </svg>
                                 </button>
@@ -157,14 +157,7 @@ const SigninForm = () => {
                             {t('signInPage.forgotPassword')}
                         </NavLink>
                     </div>
-                    {/* <div className={style.question}>
-                        <p className={style.haveAccountText}>
-                            {t('signInPage.forgotPassword')}
-                        </p>{' '}
-                        <NavLink to="/forgot" className={style.haveAccountForm}>
-                            {t('signInPage.renew')}
-                        </NavLink>
-                    </div> */}
+                   
                 </div>
             </div>
         </WelcomeWrap>

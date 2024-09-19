@@ -4,11 +4,13 @@ import { useTranslation } from 'react-i18next';
 import css from './UserBar.module.css';
 import { icons as sprite } from '../../../utils/icons/index';
 import Context from '../../../context/Context';
-import LogOut from '../../Modals/LogOut/LogOut';
+// import LogOut from '../../Modals/LogOut/LogOut';
+import LogOutModalWind from '../../Modals/LogOut/LogOut.jsx';
 import UserSettings from '../../Modals/UserSettings/UserSettings';
-import { refreshUser } from '../../../redux/auth/operation';
+// import { refreshUser } from '../../../redux/auth/operation';
 import { selectUser } from '../../../redux/auth/selectors';
 import { useAuth } from '../../../helpers/useHooks/useAuth';
+import { currentUser } from '../../../redux/users/operation';
 
 const UserBar = () => {
     const { t } = useTranslation();
@@ -21,13 +23,13 @@ const UserBar = () => {
 
     useEffect(() => {
         if (!user) {
-            dispatch(refreshUser());
+            dispatch(currentUser());
         }
     }, [dispatch, user]);
 
     useEffect(() => {
         if (isUserRefreshed) {
-            dispatch(refreshUser());
+            dispatch(currentUser());
             setIsUserRefreshed(false);
         }
     }, [dispatch, isUserRefreshed]);
@@ -94,7 +96,9 @@ const UserBar = () => {
                             <li>
                                 <a
                                     className={css.userBarModal}
-                                    onClick={() => openModal(<LogOut />)}
+                                    onClick={() =>
+                                        openModal(<LogOutModalWind />)
+                                    }
                                 >
                                     <svg width="16" height="16">
                                         <use xlinkHref={`${sprite}#log-out`} />

@@ -67,7 +67,7 @@
     border: none;
 }
 
-.iconeye {
+.iconEye {
     width: 20px;
     height: 20px;
     fill: transparent;
@@ -75,8 +75,8 @@
     transition: stroke var(--animation);
 }
 
-.iconeye:hover,
-.iconeye:active {
+.iconEye:hover,
+.iconEye:active {
     stroke: var(--accent);
 }
 

@@ -4,14 +4,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { parseISO, subHours } from 'date-fns';
 import Loader from '../../components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
+
+import { useModalContext } from '../../context/useContext';
+
 import { icons } from '../../utils/icons';
 import { waterSchema } from './WaterSchema';
 import style from './WaterForm.module.css';
 import toast from 'react-hot-toast';
 
-import { addWater } from '../../redux/water/operation'; // operation.js - добавить импорт фаилов
-import { selectDate } from '../../redux/water/selectors'; // selectors.js - добавить импорт фаилов
-import { useModalContext } from '../../context/useContext';
+import {
+    addWater,
+    updateWaterAmount,
+    apiGetWaterMonth,
+    apiGetWaterDay,
+} from '../../redux/water/operation'; 
+import {
+    selectDate,
+    selectMonth,
+} from '../../redux/water/selectors'; 
+import {
+    selectLoading
+} from '../../redux/global/selectors';
 
 const WaterForm = ({ operationType, waterId, initialData }) => {
     const { t } = useTranslation();

@@ -18,7 +18,7 @@ const LogOutModalWind = () => {
             </div>
             <div className={css.modalButtonCont}>
                 <button
-                    className={logoutButton}
+                    className={css.logoutButton}
                     onClick={() => {
                         dispatch(logOutUser());
                         closeModal();

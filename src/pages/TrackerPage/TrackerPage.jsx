@@ -11,15 +11,17 @@ import Modals from '../../components/Modals/Modals';
 
 const TrackerPage = () => {
     const { t } = useTranslation();
-    const { setIsOpen } = useTour(); // кроки
+    // const { setIsOpen } = useTour(); // кроки
 
-    useEffect(() => {
-        const isFirstVisit = localStorage.getItem('firstVisit') === null;
-        if (isFirstVisit) {
-            localStorage.setItem('firstVisit', 'false');
-            setIsOpen(true);
-        }
-    }, [setIsOpen]);
+    // useEffect(() => {
+    //     const isFirstVisit = localStorage.getItem('firstVisit') === null;
+    //     if (isFirstVisit) {
+    //         localStorage.setItem('firstVisit', 'false');
+    //         setIsOpen(true);
+    //     }
+    // },
+    // [setIsOpen]
+    // );
 
     return (
         <>

@@ -8,6 +8,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { icons } from '../../utils/icons/index.js';
 import useCustomForm from '../../helpers/useHooks/useCustomForm.js';
 import toast from 'react-hot-toast';
+import style from './SignupForm.module.css';
 
 const SignUpForm = () => {
     const navigate = useNavigate();
@@ -62,13 +63,20 @@ const SignUpForm = () => {
     }, [errors, t]);
 
     return (
-        <WelcomeWrap>
-            <div>
-                <h2>{t('signUpPage.signUp')}</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div>
-                        <label htmlFor={emailId}>{t('signUpPage.email')}</label>
+        <WelcomeWrap
+        classNameLogo={style.form}
+        classNameWelcom={style.welcomPadding}
+      >
+        <div className={`${style.formBlock} ${style.formPosition}`}>
+                <h2 className={style.formTitle}>{t('signUpPage.signUp')}</h2>
+
+
+
+                <form className={style.mainForm} onSubmit={handleSubmit(onSubmit)}>
+                    <div className={style.fieldThumb}>
+                        <label className={style.formLabel} htmlFor={emailId}>{t('signUpPage.email')}</label>
                         <input
+                            className={`${style.formInput} ${errors.email && style.errorName}`}
                             type="email"
                             name="email"
                             id={emailId}
@@ -80,72 +88,74 @@ const SignUpForm = () => {
                         )}
                     </div>
 
-                    <div>
-                        <label htmlFor={passId}>
-                            {t('signUpPage.password')}
-                        </label>
-                        <div>
-                            <input
-                                type={openPass ? 'text' : 'password'}
-                                name="password"
-                                id={passId}
-                                placeholder={t('signUpPage.password')}
-                                {...register('password')}
-                            />
-                            <button type="button" onClick={handlePass}>
-                                <svg>
-                                    <use
-                                        xlinkHref={
-                                            openPass ? '#eye' : '#eye-off'
-                                        }
-                                    />
-                                </svg>
-                            </button>
-                        </div>
-                        {errors.password && (
-                            <span>{t('signUpPage.passwordSpanError')}</span>
-                        )}
-                    </div>
 
-                    <div>
-                        <label htmlFor={repeatPassId}>
-                            {t('signUpPage.repeatPassword')}
-                        </label>
-                        <div>
-                            <input
-                                type={openRepeatPass ? 'text' : 'password'}
-                                name="repeatPassword"
-                                id={repeatPassId}
-                                placeholder={t('signUpPage.repeatPassword')}
-                                {...register('repeatPassword')}
-                            />
-                            <button type="button" onClick={handleRepeatPass}>
-                                <svg>
-                                    <use
-                                        xlinkHref={
-                                            openRepeatPass ? '#eye' : '#eye-off'
-                                        }
-                                    />
-                                </svg>
-                            </button>
-                        </div>
-                        {errors.repeatPassword && (
-                            <span>
-                                {t('signUpPage.repeatPasswordpanError')}
-                            </span>
-                        )}
-                    </div>
 
-                    <div>
-                        <button type="submit" disabled={!isDirty || !isValid}>
-                            {t('signUpPage.signUp')}
-                        </button>
-                    </div>
-                </form>
 
-                <div>
-                    <p>{t('signUpPage.textAlready')}</p>
-                    <NavLink to="/signin">{t('signUpPage.signIn')}</NavLink>
+
+                    <div className={style.fieldThumb}>
+    <label className={style.formLabel} htmlFor={passId}>
+        {t('signUpPage.password')}
+    </label>
+
+    <div className={style.passwordWrapper}>
+        <input
+            className={`${style.formInput} ${errors.password && style.errorName}`}
+            type={openPass ? 'text' : 'password'}
+            name="password"
+            id={passId}
+            placeholder={t('signUpPage.password')}
+            {...register('password')}
+        />
+        <button type="button" onClick={handlePass} className={style.eyeBtn}>
+            <svg className={style.iconEye}>
+                <use xlinkHref={openPass ? `${icons}#eye` : `${icons}#eye-off`} />
+            </svg>
+        </button>
+    </div>
+    
+    {errors.password && (
+        <span>{t('signUpPage.passwordSpanError')}</span>
+    )}
+</div>
+                    
+                    
+<div className={style.fieldThumb}>
+    <label className={style.formLabel} htmlFor={repeatPassId}>
+        {t('signUpPage.repeatPassword')}
+    </label>
+
+    <div className={style.passwordWrapper}>
+        <input
+            className={`${style.formInput} ${style.formPhone} ${errors.repeatPassword && style.errorName}`}
+            type={openRepeatPass ? 'text' : 'password'}
+            name="repeatPassword"
+            id={repeatPassId}
+            placeholder={t('signUpPage.repeatPassword')}
+            {...register('repeatPassword')}
+        />
+        <button type="button" onClick={handleRepeatPass} className={style.eyeBtn}>
+            <svg className={style.iconEye}>
+                <use xlinkHref={openRepeatPass ? `${icons}#eye` : `${icons}#eye-off`} />
+            </svg>
+        </button>
+    </div>
+
+    {errors.repeatPassword && (
+        <span>{t('signUpPage.repeatPasswordpanError')}</span>
+    )}
+</div>
+
+<div >
+    <button  className={style.btnform} type="submit" disabled={!isDirty || !isValid}>
+        {t('signUpPage.signUp')}
+    </button>
+</div>
+ </form>
+
+                <div className={style.haveAccountSignIn}>
+                    
+                    <p className={style.haveAccountText}>{t('signUpPage.textAlready')}</p>
+                    <NavLink to="/signin"  className={style.haveAccountForm}>{t('signUpPage.signIn')}</NavLink>
                 </div>
             </div>
         </WelcomeWrap>

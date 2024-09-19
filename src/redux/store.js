@@ -34,14 +34,14 @@ const waterPersistConfig = {
     ],
 };
 
-const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
-const persistedWaterReducer = persistReducer(waterPersistConfig, waterReducer);
+const persistedAuth = persistReducer(authPersistConfig, authReducer);
+const persistedWater = persistReducer(waterPersistConfig, waterReducer);
 
 export const store = configureStore({
     reducer: {
         global: globalReducer,
-        auth: persistedAuthReducer,
-        water: persistedWaterReducer,
+        auth: persistedAuth,
+        water: persistedWater,
         users: usersReducer,
     },
     middleware: getDefaultMiddleware =>

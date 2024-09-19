@@ -62,6 +62,36 @@
             "cancel": "Cancel",
             "error": "Failed to delete the entry",
             "success": "Entry deleted successfully"
+        },
+        "UserSettingsForm": {
+            "setting": "Setting",
+            "uploadPhotoBtn": "Upload a photo",
+            "yourGenderLabel": "Your gender identity",
+            "femaleGenderLabel": "Female",
+            "femaleGenderMale": "Male",
+            "yourNameLabel": "Your name",
+            "placeYourName": "Name",
+            "labelEmail": "Email",
+            "placeEmail": "Email",
+            "dailyNormah": "My daily norma",
+            "forWomanP": "For woman:",
+            "forManP": "For man:",
+            "starText": "V is the volume of the water norm in liters per day, M is your body weight, T is the time of active sports, or another type of activity commensurate in terms of loads (in the absence of these, you must set 0)",
+            "activeText": "Active time in hours",
+            "infoUser": "Your weight in kilograms:",
+            "TheTimeSportsLabel": "The time of active participation in sports:",
+            "requiredWater": "The required amount of water in liters per day:",
+            "writeDownLabel": "Write down how much water you will drink:",
+            "l": "L",
+            "saveBtn": "Save",
+            "success": "Your data has been updated successfully",
+            "errors": {
+                "email": "Please enter a valid email address",
+                "name": "Please enter a valid name using Latin characters",
+                "weight": "Weight is required",
+                "time": "Active time is required",
+                "water": "Amount of water to drink is required"
+            }
         }
     },
     "toast": {
