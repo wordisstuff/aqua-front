@@ -126,8 +126,28 @@
         "passwordPlaceholder": "Enter your password",
         "passwordSpanError": "Password must be at least 6 characters long, include one uppercase letter, one number, and one special character",
         "dontAccount": "Don’t have an account?",
-        "forgotPassword": "Forgot your password?",
+        "forgotAccount": "If you forgot account?",
+        "forgotPassword": "Forgot password",
         "signUp": "Sign Up",
         "renew": "Renew"
+    },
+    "forgotPage": {
+        "signIn": "Sign In",
+        "email": "Enter your email",
+        "emailPlaceholder": "Enter your email",
+        "emailSpanError": "Invalid email format",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "passwordSpanError": "Password must be at least 6 characters long, include one uppercase letter, one number, and one special character",
+        "dontAccount": "Don’t have an account?",
+        "forgotAccount": "If you forgot account?",
+        "forgotPassword": "Forgot password",
+        "signUp": "Sign Up",
+        "renew": "Renew",
+        "sendResetLink": "ResetLink",
+        "backToSignIn": "Back to sign in",
+        "resetPassword": "Forgot password",
+        "newPassword": "Enter new password",
+        "newPasswordPlaceholder": "Enter new password"
     }
 }

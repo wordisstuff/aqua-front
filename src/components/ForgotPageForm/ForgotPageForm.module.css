@@ -67,7 +67,7 @@
     border: none;
 }
 
-.iconEye {
+.iconeye {
     width: 20px;
     height: 20px;
     fill: transparent;
@@ -75,8 +75,8 @@
     transition: stroke var(--animation);
 }
 
-.iconEye:hover,
-.iconEye:active {
+.iconeye:hover,
+.iconeye:active {
     stroke: var(--accent);
 }
 
@@ -236,8 +236,5 @@
 
 .question {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     gap: 5px;
-    column-gap: 20px;
 }

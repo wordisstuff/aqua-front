@@ -147,6 +147,15 @@ const SigninForm = () => {
                         <NavLink to="/signup" className={style.haveAccountForm}>
                             {t('signInPage.signUp')}
                         </NavLink>
+                        <p className={style.haveAccountText}>
+                            {t('signInPage.forgotAccount')}
+                        </p>{' '}
+                        <NavLink
+                            to="/forgotPassword"
+                            className={style.haveAccountForm}
+                        >
+                            {t('signInPage.forgotPassword')}
+                        </NavLink>
                     </div>
                    
                 </div>
