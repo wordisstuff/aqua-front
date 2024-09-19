@@ -19,9 +19,9 @@ const TrackerPage = () => {
     //         localStorage.setItem('firstVisit', 'false');
     //         setIsOpen(true);
     //     }
-    // }, 
+    // },
     // [setIsOpen]
-// );
+    // );
 
     return (
         <>
@@ -52,7 +52,7 @@ const TrackerPage = () => {
                     </div>
                 </div>
             </Container>
-            {/* <Modals /> */}
+            <Modals />
         </>
     );
 };
