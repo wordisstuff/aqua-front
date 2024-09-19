@@ -9,6 +9,6 @@ export const setAuthHeader = token => {
     aquaApi.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-export const clearToken = () => {
+export const clearAuthHeader = () => {
     aquaApi.defaults.headers.common.Authorization = '';
 };
