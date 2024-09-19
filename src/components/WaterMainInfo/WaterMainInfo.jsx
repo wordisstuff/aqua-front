@@ -4,7 +4,7 @@ import WaterDailyNorma from './WaterDailyNorma/WaterDailyNorma';
 import css from './WaterMainInfo.module.css';
 import { icons } from '../../utils/icons';
 //import Modal from "../Modal/Modal"; Треба імпорт модалки
-//import { useState } from "react";
+import { useState } from "react";
 
 export default function WaterMainInfo() {
     const [modalIsOpen, setIsOpen] = useState(false);

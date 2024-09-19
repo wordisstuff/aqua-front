@@ -19,7 +19,7 @@ const AddWaterDetailInfoBtn = () => {
                     <use xlinkHref={`${sprite}#plus-add-water`} />
                 </svg>
             </button>
-            <p className={css.btnText}>{t('waterDetailInfoBtn')}</p>
+            {/* <p className={css.btnText}>{t('waterDetailInfoBtn')}</p> */}
         </div>
     );
 };
