@@ -1,5 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { requestDeleteWater, requestGetWaterDay, requestGetWaterMonth } from './services.js';
+import {
+    addWater,
+    requestDeleteWater,
+    requestGetWaterDay,
+    requestGetWaterMonth,
+    updateWaterAmount,
+    apiGetWaterStats,
+} from './services.js';
 
 export const apiDeleteWater = createAsyncThunk(
     'water/deleteWater',
@@ -10,9 +17,8 @@ export const apiDeleteWater = createAsyncThunk(
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
-    }
+    },
 );
-
 
 export const apiGetWaterDay = createAsyncThunk(
     'water/getWaterDay',
@@ -23,7 +29,7 @@ export const apiGetWaterDay = createAsyncThunk(
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
-    }
+    },
 );
 
 export const apiGetWaterMonth = createAsyncThunk(
@@ -35,11 +41,47 @@ export const apiGetWaterMonth = createAsyncThunk(
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
-    }
+    },
 );
 
+//********************************************************************************/
 
+export const addWater = createAsyncThunk(
+    'water/addWater',
+    async (newEntry, thunkAPI) => {
+        try {
+            const response = await requestAddWater(newEntry);
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    },
+);
 
+//********************************************************************************/
 
+export const updateWaterAmount = createAsyncThunk(
+    'water/updateWaterAmount',
+    async (newEntry, thunkAPI) => {
+        try {
+            const response = await requestUpdateWater(newEntry);
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    },
+);
 
-export const addWater = createAsyncThunk('water/addWater', async () => { });
+//********************************************************************************/
+
+export const apiGetWaterStats = createAsyncThunk(
+    'water/getWaterStats',
+    async (thunkAPI) => {
+        try {
+            const response = await requestGetWaterStats();
+            return response;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    },
+);
