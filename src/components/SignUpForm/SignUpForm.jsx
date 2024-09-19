@@ -8,7 +8,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { icons } from '../../utils/icons/index.js';
 import useCustomForm from '../../helpers/useHooks/useCustomForm.js';
 import toast from 'react-hot-toast';
-import style from './SignUpForm.module.css';
+import style from './SignupForm.module.css';
 
 const SignUpForm = () => {
     const navigate = useNavigate();
