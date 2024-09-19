@@ -12,7 +12,7 @@ export const requestGetWaterDay = async date => {
 
 export const requestGetWaterMonth = async date => {
     const { data } = await axios.get(
-        `/water/monthly/${date.year}/${date / month}`,
+        `/water/monthly/${date.year}/${date.month}`,
     );
     return data;
 };
