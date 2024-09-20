@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom'; // Імпортуємо useNavigate
 import { resetPassword, checkEmail } from '../../redux/auth/operation.js';
 import WelcomeWrap from '../ShareComponents/WelcomeWrap/WelcomeWrap.jsx';
 import style from './ForgotPageForm.module.css';
@@ -17,6 +17,7 @@ const icons = {
 };
 
 const ForgotPageForm = () => {
+    const navigate = useNavigate(); // Викликаємо useNavigate всередині компонента
     const [password, setPassword] = useState('');
     const [token, setToken] = useState('');
     const { t } = useTranslation();
@@ -31,8 +32,6 @@ const ForgotPageForm = () => {
             setToken(tokenFromUrl);
         }
     }, []);
-
-    const handlePasswordChange = e => setPassword(e.target.value);
 
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -52,12 +51,16 @@ const ForgotPageForm = () => {
     const onSubmitEmail = async data => {
         try {
             const response = await dispatch(checkEmail(data.email));
-            if (response.payload?.success) {
+            if (response.payload?.status === 200) {
                 setEmail(data.email);
                 setToken(response.payload.token);
                 setIsEmailChecked(true);
                 reset();
-                toast.success(response.payload.message);
+                //toast.success(response.payload.message);
+                toast.success('Check your email');
+
+                // Перенаправлення на головну сторінку
+                navigate('/');
             } else {
                 toast.error(t('forgotPage.emailNotFoundError'));
             }
@@ -65,20 +68,36 @@ const ForgotPageForm = () => {
             toast.error(t('forgotPage.emailError'));
         }
     };
-
+    useEffect(() => {
+        const query = new URLSearchParams(window.location.search);
+        const tokenFromUrl = query.get('token');
+        if (tokenFromUrl) {
+            setToken(tokenFromUrl);
+            setIsEmailChecked(true); // Додайте це, щоб активувати форму для введення пароля
+        }
+    }, []);
     const onSubmitPassword = async data => {
         try {
             const response = await dispatch(
                 resetPassword({ token, password: data.password }),
             );
 
-            if (response.payload?.success) {
+            console.log('Response from server:', response);
+
+            if (response.payload?.status === 200) {
                 toast.success('Пароль успішно оновлено');
+
+                // Перенаправлення на сторінку входу
+                navigate('/signin');
             } else {
                 toast.error('Помилка при скиданні пароля');
             }
         } catch (error) {
-            console.error(error.response ? error.response.data : error.message);
+            console.error(
+                'Error:',
+                error.response ? error.response.data : error.message,
+            );
+            toast.error('Сталася помилка');
         }
     };
 

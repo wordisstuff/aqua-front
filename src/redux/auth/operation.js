@@ -8,11 +8,11 @@ import { toast } from 'react-hot-toast';
 import { setToken } from './slice.js';
 
 export const checkEmail = createAsyncThunk(
-    'auth/checkEmail',
+    'auth/send-reset-email',
     async (email, { rejectWithValue }) => {
         try {
             const response = await fetch(
-                'https://aqua-back.onrender.com/auth/check-email',
+                'http://localhost:8080/auth/send-reset-email',
                 {
                     method: 'POST',
                     headers: {
@@ -35,13 +35,13 @@ export const checkEmail = createAsyncThunk(
 );
 
 export const resetPassword = createAsyncThunk(
-    'auth/resetPassword',
+    'auth/reset-pwd',
     async ({ token, password }, { rejectWithValue }) => {
         try {
             const response = await fetch(
-                'https://aqua-back.onrender.com/auth/reset-password',
+                'http://localhost:8080/auth/reset-pwd',
                 {
-                    method: 'PATCH',
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },

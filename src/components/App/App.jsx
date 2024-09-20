@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Layout from '../ShareComponents/Layout/Layout';
+import { Toaster } from 'react-hot-toast';
 
 import { lazy, Suspense, useEffect } from 'react';
 import Loader from '../Loader/Loader.jsx';
@@ -32,6 +33,7 @@ const App = () => {
 
     return (
         <>
+            <Toaster />
             <Suspense fallback={<Loader />}>
                 <Routes>
                     <Route path="/" element={<Layout />} />

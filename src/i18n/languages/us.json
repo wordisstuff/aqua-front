@@ -151,6 +151,7 @@
         "backToSignIn": "Back to sign in",
         "resetPassword": "Forgot password",
         "newPassword": "Enter new password",
-        "newPasswordPlaceholder": "Enter new password"
+        "newPasswordPlaceholder": "Enter new password",
+        "emailNotFoundError": "This email address is not registered."
     }
 }
