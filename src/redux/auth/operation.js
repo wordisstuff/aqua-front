@@ -38,13 +38,16 @@ export const resetPassword = createAsyncThunk(
     'auth/reset-pwd',
     async ({ token, password }, { rejectWithValue }) => {
         try {
-            const response = await fetch('/auth/reset-pwd', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
+            const response = await fetch(
+                'http://localhost:8080/auth/reset-pwd',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token, password }),
                 },
-                body: JSON.stringify({ token, password }),
-            });
+            );
 
             const data = await response.json();
             if (!response.ok) {
