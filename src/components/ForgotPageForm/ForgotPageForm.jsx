@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom'; // Імпортуємо useNavigate
 import { resetPassword, checkEmail } from '../../redux/auth/operation.js';
 import WelcomeWrap from '../ShareComponents/WelcomeWrap/WelcomeWrap.jsx';
 import style from './ForgotPageForm.module.css';
@@ -17,6 +17,7 @@ const icons = {
 };
 
 const ForgotPageForm = () => {
+    const navigate = useNavigate(); // Викликаємо useNavigate всередині компонента
     const [password, setPassword] = useState('');
     const [token, setToken] = useState('');
     const { t } = useTranslation();
@@ -31,8 +32,6 @@ const ForgotPageForm = () => {
             setToken(tokenFromUrl);
         }
     }, []);
-
-    const handlePasswordChange = e => setPassword(e.target.value);
 
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -58,6 +57,9 @@ const ForgotPageForm = () => {
                 setIsEmailChecked(true);
                 reset();
                 toast.success(response.payload.message);
+
+                // Перенаправлення на головну сторінку
+                navigate('/');
             } else {
                 toast.error(t('forgotPage.emailNotFoundError'));
             }
@@ -74,6 +76,8 @@ const ForgotPageForm = () => {
 
             if (response.payload?.success) {
                 toast.success('Пароль успішно оновлено');
+                // Перенаправлення на головну сторінку після успішного скидання пароля
+                navigate('/');
             } else {
                 toast.error('Помилка при скиданні пароля');
             }
