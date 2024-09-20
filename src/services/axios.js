@@ -1,17 +1,17 @@
 import axios from 'axios';
 
-// Конфігурація базового URL на основі середовища
-const getBaseURL = () => {
-    // Змінна SERVER визначена в конфігураційному файлі
-    const SERVER = 'globalYES'; // Змініть це на 'globalYES' у реальному проекті
-    return SERVER === 'globalYES'
+// const URLA = 'http://localhost:8080'
+
+// const URLA = 'https://aqua-back.onrender.com';
+
+const URLA = () =>
+    window.location.hostname === 'localhost'
         ? 'http://localhost:8080'
         : 'https://aqua-back.onrender.com';
-};
 
 // Створення екземпляру axios
 export const aquaApi = axios.create({
-    baseURL: getBaseURL(),
+    baseURL: URLA(),
     withCredentials: true,
 });
 
