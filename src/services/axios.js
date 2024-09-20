@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const urla = process.env.SERVER === 'globalNO'?'http://localhost:8080':'https://aqua-back.onrender.com'
+const urla = () => process.env.SERVER === 'globalNO'?'http://localhost:8080':'https://aqua-back.onrender.com'
 export const aquaApi = axios.create({
-    baseURL: urla,
+    baseURL: urla(),
     withCredentials: true,
 });
 export const setAuthHeader = token => {

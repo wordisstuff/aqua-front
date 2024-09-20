@@ -21,12 +21,12 @@ export const currentUser = createAsyncThunk(
         }
     },
 );
-// export const getUsers = createAsyncThunk('users/get', async reduxAPI => {
-//     try {
-//         const response = await axios.get('/users/happy'); // смайлик с библиотеки react-hot-toast (happy)
-//         return response.data;
-//     } catch (error) {
-//         toast.error(error.response.data.message);
-//         return reduxAPI.rejectWithValue(error.message);
-//     }
-// });
+export const getUsers = createAsyncThunk('users/get', async reduxAPI => {
+    try {
+        // const response = await axios.get('/users/happy'); // смайлик с библиотеки react-hot-toast (happy)
+        // return response.data;
+    } catch (error) {
+        toast.error(error.response.data.message);
+        return reduxAPI.rejectWithValue(error.message);
+    }
+});
