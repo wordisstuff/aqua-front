@@ -15,7 +15,7 @@ import tourStyles from './utils/style/tourStyles.js';
 import './i18n/config.js';
 
 createRoot(document.getElementById('root')).render(
-    // <StrictMode>
+    <StrictMode>
     <Provider store={store}>
         <PersistGate persistor={persistor} loading={null}>
             <BrowserRouter>
@@ -29,5 +29,5 @@ createRoot(document.getElementById('root')).render(
             </BrowserRouter>
         </PersistGate>
     </Provider>,
-    // </StrictMode>,
+    </StrictMode>,
 );
