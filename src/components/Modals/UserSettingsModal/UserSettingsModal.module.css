@@ -3,6 +3,7 @@
     min-width: 288px;
     max-width: 343px;
     padding: 40px 20px;
+    margin: 0 auto;
 }
 
 .form {
@@ -54,6 +55,7 @@ h3 {
 .uploadWrapper {
     display: flex;
     gap: 8px;
+    cursor: pointer;
 }
 
 .iconUpload {
