@@ -2,20 +2,24 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import css from './WaterList.module.css';
 import WaterItem from '../WaterItem/WaterItem';
-// import { FUNCTION } from '../../../../redux/water/operation';
-// import { selectDate, SELECTOR } from '../../../../redux/water/selectors';
+import { apiGetWaterDay } from '../../../../redux/water/operation';
+import {
+    selectDate,
+    selectWaterPerDay,
+} from '../../../../redux/water/selectors';
 
 function WaterList() {
-    const todayDay = useSelector(selectDate);
-    // const waterPerDay = useSelector(SELECTOR);
+    const currentDay = useSelector(selectDate);
+    const waterDay = useSelector(selectWaterPerDay);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(FUNCTION(todayDay));
-    }, [todayDay, dispatch]);
+        dispatch(apiGetWaterDay(currentDay));
+    }, [currentDay, dispatch]);
+
     return (
         <ul className={css.waterList}>
-            {waterPerDay.map((data, index) => (
+            {waterDay.map((data, index) => (
                 <WaterItem key={index} data={data} />
             ))}
         </ul>
