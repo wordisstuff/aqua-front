@@ -9,6 +9,7 @@ const URLA = () =>
         ? 'http://localhost:8080'
         : 'https://aqua-back.onrender.com';
 
+console.log(URLA());
 // Створення екземпляру axios
 export const aquaApi = axios.create({
     baseURL: URLA(),
