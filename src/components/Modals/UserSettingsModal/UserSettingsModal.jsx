@@ -1,38 +1,54 @@
-import css from './UserSettings.module.css';
+import css from './UserSettingsModal.module.css';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import sprite from '../../../utils/icons/sprite.svg';
+import * as Yup from 'yup';
+import { useModalContext } from '../../../context/useContext';
 
-export const UserSettings = () => {
+export const UserSettingsModal = () => {
     const { t } = useTranslation();
-    const [userData, setUserData] = useState(null);
+    const { closeModal } = useModalContext();
+    const [userData, setUserData] = useState('');
+    const [newUserData, setNewUserData] = useState('');
     const [userAvatar, setUserAvatar] = useState(null);
-    const [gender, setGender] = useState('female');
+    const [gender, setGender] = useState('woman');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [weight, setWeight] = useState(null);
-    const [requiredWater, setRequiredWater] = useState(1.5);
-    const [wantWater, setWantWater] = useState();
+    const [requiredWater, setRequiredWater] = useState('1.5');
+    const [willWater, setWillWater] = useState();
     const [time, setTime] = useState(null);
-    const [amount, setAmount] = useState('');
     const [loding, setLoading] = useState(true);
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await axios.get('/users/profile');
-                setUserData(response.data);
-            } catch (error) {
-                console.log(error);
-            } finally {
-                setLoading(false);
-            }
-        }
+    const UserSchema = Yup.object().shape({
+        gender: Yup.string().required('is required!'),
+        name: Yup.string()
+            .trim()
+            .min(3, 'Min 3 chars!')
+            .max(50, 'Max 50 chars!')
+            .required('is required!'),
+        email: Yup.string().email().required('is required!'),
+        weight: Yup.number('must be a number').required('is required!'),
+        time: Yup.number('must be a number').required('is required!'),
+        water: Yup.number('must be a number').required('is required!'),
+    });
 
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         try {
+    //             const response = await axios.get('/users/profile');
+    //             setUserData(response.data);
+    //         } catch (error) {
+    //             console.log(error);
+    //         } finally {
+    //             setLoading(false);
+    //         }
+    //     }
+
+    //     fetchData();
+    // }, []);
 
     useEffect(() => {
         if (weight && gender) {
@@ -43,21 +59,115 @@ export const UserSettings = () => {
             if (gender === 'woman') {
                 newAmount = weight * 0.03 + time * 0.4;
             }
-            setAmount((Math.ceil(newAmount * 10) / 10).toFixed(1));
+            setRequiredWater((Math.ceil(newAmount * 10) / 10).toFixed(1));
         }
     }, [gender, time, weight]);
+
+    const hiddenInputUpload = useRef(null);
+
+    const handleClick = e => {
+        e.preventDefault();
+        if (hiddenInputUpload.current) {
+            hiddenInputUpload.current.click();
+        }
+    };
+
+    const handleChange = e => {
+        if (e.target.files) {
+            const fileUploaded = e.target.files[0];
+            setUserAvatar(fileUploaded);
+        }
+    };
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+
+        const dataForValidation = {
+            gender,
+            name,
+            email,
+            weight,
+            time,
+            water: willWater,
+        };
+
+        try {
+            const validatedData = await UserSchema.validate(dataForValidation, {
+                abortEarly: false,
+            });
+
+            console.log(validatedData);
+
+            closeModal();
+        } catch (validationErrors) {
+            console.log('validation error');
+
+            validationErrors.inner.forEach(error => {
+                toast.error(error.message);
+            });
+        }
+    };
+
+    // useMemo(() => {
+    //     if (userData) {
+    //         setGender(userData.gender);
+    //         setName(userData.name);
+    //         setEmail(userData.email);
+    //         setWeight(userData.weight);
+    //         setTime(
+    //             userData.dailyActivityTime ? userData.dailyActivityTime : '0',
+    //         );
+    //         setRequiredWater(userData.dailyWaterNorm);
+    //         setWillWater(userData.dailyWaterNorm);
+    //     }
+    // }, [userData]);
+
+    // useMemo(() => {
+    //     if (userData) {
+    //         setNewUserData({
+    //             avatar: userAvatar ? userAvatar : userData.avatar,
+    //             dailyActivityTime: time,
+    //             dailyWaterNorm: willWater ? willWater : requiredWater,
+    //             email: email,
+    //             gender: gender,
+    //             name: name,
+    //             weight: weight,
+    //         });
+    //     }
+    // }, [
+    //     userData,
+    //     userAvatar,
+    //     time,
+    //     requiredWater,
+    //     email,
+    //     gender,
+    //     name,
+    //     weight,
+    //     willWater,
+    // ]);
 
     return (
         <>
             <div className={css.wrapper}>
-                <form className={css.form}>
+                <form className={css.form} onSubmit={undefined}>
                     <div className={css.userPic}>
                         <h2>{t('modals.UserSettingsForm.setting')}</h2>
                         <div className={css.picWrapper}>
                             <div className={css.pic}>
-                                <img className={css.avatar} alt="avatar" />
+                                <img
+                                    src={
+                                        userAvatar
+                                            ? URL.createObjectURL(userAvatar)
+                                            : 'https://st.weblancer.net/download/2229083_935xp.jpg' // {userData.avatar}
+                                    }
+                                    className={css.avatar}
+                                    alt="avatar"
+                                />
                             </div>
-                            <div className={css.uploadWrapper}>
+                            <div
+                                className={css.uploadWrapper}
+                                onClick={handleClick}
+                            >
                                 <svg className={css.iconUpload}>
                                     <use xlinkHref={`${sprite}#upload`} />
                                 </svg>
@@ -71,6 +181,8 @@ export const UserSettings = () => {
                                 type="file"
                                 style={{ display: 'none' }}
                                 accept=".jpg,.jpeg,.png,.webp"
+                                onChange={handleChange}
+                                ref={hiddenInputUpload}
                             />
                         </div>
                     </div>
@@ -90,6 +202,14 @@ export const UserSettings = () => {
                                             type="radio"
                                             name="gender"
                                             id="woman"
+                                            value="woman"
+                                            onChange={e =>
+                                                setGender(e.target.value)
+                                            }
+                                            checked={
+                                                gender === 'woman' ||
+                                                userData.gender === 'woman'
+                                            }
                                         />
                                         <label
                                             className={css.radioLabel}
@@ -106,6 +226,14 @@ export const UserSettings = () => {
                                             type="radio"
                                             name="gender"
                                             id="man"
+                                            value="man"
+                                            onChange={e =>
+                                                setGender(e.target.value)
+                                            }
+                                            checked={
+                                                gender === 'man' ||
+                                                userData.gender === 'man'
+                                            }
                                         />
                                         <label
                                             className={css.radioLabel}
@@ -127,6 +255,9 @@ export const UserSettings = () => {
                                         type="text"
                                         name="name"
                                         id="name"
+                                        onChange={e => {
+                                            setName(e.target.value);
+                                        }}
                                     />
                                 </div>
                                 <div className={css.userInfoInputContainer}>
@@ -140,6 +271,7 @@ export const UserSettings = () => {
                                         type="email"
                                         name="email"
                                         id="email"
+                                        onChange={e => setEmail(e.target.value)}
                                         required
                                     />
                                 </div>
@@ -211,6 +343,9 @@ export const UserSettings = () => {
                                         name="weight"
                                         id="weight"
                                         step=".1"
+                                        onChange={e =>
+                                            setWeight(e.target.value)
+                                        }
                                     />
                                 </div>
                                 <div className={css.userInfoInputContainer}>
@@ -225,6 +360,7 @@ export const UserSettings = () => {
                                         name="time"
                                         id="time"
                                         step=".1"
+                                        onChange={e => setTime(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -239,7 +375,7 @@ export const UserSettings = () => {
                                         )}
                                     </p>
                                     <p className={css.textAccent}>
-                                        {`${t('modals.UserSettingsForm.l')}`}
+                                        {`${requiredWater ? requiredWater : userData.dailyWaterNorm} ${t('modals.UserSettingsForm.l')}`}
                                     </p>
                                 </div>
                             </div>
@@ -256,13 +392,18 @@ export const UserSettings = () => {
                                     name="water"
                                     id="water"
                                     step=".1"
+                                    onChange={e => setWillWater(e.target.value)}
                                 />
                             </div>
                         </div>
                     </div>
 
                     <div className={css.buttonContainer}>
-                        <button className={css.saveButton} type="submit">
+                        <button
+                            className={css.saveButton}
+                            type="submit"
+                            onClick={handleSubmit}
+                        >
                             {t('modals.UserSettingsForm.saveBtn')}
                         </button>
                     </div>
@@ -272,4 +413,4 @@ export const UserSettings = () => {
     );
 };
 
-export default UserSettings;
+export default UserSettingsModal;

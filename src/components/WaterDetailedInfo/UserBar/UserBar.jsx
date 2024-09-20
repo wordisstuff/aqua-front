@@ -6,7 +6,7 @@ import { RxAvatar } from 'react-icons/rx';
 import { icons as sprite } from '../../../utils/icons/index';
 import Context from '../../../context/Context';
 import LogOutModalWind from '../../Modals/LogOut/LogOut.jsx';
-import UserSettings from '../../Modals/UserSettings/UserSettings';
+import UserSettings from '../../Modals/UserSettingsModal/UserSettingsModal.jsx';
 import { selectUser } from '../../../redux/auth/selectors';
 import { useAuth } from '../../../helpers/useHooks/useAuth';
 import { currentUser } from '../../../redux/users/operation';
