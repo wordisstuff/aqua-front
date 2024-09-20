@@ -1,4 +1,7 @@
-import { addMonths, subMonths, format } from 'date-fns';
+import addMonths from 'date-fns/addMonths';
+import subMonths from 'date-fns/subMonths';
+import format from 'date-fns/format';
+
 import { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import css from './CalendarPagination.module.css';
@@ -21,7 +24,7 @@ const CalendarPagination = ({ currentDate, changeMonth, onMonthHandler }) => {
     const handleNext = () => {
         const newDate = addMonths(date, 1);
         setDate(newDate);
-        changeMonth(1);
+        changeMonth(+1);
     };
 
     const months = {

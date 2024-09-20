@@ -1,5 +1,4 @@
 .container {
-    padding: 0 20px 40px;
     position: relative;
     box-sizing: border-box;
     max-width: 100%;
@@ -18,13 +17,13 @@
 }
 .containerHeader {
     display: flex;
+    margin-bottom: 20px;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
 }
 .containerToggle {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 16px;
 }
 
@@ -35,7 +34,4 @@
     .containerToggle {
         gap: 20px;
     }
-}
-@media (min-width: 1440px) {
-    /*  */
 }

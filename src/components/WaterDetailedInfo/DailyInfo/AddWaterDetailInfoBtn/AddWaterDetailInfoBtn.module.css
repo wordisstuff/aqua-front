@@ -1,24 +1,15 @@
-.waterBtnWrapper {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-}
-
 .waterBtn {
-    width: 30px;
-    height: 30px;
-    border-radius: 100px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border: none;
-    background-color: var(--accent);
-
+    gap: 9px;
     transition: background-color var(--animation);
 }
 
-.svg {
+.svgAdd {
+    background-color: var(--accent);
+    border-radius: 100px;
     stroke: var(--dark-blue);
     width: 30px;
     height: 30px;
@@ -26,14 +17,14 @@
     transition: stroke var(--animation);
 }
 
+.plus {
+    max-width: 22px;
+    max-height: 22px;
+}
+
 .waterBtn:hover .svg,
 .waterBtn:active .svg {
     stroke: var(--white);
-}
-
-.waterBtn:hover,
-.waterBtn:active {
-    background-color: var(--dark-blue);
 }
 
 .btnText {

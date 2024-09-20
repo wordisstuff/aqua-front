@@ -2,12 +2,11 @@ import { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import css from './UserBar.module.css';
+import { RxAvatar } from 'react-icons/rx';
 import { icons as sprite } from '../../../utils/icons/index';
 import Context from '../../../context/Context';
-// import LogOut from '../../Modals/LogOut/LogOut';
 import LogOutModalWind from '../../Modals/LogOut/LogOut.jsx';
 import UserSettings from '../../Modals/UserSettings/UserSettings';
-// import { refreshUser } from '../../../redux/auth/operation';
 import { selectUser } from '../../../redux/auth/selectors';
 import { useAuth } from '../../../helpers/useHooks/useAuth';
 import { currentUser } from '../../../redux/users/operation';
@@ -50,7 +49,7 @@ const UserBar = () => {
                     , {getFirstName(userMainInfo?.name)}!
                 </span>
             </h2>
-            <div className={css.userBarPanel} data-tour="step-7">
+            <div className={css.userBarPanel}>
                 <button className={css.userBarBtn} onClick={togglePopover}>
                     {getFirstName(userMainInfo?.name)}
                     {userMainInfo?.avatar ? (
@@ -60,7 +59,9 @@ const UserBar = () => {
                             className={css.avatar}
                         />
                     ) : (
-                        <span className={css.avatarData}>.</span>
+                        <span className={css.avatarData}>
+                            <RxAvatar />
+                        </span>
                     )}
                     <svg
                         className={`${css.chevron} ${

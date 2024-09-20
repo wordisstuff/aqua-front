@@ -1,23 +1,27 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-// import { selectDate, SELECTOR } from '../../../redux/water/selectors';
-// import { FUNCTION } from '../../../redux/';
+import { selectDate, selectWaterPerDay } from '../../../redux/water/selectors';
+import { apiGetWaterDay } from '../../../redux/water/operation';
 import WaterList from './WaterList/WaterList';
 import ChooseData from './ChooseDate/ChooseDate';
 import AddWaterDetailInfoBtn from './AddWaterDetailInfoBtn/AddWaterDetailInfoBtn';
+import HorizontalScroll from './HorizonalScroll/HorizonalScroll';
 import css from './DailyInfo.module.css';
 
 function DailyInfo() {
     const { t } = useTranslation();
-    const waterPerDay = 1
-    //  useSelector(SELECTOR);
-    // const todayDate = useSelector(selectDate);
-    // const dispatch = useDispatch();
+    const waterDay = useSelector(selectWaterPerDay);
+    const currentDate = useSelector(selectDate);
+    const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(FUNCTION(todayDate));
-    // }, [todayDate, dispatch]);
+    useEffect(() => {
+        if (currentDate) {
+            dispatch(apiGetWaterDay(currentDate));
+        }
+    }, [currentDate, dispatch]);
+
+    const isWaterDayArray = Array.isArray(waterDay) && waterDay.length > 0;
 
     return (
         <div className={css.dailyInfoWrapper}>
@@ -25,13 +29,13 @@ function DailyInfo() {
                 <ChooseData />
                 <AddWaterDetailInfoBtn />
             </div>
-            {waterPerDay.length > 0 ? (
-                <div className={css.scrollContainer}>
+            {isWaterDayArray ? (
+                <HorizontalScroll>
                     <WaterList />
-                </div>
+                </HorizontalScroll>
             ) : (
-                <div className={css.bootleText}>
-                    <p className={css.waterBootle}>{t('DailyInfo.info')}</p>
+                <div className={css.waterBootle}>
+                    <p className={css.bootleText}>{t('DailyInfo.info')}</p>
                 </div>
             )}
         </div>

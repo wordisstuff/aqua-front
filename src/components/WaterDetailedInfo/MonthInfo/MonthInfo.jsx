@@ -30,8 +30,8 @@ const getMonthDaysArray = (year, month) => {
 
 function MonthInfo() {
     const [isActive, setIsActive] = useState(true);
-    const [currentMonth, setCurrentMonth] = useState('2024-09'); // ВЗЯТИ ЗНАЧЕННЯ З Redux
-    const [monthArray, setMonthArray] = useState([]); // ПІДСТАВИТИ
+    const [currentMonth, setCurrentMonth] = useState('2024-09');
+    const [monthArray, setMonthArray] = useState([]);
     const [selectedDate, setSelectedDate] = useState(
         format(new Date(), 'yyyy-MM-dd'),
     );
@@ -57,11 +57,11 @@ function MonthInfo() {
     const changeMonth = increment => {
         if (increment > 0) {
             setCurrentMonth(
-                format(addMonths(new Date(currentMonth), 1), 'yyyy-MM'),
+                format(addMonths(new Date(currentMonth), +1), 'yyyy-MM'),
             );
         } else if (increment < 0) {
             setCurrentMonth(
-                format(subMonths(new Date(currentMonth), 1), 'yyyy-MM'),
+                format(subMonths(new Date(currentMonth), -1), 'yyyy-MM'),
             );
         }
     };
@@ -78,9 +78,7 @@ function MonthInfo() {
 
     useEffect(() => {
         setIsLoading(true);
-        // ТРЕБА ЗАПИТ НА ДАНІ З МІСЯЦЯ
-        // ОТРИМАЛА ДАНІ
-        // setMonthArray(data) НАПР;
+
         setIsLoading(false);
     }, [currentMonth]);
 
