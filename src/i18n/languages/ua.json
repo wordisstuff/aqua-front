@@ -46,6 +46,9 @@
         "settings": "Налаштування",
         "logOut": "Вийти"
     },
+    "AddWaterDetailInfoBtn": {
+        "add": "Додати воду"
+    },
     "WaterMainInfo": { "today": "Сьогодні" },
     "modals": {
         "logOut": {

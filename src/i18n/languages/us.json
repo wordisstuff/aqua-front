@@ -47,6 +47,9 @@
         "settings": "Settings",
         "logOut": "LogOut"
     },
+    "AddWaterDetailInfoBtn": {
+        "add": "Add water"
+    },
     "WaterMainInfo": { "today": "Today" },
     "modals": {
         "logOut": {
