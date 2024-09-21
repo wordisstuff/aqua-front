@@ -20,7 +20,7 @@ const Languages = () => {
     // }, [i18n.language]);
     return (
         <>
-            <header
+            <div
                 data-aos="zoom-in"
                 data-aos-easing="ease-in-back"
                 data-aos-delay="250"
@@ -87,7 +87,7 @@ const Languages = () => {
                         </svg>
                     </button>
                 )}
-            </header>
+            </div>
         </>
     );
 };

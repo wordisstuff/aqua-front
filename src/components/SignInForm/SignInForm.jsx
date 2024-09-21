@@ -6,7 +6,7 @@ import { icons } from '../../utils/icons/index.js';
 import { NavLink } from 'react-router-dom';
 
 import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
-import { logIn, refreshUser } from '../../redux/auth/operation.js';
+import { logIn } from '../../redux/auth/operation.js';
 import WelcomeWrap from '../ShareComponents/WelcomeWrap/WelcomeWrap.jsx';
 import style from './SignInForm.module.css';
 import { signInSchema, formValuesSignIn } from './Shema.js';
@@ -47,12 +47,6 @@ const SigninForm = () => {
             toast.error(t('signInPage.emailSpanError'));
         }
     }, [errors.password, errors.email, t]);
-
-    useEffect(() => {
-        if (isLoggedIn) {
-            dispatch(refreshUser());
-        }
-    }, [isLoggedIn, dispatch]);
 
     return (
         <WelcomeWrap
@@ -157,7 +151,6 @@ const SigninForm = () => {
                             {t('signInPage.forgotPassword')}
                         </NavLink>
                     </div>
-                   
                 </div>
             </div>
         </WelcomeWrap>

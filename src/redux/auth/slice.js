@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, refreshUser, registerUser, logOutUser } from './operation';
+import { logIn, registerUser, logOutUser, currentUser } from './operation';
 
 export const INIT_STATE = {
     user: {
@@ -39,9 +39,8 @@ export const authSlice = createSlice({
     initialState: INIT_STATE,
     reducers: {
         setToken(state, action) {
-            state.isLoggedIn = true;
             state.token = action.payload.token;
-            state.refreshToken = action.payload.refreshToken;
+            // state.refreshToken = action.payload.refreshToken;
         },
     },
     extraReducers: builder => {
@@ -50,17 +49,20 @@ export const authSlice = createSlice({
                 console.log(action);
             })
             .addCase(logIn.fulfilled, (state, action) => {
-                console.log(action.payload.data);
-                console.log(state.isLoggedIn);
                 state.user = action.payload.user;
-                state.token = action.payload.data.token;
+                state.token = action.payload.token;
                 state.isLoggedIn = true;
             })
-            .addCase(refreshUser.fulfilled, (state, action) => {
+            .addCase(currentUser.pending, (state, action) => {
+                state.isRefreshing = true;
+            })
+            .addCase(currentUser.fulfilled, (state, action) => {
                 state.isLoggedIn = true;
-                console.log(state.isLoggedIn);
-                state.token = action.payload.token;
-                state.user = action.payload;
+                state.user = action.payload.user;
+                state.isRefreshing = false;
+            })
+            .addCase(currentUser.rejected, (state, action) => {
+                state.isRefreshing = false;
             })
             .addCase(logOutUser.fulfilled, () => {
                 return INIT_STATE;

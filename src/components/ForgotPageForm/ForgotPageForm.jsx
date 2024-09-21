@@ -106,9 +106,9 @@ const ForgotPageForm = () => {
         if (errors.password) toast.error(t('forgotPage.passwordError'));
     }, [errors, t]);
 
-    useEffect(() => {
-        if (isLoggedIn) dispatch(refreshUser());
-    }, [isLoggedIn, dispatch]);
+    // useEffect(() => {
+    //     if (isLoggedIn) dispatch(refreshUser());
+    // }, [isLoggedIn, dispatch]);
 
     return (
         <WelcomeWrap

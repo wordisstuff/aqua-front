@@ -1,5 +1,5 @@
-import { useEffect, useState, useContext } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import css from './UserBar.module.css';
 import { RxAvatar } from 'react-icons/rx';
@@ -8,30 +8,12 @@ import Context from '../../../context/Context';
 import LogOutModalWind from '../../Modals/LogOut/LogOut.jsx';
 import UserSettings from '../../Modals/UserSettingsModal/UserSettingsModal.jsx';
 import { selectUser } from '../../../redux/auth/selectors';
-import { useAuth } from '../../../helpers/useHooks/useAuth';
-import { currentUser } from '../../../redux/users/operation';
 
 const UserBar = () => {
     const { t } = useTranslation();
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const { openModal } = useContext(Context);
-    const dispatch = useDispatch();
-    const { user } = useAuth();
     const userMainInfo = useSelector(selectUser);
-    const [isUserRefreshed, setIsUserRefreshed] = useState(false);
-
-    useEffect(() => {
-        if (!user) {
-            dispatch(currentUser());
-        }
-    }, [dispatch, user]);
-
-    useEffect(() => {
-        if (isUserRefreshed) {
-            dispatch(currentUser());
-            setIsUserRefreshed(false);
-        }
-    }, [dispatch, isUserRefreshed]);
 
     const togglePopover = () => {
         setIsPopoverOpen(!isPopoverOpen);
@@ -76,15 +58,7 @@ const UserBar = () => {
                         <ul className={css.wrapperModal}>
                             <li>
                                 <a
-                                    onClick={() =>
-                                        openModal(
-                                            <UserSettings
-                                                setIsUserRefreshed={
-                                                    setIsUserRefreshed
-                                                }
-                                            />,
-                                        )
-                                    }
+                                    onClick={() => openModal(<UserSettings />)}
                                     className={css.userBarModal}
                                     href="#settings"
                                 >

@@ -10,7 +10,7 @@ const Home = () => {
         <>
             <Container>
                 <div className={CSS.wrapSt}>
-                    <Languages />
+                    {/* <Languages /> */}
                     <div className={CSS.wrapHome}>
                         <Welcome />
                         <Additional />

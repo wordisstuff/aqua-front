@@ -9,8 +9,9 @@ import Loader from '../Loader/Loader.jsx';
 import RestrictRoute from '../RestrictedRoute.jsx';
 import { PrivateRoute } from '../PrivateRoute.jsx';
 import VerifyEmail from '../VerifyEmail/VerifyEmail.jsx';
-import { useDispatch } from 'react-redux';
-import { currentUser } from '../../redux/users/operation.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { currentUser } from '../../redux/auth/operation.js';
+import { selectIsRefreshing } from '../../redux/auth/selectors.js';
 // import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.jsx';
 const ForgotPage = lazy(() => import('../../pages/ForgotPage/ForgotPage.jsx'));
 const SignUpPage = lazy(() => import('../../pages/SignUpPage/SignUpPage.jsx'));
@@ -21,6 +22,7 @@ const TrackerPage = lazy(
 );
 
 const App = () => {
+    const isRefreshing = useSelector(selectIsRefreshing);
     const dispatch = useDispatch();
     useEffect(() => {
         AOS.init();
@@ -30,16 +32,30 @@ const App = () => {
     useEffect(() => {
         dispatch(currentUser());
     }, [dispatch]);
-
+    if (isRefreshing) return null;
     return (
         <>
-            <Toaster />
-            <Suspense fallback={<Loader />}>
-                <Routes>
-                    <Route path="/" element={<Layout />} />
+            <Routes>
+                <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />
-                    <Route path="/forgotPassword" element={<ForgotPage />} />
-                    <Route path="/signup" element={<SignUpPage />} />
+                    <Route
+                        path="/forgotPassword"
+                        element={
+                            <RestrictRoute
+                                redirectTo="/water"
+                                element={<ForgotPage />}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/signup"
+                        element={
+                            <RestrictRoute
+                                redirectTo="/water"
+                                element={<SignUpPage />}
+                            />
+                        }
+                    />
                     <Route
                         path="/signin"
                         element={
@@ -60,8 +76,8 @@ const App = () => {
                         }
                     />{' '}
                     {/* <Route path="*" element={<NotFoundPage />} /> */}
-                </Routes>
-            </Suspense>
+                </Route>
+            </Routes>
         </>
     );
 };

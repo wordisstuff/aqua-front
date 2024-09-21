@@ -30,7 +30,7 @@ const TrackerPage = () => {
             </Helmet>
             <Container>
                 <div className={css.trackerStyle}>
-                    <div className={css.trackerElement}>
+                    {/* <div className={css.trackerElement}>
                         <button
                             className={css.btnInfo}
                             onClick={() => setIsOpen(true)}
@@ -44,8 +44,8 @@ const TrackerPage = () => {
                                 <use xlinkHref={`${icons}#icon-info`}></use>
                             </svg>
                         </button>
-                        <Languages />
-                    </div>
+                    </div> */}
+                    {/* <Languages /> */}
                     <div className={css.trackerWrapper} data-tour="step-1">
                         <WaterMainInfo />
                         <WaterDetailedInfo />

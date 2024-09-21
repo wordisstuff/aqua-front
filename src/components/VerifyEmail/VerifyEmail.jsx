@@ -3,8 +3,8 @@ import Loader from '../Loader/Loader';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../../helpers/useHooks/useAuth';
-import { refreshUser } from '../../redux/auth/operation';
 import { setToken } from '../../redux/auth/slice';
+import { currentUser } from '../../redux/auth/operation';
 
 const VerifyEmail = () => {
     const { token } = useParams();
@@ -16,6 +16,7 @@ const VerifyEmail = () => {
     useEffect(() => {
         if (token) {
             dispatch(setToken({ token }));
+            // dispatch(currentUser());
         }
     }, [dispatch, token]);
 

@@ -88,7 +88,7 @@ export const logIn = createAsyncThunk(
             setAuthHeader(data.data.token);
             toast.success(data.message);
             console.log(data.message);
-            return data;
+            return data.data;
         } catch (error) {
             toast.error(error.response.data.message);
             return thunkAPI.rejectWithValue(error.message);
@@ -107,23 +107,21 @@ export const logOutUser = createAsyncThunk(
         }
     },
 );
-export const refreshUser = createAsyncThunk(
-    'auth/refresh',
-    async (_, { getState, rejectWithValue }) => {
-        const { auth, dispatch } = getState();
-        const token = auth.token;
-        console.log(token);
-        if (!token) {
-            return rejectWithValue('Unable user');
-        }
+export const currentUser = createAsyncThunk(
+    'auth/curent',
+    async (_, { rejectWithValue, getState }) => {
         try {
+            const { auth } = getState();
+            const token = auth.token;
+            if (!token) {
+                return rejectWithValue(null);
+            }
             setAuthHeader(token);
-            const { data } = await aquaApi.get('/auth/refresh');
-            // console.log('SERVER USER DATA', res);
-            // dispatch(setToken({ token: data.token }));
-            return res;
-        } catch (error) {
-            return rejectWithValue(error.message);
+            const { data } = await aquaApi.get('/auth/current');
+            console.log(data);
+            return data;
+        } catch {
+            return rejectWithValue(null);
         }
     },
 );
