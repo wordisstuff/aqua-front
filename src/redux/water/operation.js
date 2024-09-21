@@ -76,7 +76,7 @@ export const updateWaterAmount = createAsyncThunk(
 
 export const apiGetWaterStats = createAsyncThunk(
     'water/getWaterStats',
-    async (thunkAPI) => {
+    async thunkAPI => {
         try {
             const response = await fetchGetWaterStats();
             return response;
