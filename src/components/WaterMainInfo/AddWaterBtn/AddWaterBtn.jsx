@@ -7,7 +7,7 @@ export default function AddWaterButton({ openModal }) {
             <svg className={css.btnicon} width={16} height={16}>
                 <use
                     className={css.btniconUse}
-                    href={`${icons}#icon-plus`}
+                    href={`${icons}#plus-add-water`}
                 ></use>
             </svg>
             <p className={css.btntext}>Add water</p>
