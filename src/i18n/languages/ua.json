@@ -21,6 +21,66 @@
         "statistics": "View statistics",
         "setting": "Personal rate setting"
     },
+    "signUpPage": {
+        "signUp": "Зареєструватися",
+        "name": "Ім'я",
+        "namePlaceholder": "Введіть Ваше ім'я",
+        "nameSpanError": "Поле може містити лише латинські символи",
+        "email": "Електронна пошта",
+        "emailPlaceholder": "Введіть свою електронну адресу",
+        "emailSpanError": "Невалідна електронна пошта",
+        "password": "Пароль",
+        "passwordPlaceholder": "Введіть свій пароль",
+        "passwordSpanError": "Пароль має містити принаймні 6 символів, містити одну велику літеру, одну цифру та один спеціальний символ",
+        "repeatPassword": "Повторити пароль",
+        "repeatPasswordpanError": "Обов'язкове",
+        "repeatPasswordpanErrorTwo": "Паролі мають збігатися",
+        "textAlready": "Вже маєте аккаунт?",
+        "signIn": "Увійти"
+    },
+    "signInPage": {
+        "signIn": "Увійти",
+        "email": "Електронна пошта",
+        "emailPlaceholder": "Введіть свою електронну адресу",
+        "emailSpanError": "Невалідна електронна пошта",
+        "password": "Пароль",
+        "passwordPlaceholder": "Введіть свій пароль",
+        "passwordSpanError": "Пароль має містити принаймні 6 символів, містити одну велику літеру, одну цифру та один спеціальний символ",
+        "dontAccount": "Немає аккаунту?",
+        "forgotAccount": "Забули свій пароль?",
+        "forgotPassword": "Забули пароль",
+        "signUp": "Зареєструватися",
+        "renew": "Відновити"
+    },
+    "googleButton": {
+        "googleInBtn": "Увійти за допомогою Google",
+        "googleUpBtn": "Зареєструватися"
+    },
+    "forgotPage": {
+        "title": "Скинути пароль",
+        "email": "Електронна пошта",
+        "emailPlaceholder": "Введіть свою електронну адресу",
+        "emailSpanError": "Невалідна електронна пошта",
+        "button": "Відправити",
+        "remember": "Згадали свій пароль?",
+        "signIn": "Увійти"
+    },
+    "resetPage": {
+        "title": "Скинути пароль",
+        "password": "Пароль",
+        "passwordPlaceholder": "Введіть свій пароль",
+        "passwordSpanError": "Пароль має містити принаймні 6 символів, містити одну велику літеру, одну цифру та один спеціальний символ",
+        "repeatPassword": "Повторити пароль",
+        "repeatPasswordpanError": "Обов'язкове",
+        "repeatPasswordpanErrorTwo": "Паролі мають збігатися",
+        "button": "Увійти"
+    },
+    "waterMainInfo": {
+        "l": "л",
+        "norma": "Моя щоденна норма",
+        "today": "Сьогодні",
+        "btn": "Додати воду"
+    },
     "ChooseDate": {
         "today": "Сьогодні",
         "january": "Січень",
@@ -49,7 +109,7 @@
     "AddWaterDetailInfoBtn": {
         "add": "Додати воду"
     },
-    "WaterMainInfo": { "today": "Сьогодні" },
+    
     "modals": {
         "logOut": {
             "title": "Вийти",
@@ -64,6 +124,19 @@
             "cancel": "Скасувати",
             "error": "Не вдалося видалити запис",
             "success": "Запис успішно видалено"
+        },
+        "addEdit": {
+            "add": "Додати воду",
+            "edit": "Редагувати введену кількість води",
+            "choose": "Виберіть значення:",
+            "correct": "Правильно введені дані:",
+            "ml": "мл",
+            "amount": "Кількість води:",
+            "time": "Час запису:",
+            "value": "Введіть вартість використаної води:",
+            "successEdit": "Запис про воду успішно оновлено",
+            "successAdd": "Запис про воду успішно додано",
+            "error": "На жаль, щось не так..."
         },
         "UserSettingsForm": {
             "setting": "Налаштування",
@@ -100,36 +173,5 @@
         "forgot": "Електронний лист для відновлення пароля надіслано",
         "reset": "Пароль успішно скинуто! Можете увійти з новим паролем",
         "logOut": "До скорої зустрічі ❤️!"
-    },
-    "signUpPage": {
-        "signUp": "Зареєструватися",
-        "name": "Ім'я",
-        "namePlaceholder": "Введіть Ваше ім'я",
-        "nameSpanError": "Поле може містити лише латинські символи",
-        "email": "Електронна пошта",
-        "emailPlaceholder": "Введіть свою електронну адресу",
-        "emailSpanError": "Невалідна електронна пошта",
-        "password": "Пароль",
-        "passwordPlaceholder": "Введіть свій пароль",
-        "passwordSpanError": "Пароль має містити принаймні 6 символів, містити одну велику літеру, одну цифру та один спеціальний символ",
-        "repeatPassword": "Повторити пароль",
-        "repeatPasswordpanError": "Обов'язкове",
-        "repeatPasswordpanErrorTwo": "Паролі мають збігатися",
-        "textAlready": "Вже маєте аккаунт?",
-        "signIn": "Увійти"
-    },
-    "signInPage": {
-        "signIn": "Увійти",
-        "email": "Електронна пошта",
-        "emailPlaceholder": "Введіть свою електронну адресу",
-        "emailSpanError": "Невалідна електронна пошта",
-        "password": "Пароль",
-        "passwordPlaceholder": "Введіть свій пароль",
-        "passwordSpanError": "Пароль має містити принаймні 6 символів, містити одну велику літеру, одну цифру та один спеціальний символ",
-        "dontAccount": "Немає аккаунту?",
-        "forgotAccount": "Забули свій пароль?",
-        "forgotPassword": "Забули пароль",
-        "signUp": "Зареєструватися",
-        "renew": "Відновити"
     }
 }

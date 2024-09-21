@@ -1,6 +1,5 @@
 .lang {
     display: flex;
-    justify-content: flex-end;
     gap: 4px;
     margin-left: 10px;
 }
@@ -15,6 +14,7 @@
     background-color: transparent;
     /* border: none; */
     border-radius: 50px;
+    border: none;
     transform: scale(1);
 
     transition: transform var(--animation);
@@ -34,8 +34,6 @@
         width: 32px;
         height: 32px;
     }
-
-    
 }
 
 @media (min-width: 1440px) {
@@ -47,5 +45,4 @@
         width: 42px;
         height: 42px;
     }
-
 }
