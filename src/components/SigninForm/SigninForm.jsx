@@ -156,6 +156,8 @@ const SignInForm = () => {
                             {t('signInPage.renew')}
                         </NavLink>
                     </div>
+
+                    
                 </div>
             </div>
         </WelcomeWrap>
