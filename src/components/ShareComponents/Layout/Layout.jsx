@@ -11,7 +11,6 @@ const Layout = () => {
                     <Outlet />
                 </main>
             </Suspense>
-            <Toaster position="top-right" reverseOrder={true} />
         </>
     );
 };

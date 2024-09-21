@@ -33,7 +33,6 @@ const App = () => {
 
     return (
         <>
-            <Toaster />
             <Suspense fallback={<Loader />}>
                 <Routes>
                     <Route path="/" element={<Layout />} />
@@ -62,6 +61,7 @@ const App = () => {
                     {/* <Route path="*" element={<NotFoundPage />} /> */}
                 </Routes>
             </Suspense>
+            <Toaster position="top-right" reverseOrder={true} />
         </>
     );
 };
