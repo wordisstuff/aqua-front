@@ -1,0 +1,338 @@
+.wrapper {
+    width: calc(100vw - 32px);
+    min-width: 288px;
+    max-width: 343px;
+    padding: 40px 20px;
+    margin: 0 auto;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+.userPic {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.picWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.pic {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
+}
+
+.avatar {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.uploadWrapper {
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.iconUpload {
+    width: 18px;
+    height: 18px;
+    stroke: var(--dark);
+    fill: none;
+}
+
+.textRegular {
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.wrapperInputsForm {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.midContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.radioContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.radioButton {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.radio {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent);
+    transition: var(--animation);
+}
+
+.radio:checked {
+    background-color: var(--accent);
+    box-shadow: inset 0 0 0 4px var(--white);
+}
+
+.radioLabel {
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+}
+
+.userInfoInputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.userInfoInput {
+    width: 100%;
+    height: 46px;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    transition: var(--animation);
+}
+
+.userInfoInput:hover,
+.userInfoInput:focus {
+    border: 1px solid var(--accent-secondary);
+    outline: none;
+}
+
+.formulaContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.formula {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.textAccent {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+}
+
+.textarea {
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    padding: 16px 15px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    background-color: var(--white);
+    color: var(--grey-text);
+}
+
+span.textAccent {
+    font-weight: 400;
+}
+
+.note {
+    display: flex;
+    gap: 4px;
+}
+
+.saveButton {
+    display: flex;
+    padding: 14px 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background: var(--accent);
+    color: var(--dark-blue);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    border: none;
+    transition: var(--animation);
+}
+
+.saveButton:hover,
+.saveButton:focus {
+    background: var(--accent-secondary);
+}
+
+.saveButton:disabled {
+    background: var(--disabled-color);
+    color: var(--secondary-text);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+@media screen and (min-width: 768px) {
+    .wrapper {
+        max-width: 648px;
+        padding: 40px;
+    }
+
+    h2 {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.14;
+        letter-spacing: -0.02em;
+    }
+
+    .pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    .iconUpload {
+        width: 20px;
+        height: 20px;
+    }
+
+    .textRegular {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+    }
+
+    h3 {
+        font-size: 18px;
+        line-height: 1.33;
+    }
+
+    .userInfoInput {
+        height: 56px;
+        padding: 16px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .formulaContainer {
+        flex-direction: row;
+        gap: 28px;
+    }
+
+    .textAccent {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .textarea {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .amount {
+        flex-direction: row;
+    }
+
+    .saveButton {
+        padding: 16px 50px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .wrapper {
+        max-width: 920px;
+    }
+
+    .form {
+        gap: 50px;
+    }
+
+    .inputs {
+        flex-wrap: wrap;
+        height: 594px;
+    }
+
+    .userInfoInput,
+    .textarea {
+        width: 400px;
+    }
+
+    .down {
+        margin-top: 82px;
+    }
+}
+
+.userInfoInput:-webkit-autofill,
+.userInfoInput:-webkit-autofill:hover,
+.userInfoInput:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--dark);
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+    background-color: transparent;
+}
+
+.error {
+    border: 1px solid var(--error);
+}
+
+.errorSpan {
+    font-size: 11px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    color: var(--error);
+}

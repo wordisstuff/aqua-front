@@ -1,15 +1,14 @@
-import { useContext } from 'react';
+import { useModalContext } from '../../../../context/useContext';
 import { useTranslation } from 'react-i18next';
 import { format, parseISO, subHours } from 'date-fns';
 import css from './WaterItem.module.css';
 import { icons as sprite } from '../../../../utils/icons/index';
-import Context from '../../../../../context/Context';
-import WaterModal from 'WATERMODALCOMPONENT';
+import WaterForm from '../../../WaterForm/WaterForm';
 import DeleteWater from '../../../Modals/DeleteWater/DeleteWater';
 
 function WaterItem({ data }) {
     const { t } = useTranslation();
-    const { openModal } = useContext(Context);
+    const { openModal } = useModalContext();
     const { _id: id, count, date } = data;
 
     const formatWaterCount = count => {
@@ -21,7 +20,7 @@ function WaterItem({ data }) {
         return format(date, 'hh:mm a');
     };
     return (
-        <div data-tour="step-6" className={css.waterItemWrapper} id={id}>
+        <div className={css.waterItemWrapper} id={id}>
             <svg className={css.svgCup}>
                 <use xlinkHref={`${sprite}#water-glass`} />
             </svg>
@@ -34,7 +33,7 @@ function WaterItem({ data }) {
                     className={css.btn}
                     onClick={() => {
                         openModal(
-                            <WaterModal
+                            <WaterForm
                                 operationType={'edit'}
                                 recordId={id}
                                 initialData={{ count, date }}

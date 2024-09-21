@@ -12,9 +12,19 @@ const Additional = () => {
     const { t } = useTranslation();
     const [avatars, setAvatars] = useState([customer1, customer2, customer3]);
     const usersCount = 12;
-    const loading = false; //Math.random() < 0.5;
+    //const loading = Math.random() < 0.5;
     const avBasePath = '../../utils/images/mainPage/';
     const userAvatar = [1, 2, 3];
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 3000);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
 
     return (
         <div

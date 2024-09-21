@@ -52,6 +52,9 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-dynamic-import-vars": "^2.1.2",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -62,6 +65,6 @@
     "lint-staged": "^15.2.10",
     "npm": "^10.8.3",
     "prettier": "^3.3.3",
-    "vite": "^5.4.4"
+    "vite": "^5.4.5"
   }
 }

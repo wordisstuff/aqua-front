@@ -1,11 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import css from './SignInPage.module.css';
-import SignInForm from '../../components/SignInForm/SigninForm.jsx';
 import { useTranslation } from 'react-i18next';
 import useMedia from '../../helpers/useHooks/useMedia.js';
 import Languages from '../../components/ShareComponents/Languages/Languages.jsx';
 import Container from '../../components/ShareComponents/Container/Container.jsx';
 import Additional from '../../components/Home/Additional.jsx';
+import SignInForm from '../../components/SignInForm/SignInForm.jsx';
 
 const SignInPage = () => {
     const { t } = useTranslation();
@@ -18,7 +18,7 @@ const SignInPage = () => {
             <Container>
                 <div className={css.containerPageIn}>
                     <Languages />
-                    <div className={css.containerHomeIn}>
+                    <div className={css.containerHome}>
                         <SignInForm />
                         {desktop && <Additional />}
                     </div>
