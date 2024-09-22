@@ -15,6 +15,7 @@ import {
     REGISTER,
 } from 'redux-persist';
 import { globalReducer } from './global/slice';
+import { initInterceptor } from '../services/axios';
 
 const authPersistConfig = {
     key: 'auth',
@@ -58,5 +59,5 @@ export const store = configureStore({
             },
         }),
 });
-
+initInterceptor(store);
 export const persistor = persistStore(store);

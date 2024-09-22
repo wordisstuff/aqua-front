@@ -5,7 +5,8 @@ import {
     clearAuthHeader,
 } from '../../services/axios.js';
 import { toast } from 'react-hot-toast';
-import { setToken } from './slice.js';
+// import { setToken } from './slice.js';
+// import { store } from '../store.js';
 
 export const checkEmail = createAsyncThunk(
     'auth/send-reset-email',
@@ -117,6 +118,7 @@ export const currentUser = createAsyncThunk(
                 return rejectWithValue(null);
             }
             setAuthHeader(token);
+            console.log('TOKEN', token);
             const { data } = await aquaApi.get('/auth/current');
             console.log(data);
             return data;

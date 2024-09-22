@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setToken } from '../redux/auth/slice';
 
 // const URLA = 'http://localhost:8080'
 
@@ -25,6 +26,34 @@ export const setAuthHeader = token => {
 export const clearAuthHeader = () => {
     delete aquaApi.defaults.headers.common.Authorization;
 };
+
+export const initInterceptor = store => {
+    aquaApi.interceptors.response.use(
+        response => {
+            console.log(response);
+
+            return response;
+        },
+        async error => {
+            if (error.response && error.response.status === 401) {
+                console.log(error);
+
+                try {
+                    const { data } = await aquaApi.post('auth/refresh');
+                    setAuthHeader(data.data.token);
+                    store.dispatch(setToken({ token: data.data.token }));
+                    error.config.headers['Authorization'] =
+                        `Bearer ${data.data.token}`;
+                    return aquaApi(error.config);
+                } catch (refreshError) {
+                    return Promise.reject(refreshError);
+                }
+            }
+        },
+    );
+};
+
+// Add global response interceptor
 
 // Функція для перевірки доступності сервера
 //        await aquaApi.get('/ping'); // Припустимо, що у вас є маршрут для перевірки
