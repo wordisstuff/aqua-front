@@ -1,11 +1,13 @@
-import { format } from 'date-fns';
+import { useState, useEffect } from 'react';
+import addMonths from 'date-fns/addMonths';
+import subMonths from 'date-fns/subMonths';
+import format from 'date-fns/format';
 import Calendar from './Calendar/Calendar.jsx';
 import CalendarPagination from './CalendarPagination/CalendarPagination.jsx';
 import CalendarTitle from './CalendarTitle/CalendarTitle.jsx';
-import CalendarToggle from './CalendarToogle/CalendarToogle.jsx';
+import CalendarToggle from './CalendarToggle/CalendarToggle.jsx';
 import Loader from './Loader/Loader.jsx';
 import css from './MonthInfo.module.css';
-import { useState, useEffect } from 'react';
 
 const formatPercentage = percentage => {
     if (!percentage) return 0;
@@ -30,11 +32,9 @@ const getMonthDaysArray = (year, month) => {
 
 function MonthInfo() {
     const [isActive, setIsActive] = useState(true);
-    const [currentMonth, setCurrentMonth] = useState('2024-09');
+    const [currentMonth, setCurrentMonth] = useState(format(new Date(), 'yyyy-MM'));
     const [monthArray, setMonthArray] = useState([]);
-    const [selectedDate, setSelectedDate] = useState(
-        format(new Date(), 'yyyy-MM-dd'),
-    );
+    const [selectedDate, setSelectedDate] = useState(format(new Date(), 'yyyy-MM-dd'));
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
@@ -55,15 +55,8 @@ function MonthInfo() {
     });
 
     const changeMonth = increment => {
-        if (increment > 0) {
-            setCurrentMonth(
-                format(addMonths(new Date(currentMonth), +1), 'yyyy-MM'),
-            );
-        } else if (increment < 0) {
-            setCurrentMonth(
-                format(subMonths(new Date(currentMonth), -1), 'yyyy-MM'),
-            );
-        }
+        const newDate = increment > 0 ? addMonths(new Date(currentMonth), 1) : subMonths(new Date(currentMonth), 1);
+        setCurrentMonth(format(newDate, 'yyyy-MM'));
     };
 
     const onTodayHandler = () => {
@@ -78,8 +71,11 @@ function MonthInfo() {
 
     useEffect(() => {
         setIsLoading(true);
-
-        setIsLoading(false);
+        // Имитация логики извлечения данных
+        // можем разместить свой запрос на выборку и обрабатывать ошибки здесь
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 1000);
     }, [currentMonth]);
 
     return (
