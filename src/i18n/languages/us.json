@@ -181,12 +181,19 @@
             "l": "L",
             "saveBtn": "Save",
             "success": "Your data has been updated successfully",
-            "errors": {
-                "email": "Please enter a valid email address",
-                "name": "Please enter a valid name using Latin characters",
-                "weight": "Weight is required",
-                "time": "Active time is required",
-                "water": "Amount of water to drink is required"
+            "validation": {
+                "genderRequired": "Gender is required!",
+                "nameRequired": "Name is required!",
+                "nameMin": "Name must be at least 3 characters!",
+                "nameMax": "Name must be no more than 50 characters!",
+                "emailRequired": "Email is required!",
+                "emailInvalid": "Must be a valid email!",
+                "weightRequired": "Weight is required!",
+                "weightNumber": "Weight must be a number!",
+                "timeRequired": "Time is required!",
+                "timeNumber": "Time must be a number!",
+                "waterRequired": "Water intake is required!",
+                "waterNumber": "Water must be a number!"
             }
         }
     },
@@ -195,5 +202,4 @@
         "reset": "Password has been reset successfully! You can sign in with a new password",
         "logOut": "See you soon ❤️!"
     }
-
 }
