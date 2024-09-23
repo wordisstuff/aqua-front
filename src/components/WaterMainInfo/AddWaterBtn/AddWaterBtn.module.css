@@ -1,4 +1,4 @@
-.btnbox{
+.btnbox {
     border-radius: 30px;
     padding: 14px 20px;
     width: 140px;
@@ -16,21 +16,27 @@
     stroke: #fff;
 }
 
-.btnbox:hover{
+.btnbox:hover {
     color: #9be1a0;
-    stroke:#9be1a0 ;
-    
+    stroke: #9be1a0;
+
 }
+
+/* .btnbox:focus{
+    color: #9be1a0;
+    stroke: #9be1a0;
+    transition: 0,5s;
+} */
 
 @media only screen and (min-width: 768px) {
-.btnbox {
-    padding: 18px 30px;
-    width: 178px;
-    height: 60px;
-  }
+    .btnbox {
+        padding: 18px 30px;
+        width: 178px;
+        height: 60px;
+    }
 }
 
- .btntext{
+.btntext {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-size: 14px;
@@ -41,14 +47,14 @@
 
 
 @media only screen and (min-width: 768px) {
-.btntext{
-    font-size: 16px;
-    line-height: 1.5;
-  }
-} 
+    .btntext {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
 
-@media only screen and (min-width: 768px){
-    .btnicon{
+@media only screen and (min-width: 768px) {
+    .btnicon {
         width: 24px;
         height: 24px;
     }
