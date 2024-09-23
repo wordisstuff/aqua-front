@@ -18,7 +18,7 @@ const Languages = () => {
                 data-aos-offset="0"
                 className={CSS.lang}
             >
-                {i18n.language === 'us' && (
+                {i18n.language === 'ua' && (
                     <button
                         className={CSS.langBtn}
                         onClick={() => changeLanguage('ua')}
@@ -33,7 +33,7 @@ const Languages = () => {
                         </svg>
                     </button>
                 )}
-                {i18n.language === 'ua' && (
+                {i18n.language === 'us' && (
                     <button
                         className={CSS.langBtn}
                         onClick={() => changeLanguage('us')}
