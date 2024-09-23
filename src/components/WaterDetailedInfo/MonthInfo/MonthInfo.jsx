@@ -5,7 +5,7 @@ import format from 'date-fns/format';
 import Calendar from './Calendar/Calendar.jsx';
 import CalendarPagination from './CalendarPagination/CalendarPagination.jsx';
 import CalendarTitle from './CalendarTitle/CalendarTitle.jsx';
-import CalendarToggle from './CalendarToggle/CalendarToggle.jsx';
+import CalendarToggle from './CalendarToogle/CalendarToogle.jsx';
 import Loader from './Loader/Loader.jsx';
 import css from './MonthInfo.module.css';
 
@@ -32,9 +32,13 @@ const getMonthDaysArray = (year, month) => {
 
 function MonthInfo() {
     const [isActive, setIsActive] = useState(true);
-    const [currentMonth, setCurrentMonth] = useState(format(new Date(), 'yyyy-MM'));
+    const [currentMonth, setCurrentMonth] = useState(
+        format(new Date(), 'yyyy-MM'),
+    );
     const [monthArray, setMonthArray] = useState([]);
-    const [selectedDate, setSelectedDate] = useState(format(new Date(), 'yyyy-MM-dd'));
+    const [selectedDate, setSelectedDate] = useState(
+        format(new Date(), 'yyyy-MM-dd'),
+    );
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
@@ -55,7 +59,10 @@ function MonthInfo() {
     });
 
     const changeMonth = increment => {
-        const newDate = increment > 0 ? addMonths(new Date(currentMonth), 1) : subMonths(new Date(currentMonth), 1);
+        const newDate =
+            increment > 0
+                ? addMonths(new Date(currentMonth), 1)
+                : subMonths(new Date(currentMonth), 1);
         setCurrentMonth(format(newDate, 'yyyy-MM'));
     };
 
