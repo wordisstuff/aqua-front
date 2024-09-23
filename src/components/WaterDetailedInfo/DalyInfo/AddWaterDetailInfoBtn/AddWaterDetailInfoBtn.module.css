@@ -18,8 +18,8 @@
 }
 
 .plus {
-    max-width: 22px;
-    max-height: 22px;
+    width: 16px;
+    height: 16px;
 }
 
 .waterBtn:hover .svg,

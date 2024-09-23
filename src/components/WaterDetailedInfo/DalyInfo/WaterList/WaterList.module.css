@@ -1,4 +1,4 @@
-.waterList {
+.list {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -7,13 +7,13 @@
 }
 
 @media (min-width: 768px) {
-    .waterList {
+    .list {
         gap: 32px;
     }
 }
 
 @media (min-width: 1440px) {
-    .waterList {
+    .list {
         gap: 16px;
     }
 }

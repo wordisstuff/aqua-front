@@ -75,7 +75,7 @@
         "repeatPasswordpanErrorTwo": "Паролі мають збігатися",
         "button": "Увійти"
     },
-    "waterMainInfo": {
+    "WaterMainInfo": {
         "l": "л",
         "norma": "Моя щоденна норма",
         "today": "Сьогодні",
@@ -100,8 +100,13 @@
         "info": "Ви поки ще не пили воду, можливо, саме час випити?",
         "ml": "мл"
     },
+    "MonthInfo": {
+        "error": "Лишенько, щось пішло не атк",
+        "month": "Місяць",
+        "statistics": "Статистика"
+    },
     "UserBar": {
-        "user": "Користувач",
+        "users": "Користувач",
         "welkome": "Привіт",
         "settings": "Налаштування",
         "logOut": "Вийти"
@@ -109,7 +114,7 @@
     "AddWaterDetailInfoBtn": {
         "add": "Додати воду"
     },
-    
+
     "modals": {
         "logOut": {
             "title": "Вийти",

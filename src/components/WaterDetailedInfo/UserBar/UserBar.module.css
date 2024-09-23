@@ -6,7 +6,7 @@
     color: var(--white);
 }
 
-.userBarPanel {
+.userBarMenu {
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -14,11 +14,11 @@
     position: relative;
 }
 
-.userWelcome {
+.welcome {
     font-family: Gilroy;
     font-weight: 400;
     font-size: 32px;
-    line-height: 1;
+    line-height: 1.06;
     letter-spacing: -0.01em;
     color: var(--dark-blue);
 }
@@ -50,7 +50,7 @@
     border-radius: 50%;
 }
 
-.avatarData {
+.avatarPlaceholder {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -62,7 +62,7 @@
     font-size: 24px;
 }
 
-.userBarOpenPanel {
+.userBarOpenMenu {
     position: absolute;
     top: 110%;
     display: flex;
@@ -89,13 +89,13 @@
     transform: rotate(180deg);
 }
 
-.wrapperModal {
+.wrapperLink {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.userBarModal {
+.userBarLink {
     color: var(--userbar-color);
     display: block;
     display: flex;
@@ -105,7 +105,7 @@
     transition: color var(--animation);
 }
 
-.userBarModal:hover {
+.userBarLink:hover {
     color: var(--dark-blue);
 }
 
@@ -120,7 +120,7 @@
         margin-top: 0;
     }
 
-    .userWelcome {
+    .welcome {
         font-size: 36px;
         line-height: 38px;
     }
@@ -136,7 +136,7 @@
         line-height: 24px;
     }
 
-    .userBarOpenPanel {
+    .userBarOpenMenu {
         right: 0;
         font-weight: 700;
         opacity: 0px;

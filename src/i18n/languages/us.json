@@ -90,7 +90,7 @@
         "repeatPasswordpanErrorTwo": "Passwords must match",
         "button": "Send"
     },
-    "waterMainInfo": {
+    "WaterMainInfo": {
         "l": "L",
         "norma": "My daily norma",
         "today": "Today",
@@ -116,12 +116,12 @@
         "info": "You havent drunk water yet, maybe its time to drink?",
         "ml": "ml"
     },
-    "monthInfo": {
+    "MonthInfo": {
         "error": "Oops, something is wrong...",
-        "mouth": "Month",
+        "month": "Month",
         "statistics": "Statistics"
     },
-    "UserBar": {
+    "UserBars": {
         "user": "User",
         "welkome": "Hello",
         "settings": "Settings",
@@ -195,5 +195,4 @@
         "reset": "Password has been reset successfully! You can sign in with a new password",
         "logOut": "See you soon ❤️!"
     }
-
 }

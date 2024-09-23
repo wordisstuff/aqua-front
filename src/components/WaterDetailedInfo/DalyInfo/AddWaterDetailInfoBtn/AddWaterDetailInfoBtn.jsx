@@ -2,8 +2,9 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import css from './AddWaterDetailInfoBtn.module.css';
 import Context from '../../../../context/Context';
-import WaterForm from '../../../WaterForm/WaterForm';
+
 import { icons } from '../../../../utils/icons';
+import WaterForm from '../../../WaterForm/WaterForm';
 
 const AddWaterDetailInfoBtn = () => {
     const { openModal } = useContext(Context);
@@ -15,7 +16,7 @@ const AddWaterDetailInfoBtn = () => {
                 className={css.waterBtn}
                 onClick={() => openModal(<WaterForm operationType={'add'} />)}
             >
-                <svg className={css.svgAdd}>
+                <svg className={css.svgAdd} width="16" height="16">
                     <use
                         className={css.plus}
                         xlinkHref={`${icons}#plus-add-water`}
