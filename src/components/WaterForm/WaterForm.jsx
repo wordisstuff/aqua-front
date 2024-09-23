@@ -17,14 +17,10 @@ import {
     updateWaterAmount,
     apiGetWaterMonth,
     apiGetWaterDay,
-} from '../../redux/water/operation'; 
-import {
-    selectDate,
-    selectMonth,
-} from '../../redux/water/selectors'; 
-import {
-    selectLoading
-} from '../../redux/global/selectors';
+} from '../../redux/water/operation';
+import { selectDate, selectMonth } from '../../redux/water/selectors';
+import { selectLoading } from '../../redux/global/selectors';
+import { setDate } from '../../redux/water/slice';
 
 const WaterForm = ({ operationType, waterId, initialData }) => {
     const { t } = useTranslation();
@@ -75,10 +71,14 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
     //********************************************************************************/
 
     const onSubmit = async data => {
+        console.log('DATA', data);
+
         try {
             await waterSchema.validate(data, { abortEarly: false });
 
             const [hours, minutes] = data.time.split(':');
+            dispatch(setDate(new Date().toISOString().split('T')[0]));
+            console.log('selectedDate', selectedDate);
             const fullDateTime = `${selectedDate}T${hours}:${minutes}:00.000Z`;
 
             const newEntry = {

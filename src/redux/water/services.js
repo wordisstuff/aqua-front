@@ -21,6 +21,7 @@ export const getWaterMonthService = async date => {
 
 export const addWaterService = async water => {
     const { data } = await aquaApi.post('/water', water);
+    console.log('data', data);
     return data;
 };
 

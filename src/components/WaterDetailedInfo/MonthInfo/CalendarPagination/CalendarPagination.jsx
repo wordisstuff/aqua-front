@@ -8,6 +8,7 @@ import css from './CalendarPagination.module.css';
 import { useTranslation } from 'react-i18next';
 
 const CalendarPagination = ({ currentDate, changeMonth, onMonthHandler }) => {
+    console.log('currentDate', currentDate);
     const { t } = useTranslation();
     const [date, setDate] = useState(currentDate);
 

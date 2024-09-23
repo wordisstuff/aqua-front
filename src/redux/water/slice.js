@@ -6,9 +6,10 @@ import {
     addWater,
     updateWaterAmount,
 } from './operation';
+import { tooltipClasses } from '@mui/material';
 
 export const INIT_STATE = {
-    selectedDate: new Date().toISOString().split('T')[0],
+    selectedDate: null,
     selectedArreyDate: [],
     errorDay: null,
     isLoadingDay: false,
@@ -48,6 +49,7 @@ const waterSlice = createSlice({
     initialState: INIT_STATE,
     reducers: {
         setDate(state, action) {
+            console.log('action', action);
             state.selectedDate = action.payload;
         },
         increaseMonth(state) {
@@ -92,6 +94,7 @@ const waterSlice = createSlice({
                 );
             })
             .addCase(addWater.fulfilled, (state, action) => {
+                console.log(state.selectedDate);
                 state.isLoading = false;
                 state.waterDay = [...state.waterDay, action.payload];
             })
