@@ -1,16 +1,16 @@
-import {aquaApi} from '../../services/axios' 
+import { aquaApi } from '../../services/axios';
 
-export const requestDeleteWater = async waterId => {
+export const deleteWaterService = async waterId => {
     const { data } = await aquaApi.delete(`/water/${waterId}`);
     return data;
 };
 
-export const requestGetWaterDay = async date => {
+export const getWaterDayService = async date => {
     const { data } = await aquaApi.get(`water/daily/${date}`);
     return data;
 };
 
-export const requestGetWaterMonth = async date => {
+export const getWaterMonthService = async date => {
     const { data } = await aquaApi.get(
         `/water/monthly/${date.year}/${date.month}`,
     );
@@ -19,14 +19,14 @@ export const requestGetWaterMonth = async date => {
 
 //********************************************************************************/
 
-export const requestAddWater = async water => {
+export const addWaterService = async water => {
     const { data } = await aquaApi.post('/water', water);
     return data;
 };
 
 //********************************************************************************/
 
-export const requestUpdateWater = async water => {
+export const updateWaterService = async water => {
     const { data } = await aquaApi.put(`/water/${water.id}`, {
         amount: water.amount,
         date: water.date,
@@ -36,7 +36,7 @@ export const requestUpdateWater = async water => {
 
 //********************************************************************************/
 
-export const requestGetWaterStats = async () => {
+export const getWaterStatsService = async () => {
     const { data } = await aquaApi.get(`/water/stats`);
     return data;
 };

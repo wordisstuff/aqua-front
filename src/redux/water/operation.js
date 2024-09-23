@@ -1,18 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
-    requestAddWater as fetchAddWater, // Переименовал requestAddWater
-    requestDeleteWater as fetchDeleteWater, // Переименовал requestDeleteWater
-    requestGetWaterDay as fetchGetWaterDay, // Переименовал requestGetWaterDay
-    requestGetWaterMonth as fetchGetWaterMonth, // Переименовал requestGetWaterMonth
-    requestUpdateWater as fetchUpdateWater, // Переименовал requestUpdateWater
-    requestGetWaterStats as fetchGetWaterStats, // Переименовал requestGetWaterStats
+    addWaterService,
+    deleteWaterService,
+    getWaterDayService,
+    getWaterMonthService,
+    updateWaterService,
+    getWaterStatsService,
 } from './services.js';
 
 export const apiDeleteWater = createAsyncThunk(
     'water/deleteWater',
     async (recordId, thunkAPI) => {
         try {
-            const response = await fetchDeleteWater(recordId);
+            const response = await deleteWaterService(recordId);
             return response;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -24,7 +24,7 @@ export const apiGetWaterDay = createAsyncThunk(
     'water/getWaterDay',
     async (day, thunkAPI) => {
         try {
-            const response = await fetchGetWaterDay(day);
+            const response = await getWaterDayService(day);
             return response;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -36,7 +36,7 @@ export const apiGetWaterMonth = createAsyncThunk(
     'water/getWaterMonth',
     async (date, thunkAPI) => {
         try {
-            const response = await fetchGetWaterMonth(date);
+            const response = await getWaterMonthService(date);
             return response.daysInMonth;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -50,7 +50,7 @@ export const addWater = createAsyncThunk(
     'water/addWater',
     async (newEntry, thunkAPI) => {
         try {
-            const response = await fetchAddWater(newEntry);
+            const response = await addWaterService(newEntry);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -64,7 +64,7 @@ export const updateWaterAmount = createAsyncThunk(
     'water/updateWaterAmount',
     async (newEntry, thunkAPI) => {
         try {
-            const response = await fetchUpdateWater(newEntry);
+            const response = await updateWaterService(newEntry);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -78,7 +78,7 @@ export const apiGetWaterStats = createAsyncThunk(
     'water/getWaterStats',
     async thunkAPI => {
         try {
-            const response = await fetchGetWaterStats();
+            const response = await getWaterStatsService();
             return response;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
