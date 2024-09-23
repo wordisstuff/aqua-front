@@ -1,45 +1,63 @@
 import css from './UserSettingsModal.module.css';
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import toast, { LoaderIcon } from 'react-hot-toast';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import sprite from '../../../utils/icons/sprite.svg';
 import * as Yup from 'yup';
 import { useModalContext } from '../../../context/useContext';
+import { useDispatch } from 'react-redux';
+// import { currentUser } from '../../../redux/users/operation';
 
-export const UserSettingsModal = () => {
+export const UserSettingsModal = ({ setIsUserRefreshed }) => {
     const { t } = useTranslation();
     const { closeModal } = useModalContext();
-    const [userData, setUserData] = useState('');
+    const [userData, setUserData] = useState(null);
     const [newUserData, setNewUserData] = useState('');
     const [userAvatar, setUserAvatar] = useState(null);
-    const [gender, setGender] = useState('woman');
+    const [gender, setGender] = useState('female');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [weight, setWeight] = useState(null);
+    const [weight, setWeight] = useState('');
     const [requiredWater, setRequiredWater] = useState('1.5');
-    const [willWater, setWillWater] = useState();
-    const [time, setTime] = useState(null);
-    const [loding, setLoading] = useState(true);
+    const [willWater, setWillWater] = useState('');
+    const [time, setTime] = useState('');
+    const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
 
     const UserSchema = Yup.object().shape({
-        gender: Yup.string().required('is required!'),
+        gender: Yup.string().required(
+            t('modals.UserSettingsForm.validation.genderRequired'),
+        ),
         name: Yup.string()
             .trim()
-            .min(3, 'Min 3 chars!')
-            .max(50, 'Max 50 chars!')
-            .required('is required!'),
-        email: Yup.string().email().required('is required!'),
-        weight: Yup.number('must be a number').required('is required!'),
-        time: Yup.number('must be a number').required('is required!'),
-        water: Yup.number('must be a number').required('is required!'),
+            .min(3, t('modals.UserSettingsForm.validation.nameMin'))
+            .max(50, t('modals.UserSettingsForm.validation.nameMax'))
+            .required(t('modals.UserSettingsForm.validation.nameRequired')),
+        email: Yup.string()
+            .email(t('modals.UserSettingsForm.validation.emailInvalid'))
+            .required(t('modals.UserSettingsForm.validation.emailRequired')),
+        weight: Yup.number()
+            .typeError(t('modals.UserSettingsForm.validation.weightNumber'))
+            .required(t('modals.UserSettingsForm.validation.weightRequired')),
+        time: Yup.number()
+            .typeError(t('modals.UserSettingsForm.validation.timeNumber'))
+            .required(t('modals.UserSettingsForm.validation.timeRequired')),
+        water: Yup.number()
+            .typeError(t('modals.UserSettingsForm.validation.waterNumber'))
+            .required(t('modals.UserSettingsForm.validation.waterRequired')),
     });
 
     // useEffect(() => {
     //     async function fetchData() {
     //         try {
-    //             const response = await axios.get('/users/profile');
-    //             setUserData(response.data);
+    //             const response = await dispatch(currentUser());
+
+    //             if (currentUser.fulfilled.match(response)) {
+    //                 setUserData(response.payload);
+    //             } else {
+    //                 console.error('Failed to fetch user data:', response.error);
+    //             }
     //         } catch (error) {
     //             console.log(error);
     //         } finally {
@@ -48,15 +66,15 @@ export const UserSettingsModal = () => {
     //     }
 
     //     fetchData();
-    // }, []);
+    // }, [dispatch]);
 
     useEffect(() => {
         if (weight && gender) {
             let newAmount;
-            if (gender === 'man') {
+            if (gender === 'male') {
                 newAmount = weight * 0.04 + time * 0.6;
             }
-            if (gender === 'woman') {
+            if (gender === 'female') {
                 newAmount = weight * 0.03 + time * 0.4;
             }
             setRequiredWater((Math.ceil(newAmount * 10) / 10).toFixed(1));
@@ -98,12 +116,34 @@ export const UserSettingsModal = () => {
 
             console.log(validatedData);
 
-            closeModal();
-        } catch (validationErrors) {
-            console.log('validation error');
+            const formData = new FormData();
+            formData.append('gender', validatedData.gender);
+            formData.append('name', validatedData.name);
+            formData.append('email', validatedData.email);
+            formData.append('weight', validatedData.weight);
+            formData.append('time', validatedData.time);
+            formData.append('water', validatedData.water);
 
-            validationErrors.inner.forEach(error => {
-                toast.error(error.message);
+            try {
+                await axios.patch('user/update', formData);
+
+                setIsUserRefreshed(true);
+
+                toast.success(t('modals.UserSettingsForm.success'), {
+                    position: 'top-right',
+                });
+
+                closeModal();
+            } catch (error) {
+                toast.error(error.message, {
+                    position: 'top-right',
+                });
+            }
+        } catch (validationErrors) {
+            validationErrors.inner.reverse().forEach(error => {
+                toast.error(error.message, {
+                    position: 'top-right',
+                });
             });
         }
     };
@@ -114,20 +154,18 @@ export const UserSettingsModal = () => {
     //         setName(userData.name);
     //         setEmail(userData.email);
     //         setWeight(userData.weight);
-    //         setTime(
-    //             userData.dailyActivityTime ? userData.dailyActivityTime : '0',
-    //         );
-    //         setRequiredWater(userData.dailyWaterNorm);
-    //         setWillWater(userData.dailyWaterNorm);
+    //         setTime(userData.activeTime ? userData.activeTime : '0');
+    //         setRequiredWater(userData.recommendedWater);
+    //         setWillWater(userData.recommendedWater);
     //     }
     // }, [userData]);
 
     // useMemo(() => {
     //     if (userData) {
     //         setNewUserData({
-    //             avatar: userAvatar ? userAvatar : userData.avatar,
-    //             dailyActivityTime: time,
-    //             dailyWaterNorm: willWater ? willWater : requiredWater,
+    //             photo: userAvatar ? userAvatar : userData.photo,
+    //             activeTime: time,
+    //             recommendedWater: willWater ? willWater : requiredWater,
     //             email: email,
     //             gender: gender,
     //             name: name,
@@ -158,7 +196,7 @@ export const UserSettingsModal = () => {
                                     src={
                                         userAvatar
                                             ? URL.createObjectURL(userAvatar)
-                                            : 'https://st.weblancer.net/download/2229083_935xp.jpg' // {userData.avatar}
+                                            : userData?.photo
                                     }
                                     className={css.avatar}
                                     alt="avatar"
@@ -201,19 +239,19 @@ export const UserSettingsModal = () => {
                                             className={css.radio}
                                             type="radio"
                                             name="gender"
-                                            id="woman"
-                                            value="woman"
+                                            id="female"
+                                            value="female"
                                             onChange={e =>
                                                 setGender(e.target.value)
                                             }
                                             checked={
-                                                gender === 'woman' ||
-                                                userData.gender === 'woman'
+                                                gender === 'female' ||
+                                                userData?.gender === 'female'
                                             }
                                         />
                                         <label
                                             className={css.radioLabel}
-                                            htmlFor="woman"
+                                            htmlFor="female"
                                         >
                                             {t(
                                                 'modals.UserSettingsForm.femaleGenderLabel',
@@ -225,19 +263,19 @@ export const UserSettingsModal = () => {
                                             className={css.radio}
                                             type="radio"
                                             name="gender"
-                                            id="man"
-                                            value="man"
+                                            id="male"
+                                            value="male"
                                             onChange={e =>
                                                 setGender(e.target.value)
                                             }
                                             checked={
-                                                gender === 'man' ||
-                                                userData.gender === 'man'
+                                                gender === 'male' ||
+                                                userData?.gender === 'male'
                                             }
                                         />
                                         <label
                                             className={css.radioLabel}
-                                            htmlFor="man"
+                                            htmlFor="male"
                                         >
                                             {t(
                                                 'modals.UserSettingsForm.femaleGenderMale',
@@ -255,6 +293,9 @@ export const UserSettingsModal = () => {
                                         type="text"
                                         name="name"
                                         id="name"
+                                        value={
+                                            name === ' ' ? userData.name : name
+                                        }
                                         onChange={e => {
                                             setName(e.target.value);
                                         }}
@@ -271,6 +312,11 @@ export const UserSettingsModal = () => {
                                         type="email"
                                         name="email"
                                         id="email"
+                                        value={
+                                            email === ' '
+                                                ? userData.email
+                                                : email
+                                        }
                                         onChange={e => setEmail(e.target.value)}
                                         required
                                     />
@@ -342,6 +388,7 @@ export const UserSettingsModal = () => {
                                         type="number"
                                         name="weight"
                                         id="weight"
+                                        value={weight}
                                         step=".1"
                                         onChange={e =>
                                             setWeight(e.target.value)
@@ -359,6 +406,7 @@ export const UserSettingsModal = () => {
                                         type="number"
                                         name="time"
                                         id="time"
+                                        value={time}
                                         step=".1"
                                         onChange={e => setTime(e.target.value)}
                                     />
@@ -375,7 +423,7 @@ export const UserSettingsModal = () => {
                                         )}
                                     </p>
                                     <p className={css.textAccent}>
-                                        {`${requiredWater ? requiredWater : userData.dailyWaterNorm} ${t('modals.UserSettingsForm.l')}`}
+                                        {`${requiredWater ? requiredWater : userData.recommendedWater} ${t('modals.UserSettingsForm.l')}`}
                                     </p>
                                 </div>
                             </div>
@@ -390,9 +438,16 @@ export const UserSettingsModal = () => {
                                     className={css.userInfoInput}
                                     type="number"
                                     name="water"
+                                    value={willWater || ''}
                                     id="water"
                                     step=".1"
-                                    onChange={e => setWillWater(e.target.value)}
+                                    onChange={e =>
+                                        setWillWater(
+                                            e.target.value
+                                                ? parseFloat(e.target.value)
+                                                : '',
+                                        )
+                                    }
                                 />
                             </div>
                         </div>
