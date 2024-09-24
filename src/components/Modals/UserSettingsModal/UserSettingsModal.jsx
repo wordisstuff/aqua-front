@@ -6,67 +6,60 @@ import { useTranslation } from 'react-i18next';
 import sprite from '../../../utils/icons/sprite.svg';
 import * as Yup from 'yup';
 import { useModalContext } from '../../../context/useContext';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../../../redux/auth/selectors';
+import { updateUser } from '../../../redux/auth/operation';
 // import { currentUser } from '../../../redux/users/operation';
 
 export const UserSettingsModal = ({ setIsUserRefreshed }) => {
     const { t } = useTranslation();
     const { closeModal } = useModalContext();
     const [userData, setUserData] = useState(null);
-    const [newUserData, setNewUserData] = useState('');
-    const [userAvatar, setUserAvatar] = useState(null);
-    const [gender, setGender] = useState('female');
     const [name, setName] = useState('');
+    const [gender, setGender] = useState('female');
     const [email, setEmail] = useState('');
     const [weight, setWeight] = useState('');
+    const [userAvatar, setUserAvatar] = useState(null);
     const [requiredWater, setRequiredWater] = useState('1.5');
     const [willWater, setWillWater] = useState('');
     const [time, setTime] = useState('');
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
+    const [newUserData, setNewUserData] = useState('');
+
+    const user = useSelector(selectUser);
+
+    useEffect(() => {
+        setUserData(user);
+    }, [user]);
 
     const UserSchema = Yup.object().shape({
-        gender: Yup.string().required(
-            t('modals.UserSettingsForm.validation.genderRequired'),
-        ),
+        gender: Yup.string(),
+        // .required(
+        //     t('modals.UserSettingsForm.validation.genderRequired'),
+        // ),
         name: Yup.string()
             .trim()
             .min(3, t('modals.UserSettingsForm.validation.nameMin'))
-            .max(50, t('modals.UserSettingsForm.validation.nameMax'))
-            .required(t('modals.UserSettingsForm.validation.nameRequired')),
-        email: Yup.string()
-            .email(t('modals.UserSettingsForm.validation.emailInvalid'))
-            .required(t('modals.UserSettingsForm.validation.emailRequired')),
-        weight: Yup.number()
-            .typeError(t('modals.UserSettingsForm.validation.weightNumber'))
-            .required(t('modals.UserSettingsForm.validation.weightRequired')),
-        time: Yup.number()
-            .typeError(t('modals.UserSettingsForm.validation.timeNumber'))
-            .required(t('modals.UserSettingsForm.validation.timeRequired')),
-        water: Yup.number()
-            .typeError(t('modals.UserSettingsForm.validation.waterNumber'))
-            .required(t('modals.UserSettingsForm.validation.waterRequired')),
+            .max(50, t('modals.UserSettingsForm.validation.nameMax')),
+        // .required(t('modals.UserSettingsForm.validation.nameRequired')),
+        email: Yup.string().email(
+            t('modals.UserSettingsForm.validation.emailInvalid'),
+        ),
+        // .required(t('modals.UserSettingsForm.validation.emailRequired')),
+        weight: Yup.number().typeError(
+            t('modals.UserSettingsForm.validation.weightNumber'),
+        ),
+        // .required(t('modals.UserSettingsForm.validation.weightRequired')),
+        activeTime: Yup.number().typeError(
+            t('modals.UserSettingsForm.validation.timeNumber'),
+        ),
+        // .required(t('modals.UserSettingsForm.validation.timeRequired')),
+        recommendedWater: Yup.number().typeError(
+            t('modals.UserSettingsForm.validation.waterNumber'),
+        ),
+        // .required(t('modals.UserSettingsForm.validation.waterRequired')),
     });
-
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         try {
-    //             const response = await dispatch(currentUser());
-
-    //             if (currentUser.fulfilled.match(response)) {
-    //                 setUserData(response.payload);
-    //             } else {
-    //                 console.error('Failed to fetch user data:', response.error);
-    //             }
-    //         } catch (error) {
-    //             console.log(error);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     }
-
-    //     fetchData();
-    // }, [dispatch]);
 
     useEffect(() => {
         if (weight && gender) {
@@ -105,8 +98,8 @@ export const UserSettingsModal = ({ setIsUserRefreshed }) => {
             name,
             email,
             weight,
-            time,
-            water: willWater,
+            activeTime: time,
+            recommendedWater: willWater,
         };
 
         try {
@@ -116,16 +109,18 @@ export const UserSettingsModal = ({ setIsUserRefreshed }) => {
 
             console.log(validatedData);
 
-            const formData = new FormData();
-            formData.append('gender', validatedData.gender);
-            formData.append('name', validatedData.name);
-            formData.append('email', validatedData.email);
-            formData.append('weight', validatedData.weight);
-            formData.append('time', validatedData.time);
-            formData.append('water', validatedData.water);
+            // const formData = new FormData();
+            // formData.append('gender', validatedData.gender);
+            // formData.append('name', validatedData.name);
+            // formData.append('email', validatedData.email);
+            // formData.append('weight', validatedData.weight);
+            // formData.append('time', validatedData.time);
+            // formData.append('water', validatedData.water);
+            // const formData =
 
             try {
-                await axios.patch('user/update', formData);
+                console.log('FORM', validatedData);
+                dispatch(updateUser(validatedData));
 
                 setIsUserRefreshed(true);
 
@@ -187,7 +182,7 @@ export const UserSettingsModal = ({ setIsUserRefreshed }) => {
     return (
         <>
             <div className={css.wrapper}>
-                <form className={css.form} onSubmit={undefined}>
+                <form className={css.form} onSubmit={handleSubmit}>
                     <div className={css.userPic}>
                         <h2>{t('modals.UserSettingsForm.setting')}</h2>
                         <div className={css.picWrapper}>
@@ -454,11 +449,7 @@ export const UserSettingsModal = ({ setIsUserRefreshed }) => {
                     </div>
 
                     <div className={css.buttonContainer}>
-                        <button
-                            className={css.saveButton}
-                            type="submit"
-                            onClick={handleSubmit}
-                        >
+                        <button className={css.saveButton} type="submit">
                             {t('modals.UserSettingsForm.saveBtn')}
                         </button>
                     </div>

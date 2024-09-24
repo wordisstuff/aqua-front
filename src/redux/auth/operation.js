@@ -127,3 +127,29 @@ export const currentUser = createAsyncThunk(
         }
     },
 );
+
+export const updateUser = createAsyncThunk(
+    'user/update',
+    async (formData, { rejectWithValue, getState }) => {
+        try {
+            const { auth } = getState();
+            const token = auth.token;
+            if (!token) {
+                return rejectWithValue(null);
+            }
+            setAuthHeader(token);
+            console.log(formData);
+            const { data } = await aquaApi.patch(
+                '/user/update',
+                formData,
+                //     {
+                //     headers: { 'Content-Type': 'multipart/form-data' },
+                // }
+            );
+            console.log('DATA OPER', data);
+            return data;
+        } catch (e) {
+            return rejectWithValue(e.message);
+        }
+    },
+);

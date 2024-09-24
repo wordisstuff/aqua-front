@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, registerUser, logOutUser, currentUser } from './operation';
+import {
+    logIn,
+    registerUser,
+    logOutUser,
+    currentUser,
+    updateUser,
+} from './operation';
 
 export const INIT_STATE = {
     user: {
@@ -64,6 +70,7 @@ export const authSlice = createSlice({
             .addCase(currentUser.rejected, (state, action) => {
                 state.isRefreshing = false;
             })
+            .addCase(updateUser.fulfilled, (state, action) => {})
             .addCase(logOutUser.fulfilled, () => {
                 return INIT_STATE;
             });

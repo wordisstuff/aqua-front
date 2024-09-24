@@ -20,7 +20,7 @@ export const INIT_STATE = {
     monthData: [],
     errorMonth: null,
     isLoadingMonth: false,
-    waterDay: [],
+    waterPerDay: [],
     percentDay: null,
     errorWaterDay: null,
     isLoadingWaterDay: false,
@@ -78,8 +78,9 @@ const waterSlice = createSlice({
                 state.monthData = action.payload;
             })
             .addCase(apiGetWaterDay.fulfilled, (state, action) => {
+                console.log(action.payload.records);
                 state.isLoadingWaterDay = false;
-                state.waterDay = action.payload.records;
+                state.waterPerDay = action.payload.records;
                 state.percentDay = action.payload.percentComplete;
             })
             .addCase(updateWaterAmount.fulfilled, (state, action) => {
