@@ -102,14 +102,14 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
                 toast.success(t('modals.addEdit.successEdit'));
             }
 
-            dispatch(apiGetWaterDay(selectedDate));
+            // dispatch(apiGetWaterDay(selectedDate));
 
-            if (
-                Number(selectedDate.split('-')[0]) === currentMonth.year &&
-                Number(selectedDate.split('-')[1]) === currentMonth.month
-            ) {
-                dispatch(apiGetWaterMonth(currentMonth));
-            }
+            // if (
+            //     Number(selectedDate.split('-')[0]) === currentMonth.year &&
+            //     Number(selectedDate.split('-')[1]) === currentMonth.month
+            // ) {
+            //     dispatch(apiGetWaterMonth(currentMonth));
+            // }
         } catch (error) {
             toast.error(t('modals.addEdit.error'));
         }

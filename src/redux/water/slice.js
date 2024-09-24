@@ -90,14 +90,16 @@ const waterSlice = createSlice({
                 if (index !== -1) state.entries[index] = action.payload;
             })
             .addCase(apiDeleteWater.fulfilled, (state, action) => {
-                state.waterDay = state.waterDay.filter(
-                    entry => entry._id !== action.payload.id,
+                console.log(action.payload);
+                state.waterPerDay = state.waterPerDay.filter(
+                    water => water._id !== action.payload._id,
                 );
             })
             .addCase(addWater.fulfilled, (state, action) => {
                 console.log(state.selectedDate);
+                console.log(action.payload);
                 state.isLoading = false;
-                state.waterDay = [...state.waterDay, action.payload];
+                state.waterPerDay = [...state.waterPerDay, action.payload];
             })
             .addMatcher(
                 action => action.type.endsWith('pending'),

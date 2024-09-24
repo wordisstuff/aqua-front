@@ -12,8 +12,8 @@ export const apiDeleteWater = createAsyncThunk(
     'water/deleteWater',
     async (recordId, thunkAPI) => {
         try {
-            const response = await deleteWaterService(recordId);
-            return response;
+            const { data } = await deleteWaterService(recordId);
+            return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
@@ -50,8 +50,8 @@ export const addWater = createAsyncThunk(
     'water/addWater',
     async (newEntry, thunkAPI) => {
         try {
-            const response = await addWaterService(newEntry);
-            return response.data;
+            const { data } = await addWaterService(newEntry);
+            return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
