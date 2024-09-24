@@ -1,6 +1,5 @@
-
 import { Helmet } from 'react-helmet-async';
-import Home from './../../components/Home/Home';//<= Гена тут разва не та в компоненті з якого імпорт був (Hame.jsx!!) 
+import Home from './../../components/Home/Home.jsx';
 const HomePage = () => {
     return (
         <>

@@ -17,7 +17,7 @@ const SignInPage = () => {
             </Helmet>
             <Container>
                 <div className={css.containerPageIn}>
-                    {/* <Languages /> */}
+                    <Languages />
                     <div className={css.containerHome}>
                         <SignInForm />
                         {desktop && <Additional />}

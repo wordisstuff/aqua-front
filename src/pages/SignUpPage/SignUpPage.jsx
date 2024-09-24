@@ -18,7 +18,7 @@ const SignUpPage = () => {
             </Helmet>
             <Container>
                 <div className={css.containerPageUp}>
-                    {/* <Languages /> */}
+                    <Languages />
                     <div className={css.containerHomeUp}>
                         <SignUpForm />
                         {desktop && <Additional />}

@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import css from './TrackerPage.module.css';
-import Languages from '../../components/ShareComponents/Languages/Languages';
+import Languages from '../../components/ShareComponents/Languages/Languages.jsx';
 import { icons } from '../../utils/icons';
-import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo';
-import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo';
-import Container from '../../components/ShareComponents/Container/Container';
-import Modals from '../../components/Modals/Modals';
+import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo.jsx';
+import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo.jsx';
+import Container from '../../components/ShareComponents/Container/Container.jsx';
+import Modals from '../../components/Modals/Modals.jsx';
 
 const TrackerPage = () => {
     const { t } = useTranslation();
@@ -45,7 +45,7 @@ const TrackerPage = () => {
                             </svg>
                         </button>
                     </div> */}
-                    {/* <Languages /> */}
+                    <Languages />
                     <div className={css.trackerWrapper} data-tour="step-1">
                         <WaterMainInfo />
                         <WaterDetailedInfo />
