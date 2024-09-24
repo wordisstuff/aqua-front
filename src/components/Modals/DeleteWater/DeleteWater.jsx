@@ -7,7 +7,7 @@ import {
     apiGetWaterDay,
     // apiGetWaterMonth,
 } from '../../../redux/water/operation.js';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import css from './DeleteWater.module.css';
 
 const DeleteWater = ({ idForDel }) => {
