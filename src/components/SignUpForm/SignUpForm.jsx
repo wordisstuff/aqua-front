@@ -38,17 +38,27 @@ const SignUpForm = () => {
         setOpenRepeatPass(prevState => !prevState);
     };
 
-    const onSubmit = formData => {
-        delete formData.repeatPassword;
+    const onSubmit = async (formData) => {
+     
+        delete formData.repeatPassword; 
         console.log('SignUpForm', formData);
+    
         try {
-            dispatch(registerUser(formData));
-            reset();
-            navigate('/');
+       dispatch(registerUser(formData)).unwrap(); 
+            reset(); 
+            navigate('/signIn');
         } catch (error) {
-            console.error(error);
+          
+            if (error.response?.status === 400) {
+                toast.error("Invalid registration data. Please check your input.");
+            } else if (error.response?.status === 409) {
+                toast.error("Email already exists. Please use a different email.");
+            } else {
+                toast.error("An error occurred. Please try again later.");
+            }
         }
     };
+
 
     useEffect(() => {
         if (errors.password) {
@@ -61,6 +71,8 @@ const SignUpForm = () => {
             toast.error(t('signUpPage.repeatPasswordpanErrorTwo'));
         }
     }, [errors, t]);
+
+
 
     return (
         <WelcomeWrap
