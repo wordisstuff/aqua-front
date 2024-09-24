@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { format, parseISO, subHours } from 'date-fns';
 import css from './WaterItem.module.css';
 import { icons as sprite } from '../../../../utils/icons/index';
-import WaterForm from '../../../WaterForm/WaterForm';
 import DeleteWater from '../../../Modals/DeleteWater/DeleteWater';
+import WaterModal from '../../../Modals/WaterModal/WaterModal';
 
 function WaterItem({ data }) {
     const { t } = useTranslation();
@@ -32,11 +32,15 @@ function WaterItem({ data }) {
                 <button
                     className={css.btn}
                     onClick={() => {
+                        console.log(1);
                         openModal(
-                            <WaterForm
+                            <WaterModal
                                 operationType={'edit'}
-                                recordId={id}
-                                initialData={{ count, date }}
+                                recordId={data._id}
+                                initialData={{
+                                    amount: data.amount,
+                                    date: data.date,
+                                }}
                             />,
                         );
                     }}

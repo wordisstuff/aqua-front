@@ -84,10 +84,11 @@ const waterSlice = createSlice({
                 state.percentDay = action.payload.percentComplete;
             })
             .addCase(updateWaterAmount.fulfilled, (state, action) => {
-                const index = state.entries.findIndex(
-                    entry => entry.id === action.payload.id,
+                console.log(action.payload);
+                const idx = state.waterPerDay.findIndex(
+                    water => water._id === action.payload._id,
                 );
-                if (index !== -1) state.entries[index] = action.payload;
+                state.waterPerDay[idx] = action.payload;
             })
             .addCase(apiDeleteWater.fulfilled, (state, action) => {
                 console.log(action.payload);

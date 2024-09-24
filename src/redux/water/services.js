@@ -28,7 +28,7 @@ export const addWaterService = async water => {
 //********************************************************************************/
 
 export const updateWaterService = async water => {
-    const { data } = await aquaApi.put(`/water/${water.id}`, {
+    const { data } = await aquaApi.patch(`/water/${water.id}`, {
         amount: water.amount,
         date: water.date,
     });

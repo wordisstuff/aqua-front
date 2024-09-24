@@ -1,0 +1,49 @@
+    .modalWater {
+        min-width: 320px;
+        max-width: 375px;
+        padding: 40px 20px;
+    }
+
+    .titleWaterModal {
+        max-width: 248px;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        color: var(--dark-blue);
+        margin-bottom: 24px;
+    }
+
+    .subTitleWaterModal {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.2;
+        color: var(--dark-blue);
+        letter-spacing: -0.0016em;
+        margin-bottom: 20px;
+    }
+
+    @media (768px <=width) {
+        .modalWater {
+            width: 518px;
+            max-width: 518px;
+            padding: 40px;
+        }
+
+        .titleWaterModal {
+            max-width: 347px;
+            font-size: 28px;
+            line-height: 1.14;
+            letter-spacing: -0.01em;
+            color: var(--dark-blue);
+            margin-bottom: 24px;
+        }
+
+        .subTitleWaterModal {
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.33;
+            color: var(--dark-blue);
+            letter-spacing: -0.01em;
+        }
+    }

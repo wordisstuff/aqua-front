@@ -64,8 +64,9 @@ export const updateWaterAmount = createAsyncThunk(
     'water/updateWaterAmount',
     async (newEntry, thunkAPI) => {
         try {
-            const response = await updateWaterService(newEntry);
-            return response.data;
+            const { data } = await updateWaterService(newEntry);
+            console.log(data);
+            return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
