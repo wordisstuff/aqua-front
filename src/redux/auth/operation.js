@@ -139,13 +139,9 @@ export const updateUser = createAsyncThunk(
             }
             setAuthHeader(token);
             console.log(formData);
-            const { data } = await aquaApi.patch(
-                '/user/update',
-                formData,
-                //     {
-                //     headers: { 'Content-Type': 'multipart/form-data' },
-                // }
-            );
+            const { data } = await aquaApi.patch('/user/update', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            });
             console.log('DATA OPER', data);
             return data;
         } catch (e) {

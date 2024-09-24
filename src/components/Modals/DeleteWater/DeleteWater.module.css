@@ -64,7 +64,7 @@
 
 .btnDelete:hover,
 .btnDelete:focus {
-    background-color: var(--accent-secondary);
+    background-color: rgba(255, 0, 0, 0.831);
 }
 
 .btnCancel:hover,

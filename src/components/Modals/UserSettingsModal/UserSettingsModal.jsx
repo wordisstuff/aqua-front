@@ -8,57 +8,47 @@ import * as Yup from 'yup';
 import { useModalContext } from '../../../context/useContext';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/auth/selectors';
-import { updateUser } from '../../../redux/auth/operation';
-// import { currentUser } from '../../../redux/users/operation';
+import { currentUser, updateUser } from '../../../redux/auth/operation';
 
 export const UserSettingsModal = ({ setIsUserRefreshed }) => {
     const { t } = useTranslation();
+    const user = useSelector(selectUser);
     const { closeModal } = useModalContext();
-    const [userData, setUserData] = useState(null);
-    const [name, setName] = useState('');
-    const [gender, setGender] = useState('female');
-    const [email, setEmail] = useState('');
-    const [weight, setWeight] = useState('');
+    const [userData, setUserData] = useState(user);
+    const [name, setName] = useState(userData.name);
+    const [gender, setGender] = useState(userData.gender);
+    const [email, setEmail] = useState(userData.email);
+    const [weight, setWeight] = useState(userData.weight);
     const [userAvatar, setUserAvatar] = useState(null);
     const [requiredWater, setRequiredWater] = useState('1.5');
-    const [willWater, setWillWater] = useState('');
-    const [time, setTime] = useState('');
+    const [willWater, setWillWater] = useState(userData.recommendedWater);
+    const [time, setTime] = useState(userData.activeTime);
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const [newUserData, setNewUserData] = useState('');
 
-    const user = useSelector(selectUser);
-
     useEffect(() => {
-        setUserData(user);
-    }, [user]);
+        dispatch(currentUser);
+    }, [userData]);
 
     const UserSchema = Yup.object().shape({
         gender: Yup.string(),
-        // .required(
-        //     t('modals.UserSettingsForm.validation.genderRequired'),
-        // ),
         name: Yup.string()
             .trim()
             .min(3, t('modals.UserSettingsForm.validation.nameMin'))
             .max(50, t('modals.UserSettingsForm.validation.nameMax')),
-        // .required(t('modals.UserSettingsForm.validation.nameRequired')),
         email: Yup.string().email(
             t('modals.UserSettingsForm.validation.emailInvalid'),
         ),
-        // .required(t('modals.UserSettingsForm.validation.emailRequired')),
         weight: Yup.number().typeError(
             t('modals.UserSettingsForm.validation.weightNumber'),
         ),
-        // .required(t('modals.UserSettingsForm.validation.weightRequired')),
         activeTime: Yup.number().typeError(
             t('modals.UserSettingsForm.validation.timeNumber'),
         ),
-        // .required(t('modals.UserSettingsForm.validation.timeRequired')),
         recommendedWater: Yup.number().typeError(
             t('modals.UserSettingsForm.validation.waterNumber'),
         ),
-        // .required(t('modals.UserSettingsForm.validation.waterRequired')),
     });
 
     useEffect(() => {
@@ -101,29 +91,26 @@ export const UserSettingsModal = ({ setIsUserRefreshed }) => {
             activeTime: time,
             recommendedWater: willWater,
         };
-
+        console.log(dataForValidation);
         try {
             const validatedData = await UserSchema.validate(dataForValidation, {
                 abortEarly: false,
             });
 
-            console.log(validatedData);
+            const formData = new FormData();
+            formData.append('name', validatedData.name);
+            formData.append('photo', userAvatar);
+            formData.append('activeTime', validatedData.activeTime);
+            formData.append('recommendedWater', validatedData.recommendedWater);
+            formData.append('email', validatedData.email);
+            formData.append('gender', validatedData.gender);
+            formData.append('weight', validatedData.weight);
 
-            // const formData = new FormData();
-            // formData.append('gender', validatedData.gender);
-            // formData.append('name', validatedData.name);
-            // formData.append('email', validatedData.email);
-            // formData.append('weight', validatedData.weight);
-            // formData.append('time', validatedData.time);
-            // formData.append('water', validatedData.water);
-            // const formData =
+            console.log(formData);
 
             try {
                 console.log('FORM', validatedData);
-                dispatch(updateUser(validatedData));
-
-                setIsUserRefreshed(true);
-
+                dispatch(updateUser(formData));
                 toast.success(t('modals.UserSettingsForm.success'), {
                     position: 'top-right',
                 });
