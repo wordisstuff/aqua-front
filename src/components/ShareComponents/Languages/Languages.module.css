@@ -1,3 +1,11 @@
+.container {
+    padding-top: 16px;
+}
+@media screen and (min-width: 768px) {
+    .container {
+        padding-top: 32px;
+    }
+}
 .lang {
     display: flex;
     gap: 4px;
@@ -14,8 +22,8 @@
     background-color: inherit;
     border: none;
     transform: scale(1);
-
     transition: transform var(--animation);
+    position: relative;
 }
 
 .langBtn:hover,
@@ -26,6 +34,10 @@
 .modal {
     display: flex;
     flex-direction: column;
+    position: absolute;
+    top: 30px;
+    left: 4px;
+    z-index: 100;
 }
 
 .modalBtn {
@@ -33,7 +45,13 @@
     border: none;
     background-color: inherit;
     padding: 0;
-    margin: 0 0 0 15px;
+    margin: 0;
+    transition: transform;
+}
+
+.modalBtn:hover,
+.modalBtn:focus {
+    transform: scale(1.2);
 }
 
 .arrowIcon {
@@ -42,11 +60,11 @@
     width: 24px;
     height: 24px;
     margin-left: 4px;
-    transition: transform 0.3s ease; /* Анімація обертання */
+    transition: transform 0.3s ease;
 }
 
 .rotated {
-    transform: rotate(180deg); /* Обертаємо стрілку на 180 градусів */
+    transform: rotate(180deg);
 }
 
 @media (min-width: 768px) {
