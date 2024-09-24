@@ -5,12 +5,19 @@ import { useState } from 'react';
 
 const Languages = () => {
     const { i18n } = useTranslation();
+    const [isOpen, setIsOpen] = useState(false);
 
     const changeLanguage = lng => {
         i18n.changeLanguage(lng);
+        setIsOpen(false);
     };
+
+    const toggleModal = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
-        <>
+        <div className={CSS.container}>
             <header
                 data-aos="zoom-in"
                 data-aos-easing="ease-in-back"
@@ -18,38 +25,63 @@ const Languages = () => {
                 data-aos-offset="0"
                 className={CSS.lang}
             >
-                {i18n.language === 'ua' && (
-                    <button
-                        className={CSS.langBtn}
-                        onClick={() => changeLanguage('ua')}
+                <button className={CSS.langBtn} onClick={toggleModal}>
+                    <svg width="33" height="33" aria-label="Language switch">
+                        <use xlinkHref={`${icons}#${i18n.language}-flag`}></use>
+                    </svg>
+
+                    <svg
+                        width="16"
+                        height="16"
+                        className={`${CSS.arrowIcon} ${isOpen ? CSS.rotated : ''}`}
+                        aria-label="Arrow down"
                     >
-                        <svg
-                            width="33"
-                            height="33"
-                            aria-label="Flag usa"
-                            className={CSS.icon}
+                        <use xlinkHref={`${icons}#arrow-down`}></use>
+                    </svg>
+                </button>
+                {isOpen && (
+                    <div className={CSS.modalContainer} onClick={toggleModal}>
+                        <div
+                            className={CSS.modal}
+                            onClick={e => e.stopPropagation()}
                         >
-                            <use xlinkHref={`${icons}#ua-flag`}></use>
-                        </svg>
-                    </button>
-                )}
-                {i18n.language === 'us' && (
-                    <button
-                        className={CSS.langBtn}
-                        onClick={() => changeLanguage('us')}
-                    >
-                        <svg
-                            width="33"
-                            height="33"
-                            aria-label="Flag ua"
-                            className={CSS.icon}
-                        >
-                            <use xlinkHref={`${icons}#us-flag`}></use>
-                        </svg>
-                    </button>
+                            {i18n.language === 'ua' && (
+                                <button
+                                    className={CSS.modalBtn}
+                                    onClick={() => changeLanguage('us')}
+                                >
+                                    <svg
+                                        width="33"
+                                        height="33"
+                                        aria-label="Flag us"
+                                    >
+                                        <use
+                                            xlinkHref={`${icons}#us-flag`}
+                                        ></use>
+                                    </svg>
+                                </button>
+                            )}
+                            {i18n.language === 'us' && (
+                                <button
+                                    className={CSS.modalBtn}
+                                    onClick={() => changeLanguage('ua')}
+                                >
+                                    <svg
+                                        width="33"
+                                        height="33"
+                                        aria-label="Flag ua"
+                                    >
+                                        <use
+                                            xlinkHref={`${icons}#ua-flag`}
+                                        ></use>
+                                    </svg>
+                                </button>
+                            )}
+                        </div>
+                    </div>
                 )}
             </header>
-        </>
+        </div>
     );
 };
 
