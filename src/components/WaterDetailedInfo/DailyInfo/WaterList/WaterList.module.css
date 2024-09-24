@@ -8,6 +8,7 @@
 
 @media (min-width: 768px) {
     .waterList {
+        max-width: 600px;
         gap: 32px;
     }
 }
