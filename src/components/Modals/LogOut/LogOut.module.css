@@ -32,7 +32,8 @@
     gap: 9px;
 }
 
-.logoutButton {
+.logoutButton,
+.cancelButton {
     width: 100%;
     background-color: var(--accent);
     color: var(--dark-blue);
@@ -41,9 +42,11 @@
     line-height: 1.28;
     border: none;
     border-radius: 30px;
-
     padding: 14px 0;
     transition: background-color var(--animation);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logoutButton:hover,
@@ -52,17 +55,8 @@
 }
 
 .cancelButton {
-    width: 100%;
     background-color: var(--light-gray);
     color: var(--color-light-grey);
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.28;
-    border: none;
-    border-radius: 30px;
-    padding: 14px 0;
-
-    transition: color var(--animation);
 }
 
 .cancelButton:hover {
@@ -95,6 +89,7 @@
 
     .modalButtonCont {
         flex-direction: row;
+        justify-content: center;
         gap: 10px;
     }
 

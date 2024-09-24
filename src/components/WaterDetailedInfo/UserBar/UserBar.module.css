@@ -140,6 +140,6 @@
     .userBarOpenPanel {
         right: 0;
         font-weight: 700;
-        opacity: 0px;
+        opacity: 1;
     }
 }
