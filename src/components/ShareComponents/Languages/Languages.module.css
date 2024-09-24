@@ -10,10 +10,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    background-color: transparent;
-    /* border: none; */
     border-radius: 50px;
+    background-color: inherit;
     border: none;
     transform: scale(1);
 
@@ -23,6 +21,32 @@
 .langBtn:hover,
 .langBtn:active {
     transform: scale(1.2);
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+}
+
+.modalBtn {
+    display: flex;
+    border: none;
+    background-color: inherit;
+    padding: 0;
+    margin: 0 0 0 15px;
+}
+
+.arrowIcon {
+    fill: transparent;
+    stroke: #323f47;
+    width: 24px;
+    height: 24px;
+    margin-left: 4px;
+    transition: transform 0.3s ease; /* Анімація обертання */
+}
+
+.rotated {
+    transform: rotate(180deg); /* Обертаємо стрілку на 180 градусів */
 }
 
 @media (min-width: 768px) {
