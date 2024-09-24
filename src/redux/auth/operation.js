@@ -149,3 +149,33 @@ export const updateUser = createAsyncThunk(
         }
     },
 );
+
+export const googleRedirect = createAsyncThunk(
+    '/auth/googleOAuthUrl',
+    async (_, { rejectWithValue }) => {
+        try {
+            const { data } = await aquaApi.get('/auth/google-redirect');
+            return data.data.url;
+        } catch (error) {
+            toast.error('Failed to get Google OAuth Url');
+            return rejectWithValue(error.message);
+        }
+    },
+);
+
+export const googleLogin = createAsyncThunk(
+    '/auth/googleLogin',
+    async (authCode, { rejectWithValue }) => {
+        try {
+            const { data } = await aquaApi.get('/auth/google', {
+                code: authCode,
+            });
+            setAuthHeader(data.data.token);
+            const currentUserProfile = await aquaApi.get('/auth/current');
+            return {...data.data, user: currentUserProfile.data};
+        } catch (error) {
+            toast.error('Failed to login with Google');
+            return rejectWithValue(error.message);
+        }
+    },
+);
