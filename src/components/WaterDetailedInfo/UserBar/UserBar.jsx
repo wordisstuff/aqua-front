@@ -23,6 +23,12 @@ const UserBar = () => {
         return fullName ? fullName.split(' ')[0] : t('UserBar.user');
     };
 
+    // Функція для відкриття модалки і закриття попапу
+    const handleOpenModal = modalComponent => {
+        openModal(modalComponent);
+        setIsPopoverOpen(false); // Закриваємо попап після відкриття модалки
+    };
+
     return (
         <div className={css.userBarWrapper}>
             <h2 className={css.userWelcome}>
@@ -58,7 +64,9 @@ const UserBar = () => {
                         <ul className={css.wrapperModal}>
                             <li>
                                 <a
-                                    onClick={() => openModal(<UserSettings />)}
+                                    onClick={() =>
+                                        handleOpenModal(<UserSettings />)
+                                    }
                                     className={css.userBarModal}
                                     href="#settings"
                                 >
@@ -72,7 +80,7 @@ const UserBar = () => {
                                 <a
                                     className={css.userBarModal}
                                     onClick={() =>
-                                        openModal(<LogOutModalWind />)
+                                        handleOpenModal(<LogOutModalWind />)
                                     }
                                 >
                                     <svg width="16" height="16">

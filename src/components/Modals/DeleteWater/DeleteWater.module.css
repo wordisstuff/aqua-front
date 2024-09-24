@@ -62,9 +62,17 @@
         color var(--animation);
 }
 
+.btnDelete,
+.btnCancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 0;
+}
+
 .btnDelete:hover,
 .btnDelete:focus {
-    background-color: rgba(255, 0, 0, 0.831);
+    background-color: rgba(237, 121, 140, 0.831);
 }
 
 .btnCancel:hover,
