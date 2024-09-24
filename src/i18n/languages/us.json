@@ -90,7 +90,7 @@
         "repeatPasswordpanErrorTwo": "Passwords must match",
         "button": "Send"
     },
-    "waterMainInfo": {
+    "WaterMainInfo": {
         "l": "L",
         "norma": "My daily norma",
         "today": "Today",
@@ -116,14 +116,14 @@
         "info": "You havent drunk water yet, maybe its time to drink?",
         "ml": "ml"
     },
-    "monthInfo": {
+    "MonthInfo": {
         "error": "Oops, something is wrong...",
-        "mouth": "Month",
+        "month": "Month",
         "statistics": "Statistics"
     },
     "UserBar": {
-        "user": "User",
-        "welkome": "Hello",
+        "users": "User",
+        "welcome": "Hello",
         "settings": "Settings",
         "logOut": "LogOut"
     },

@@ -1,12 +1,13 @@
-import UserBar from './UserBar/UserBar';
-import DailyInfo from './DailyInfo/DailyInfo';
 import MonthInfo from './MonthInfo/MonthInfo';
+import Userbar from './Userbar/Userbar';
+import DailyInfo from './DalyInfo/DailyInfo';
+
 import css from './WaterDetailedInfo.module.css';
 
 const WaterDetailedInfo = () => {
     return (
         <div className={css.waterDetailedInfoWrapper}>
-            <UserBar />
+            <Userbar />
             <DailyInfo />
             <MonthInfo />
         </div>

@@ -1,82 +1,107 @@
-import { useState, useContext } from 'react';
-import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 import css from './UserBar.module.css';
-import { RxAvatar } from 'react-icons/rx';
-import { icons as sprite } from '../../../utils/icons/index';
-import Context from '../../../context/Context';
+import { icons } from '../../../utils/icons';
+import { useModalContext } from '../../../context/useContext.jsx';
+import UserSettingsModal from '../../Modals/UserSettingsModal/UserSettingsModal.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshUser } from '../../../redux/auth/operation.js';
+import { selectUser } from '../../../redux/auth/selectors.js';
+import { useTranslation } from 'react-i18next';
 import LogOutModalWind from '../../Modals/LogOut/LogOut.jsx';
-import UserSettings from '../../Modals/UserSettingsModal/UserSettingsModal.jsx';
-import { selectUser } from '../../../redux/auth/selectors';
+import { FaRegUserCircle } from 'react-icons/fa';
+import { useAuth } from '../../../helpers/useHooks/useAuth.js';
 
-const UserBar = () => {
+const Userbar = () => {
     const { t } = useTranslation();
-    const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-    const { openModal } = useContext(Context);
-    const userMainInfo = useSelector(selectUser);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const { user } = useAuth();
+    const { openModal } = useModalContext();
+    const dispatch = useDispatch();
+    const userInfo = useSelector(selectUser);
+    const [isUserUpdated, setIsUserUpdated] = useState(false);
 
-    const togglePopover = () => {
-        setIsPopoverOpen(!isPopoverOpen);
+    useEffect(() => {
+        if (!user) {
+            dispatch(refreshUser());
+        }
+    }, [dispatch, user]);
+
+    useEffect(() => {
+        if (isUserUpdated) {
+            dispatch(refreshUser());
+            setIsUserUpdated(false);
+        }
+    }, [dispatch, isUserUpdated]);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
     };
 
     const getFirstName = fullName => {
-        return fullName ? fullName.split(' ')[0] : t('UserBar.user');
+        return fullName ? fullName.split(' ')[0] : t('UserBar.users');
     };
 
     return (
         <div className={css.userBarWrapper}>
-            <h2 className={css.userWelcome}>
-                {t('UserBar.welkome')}
+            <h2 className={css.welcome}>
+                {t('UserBar.welcome')}
                 <span className={css.name}>
-                    , {getFirstName(userMainInfo?.name)}!
+                    , {getFirstName(userInfo?.name)}!
                 </span>
             </h2>
-            <div className={css.userBarPanel}>
-                <button className={css.userBarBtn} onClick={togglePopover}>
-                    {getFirstName(userMainInfo?.name)}
-                    {userMainInfo?.avatar ? (
+
+            <div className={css.userBarMenu}>
+                <button className={css.userBarBtn} onClick={toggleMenu}>
+                    {getFirstName(userInfo?.name)}
+                    {userInfo?.avatar ? (
                         <img
-                            src={userMainInfo.avatar}
-                            alt="User's Avatar"
+                            src={userInfo.avatar}
+                            alt="User Avatar"
                             className={css.avatar}
                         />
                     ) : (
-                        <span className={css.avatarData}>
-                            <RxAvatar />
+                        <span className={css.avatarPlaceholder}>
+                            <FaRegUserCircle />
                         </span>
                     )}
                     <svg
-                        className={`${css.chevron} ${
-                            isPopoverOpen ? css.open : ''
-                        }`}
+                        className={`${css.chevron} ${menuOpen ? css.open : ''}`}
                     >
-                        <use xlinkHref={`${sprite}#arrow-down`} />
+                        <use xlinkHref={`${icons}#arrow-down`} />
                     </svg>
                 </button>
-                {isPopoverOpen && (
-                    <div className={css.userBarOpenPanel}>
-                        <ul className={css.wrapperModal}>
+                {menuOpen && (
+                    <div className={css.userBarOpenMenu}>
+                        <ul className={css.wrapperLink}>
                             <li>
                                 <a
-                                    onClick={() => openModal(<UserSettings />)}
-                                    className={css.userBarModal}
+                                    onClick={() =>
+                                        openModal(
+                                            <UserSettingsModal
+                                                setIsUserUpdated={
+                                                    setIsUserUpdated
+                                                }
+                                            />,
+                                        )
+                                    }
+                                    className={css.userBarLink}
                                     href="#settings"
                                 >
                                     <svg width="16" height="16">
-                                        <use xlinkHref={`${sprite}#settings`} />
+                                        <use xlinkHref={`${icons}#settings`} />
                                     </svg>
                                     {t('UserBar.settings')}
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    className={css.userBarModal}
+                                    className={css.userBarLink}
                                     onClick={() =>
                                         openModal(<LogOutModalWind />)
                                     }
                                 >
                                     <svg width="16" height="16">
-                                        <use xlinkHref={`${sprite}#log-out`} />
+                                        <use xlinkHref={`${icons}#log-out`} />
                                     </svg>
                                     {t('UserBar.logOut')}
                                 </a>
@@ -89,4 +114,4 @@ const UserBar = () => {
     );
 };
 
-export default UserBar;
+export default Userbar;
