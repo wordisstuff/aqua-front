@@ -44,11 +44,12 @@ const Userbar = () => {
     return (
         <div className={css.userBarWrapper}>
             <h2 className={css.welcome}>
-                {t('UserBar.welkome')}
+                {t('UserBar.welcome')}
                 <span className={css.name}>
                     , {getFirstName(userInfo?.name)}!
                 </span>
             </h2>
+
             <div className={css.userBarMenu}>
                 <button className={css.userBarBtn} onClick={toggleMenu}>
                     {getFirstName(userInfo?.name)}

@@ -121,9 +121,9 @@
         "month": "Month",
         "statistics": "Statistics"
     },
-    "UserBars": {
-        "user": "User",
-        "welkome": "Hello",
+    "UserBar": {
+        "users": "User",
+        "welcome": "Hello",
         "settings": "Settings",
         "logOut": "LogOut"
     },
