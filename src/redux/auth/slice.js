@@ -5,6 +5,7 @@ import {
     logOutUser,
     currentUser,
     updateUser,
+    googleLogin,
 } from './operation';
 
 export const INIT_STATE = {
@@ -73,6 +74,14 @@ export const authSlice = createSlice({
             .addCase(updateUser.fulfilled, (state, action) => {})
             .addCase(logOutUser.fulfilled, () => {
                 return INIT_STATE;
+            })
+            .addCase(googleLogin.fulfilled, (state, action) => {
+                state.user = action.payload.user;
+                state.token = action.payload.token;
+                state.isLoggedIn = true;
+            })
+            .addCase(googleLogin.rejected, (state, action) => {
+                state.error = action.payload;
             });
     },
 });
