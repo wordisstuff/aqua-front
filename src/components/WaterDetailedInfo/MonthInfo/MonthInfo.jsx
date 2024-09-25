@@ -8,6 +8,13 @@ import CalendarTitle from './CalendarTitle/CalendarTitle.jsx';
 import CalendarToggle from './CalendarToogle/CalendarToogle.jsx';
 import Loader from './Loader/Loader.jsx';
 import css from './MonthInfo.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    selectMonthData,
+    selectPercentPerDay,
+    selectMonth,
+} from '../../../redux/water/selectors.js';
+import { apiGetWaterMonth } from '../../../redux/water/operation.js';
 
 const formatPercentage = percentage => {
     if (!percentage) return 0;
@@ -31,6 +38,13 @@ const getMonthDaysArray = (year, month) => {
 };
 
 function MonthInfo() {
+    const dispatch = useDispatch();
+    const selectedMonthData = useSelector(selectMonthData);
+    const percentPerDay = useSelector(selectPercentPerDay);
+
+    const selectedMonth = useSelector(selectMonth);
+    console.log(selectedMonth);
+    console.log(selectedMonthData);
     const [isActive, setIsActive] = useState(true);
     const [currentMonth, setCurrentMonth] = useState(
         format(new Date(), 'yyyy-MM'),
@@ -45,19 +59,30 @@ function MonthInfo() {
     const year = parseInt(currentMonth.split('-')[0], 10);
     const month = parseInt(currentMonth.split('-')[1], 10) - 1;
     const monthDay = getMonthDaysArray(year, month);
-
+    console.log(year, month);
+    useEffect(() => {
+        const newMonth = Number(selectedMonth.month);
+        dispatch(
+            apiGetWaterMonth({
+                year: selectedMonth.year,
+                month: newMonth,
+            }),
+        );
+    }, [selectedMonth]);
     const calendarArray = monthDay.map(date => {
         const item = monthArray.find(
             item => convertDate(currentMonth, item.date) === date,
         );
-        const percentage = item?.percentage || '0%';
+        // console.log(item, date);
+
+        const percentage = percentPerDay || '0%';
 
         return {
             date,
-            percentage: formatPercentage(percentage),
+            percentage,
         };
     });
-
+    // console.log(calendarArray);
     const changeMonth = increment => {
         const newDate =
             increment > 0
@@ -114,7 +139,7 @@ function MonthInfo() {
             )}
 
             <Calendar
-                monthItem={calendarArray}
+                monthItem={selectedMonthData}
                 selectedDate={selectedDate}
                 currentDate={format(new Date(), 'yyyy-MM-dd')}
                 isActive={isActive}

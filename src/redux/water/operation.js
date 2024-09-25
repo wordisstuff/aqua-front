@@ -24,8 +24,9 @@ export const apiGetWaterDay = createAsyncThunk(
     'water/getWaterDay',
     async (day, thunkAPI) => {
         try {
-            const response = await getWaterDayService(day);
-            return response;
+            const data = await getWaterDayService(day);
+
+            return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
@@ -36,8 +37,9 @@ export const apiGetWaterMonth = createAsyncThunk(
     'water/getWaterMonth',
     async (date, thunkAPI) => {
         try {
-            const response = await getWaterMonthService(date);
-            return response.daysInMonth;
+            const { data } = await getWaterMonthService(date);
+            console.log(data);
+            return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }

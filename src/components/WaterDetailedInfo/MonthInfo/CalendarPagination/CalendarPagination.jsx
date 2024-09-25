@@ -6,11 +6,29 @@ import { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import css from './CalendarPagination.module.css';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    selectMonth,
+    selectMonthData,
+} from '../../../../redux/water/selectors';
+import { setMonth } from '../../../../redux/water/slice';
 
 const CalendarPagination = ({ currentDate, changeMonth, onMonthHandler }) => {
-    console.log('currentDate', currentDate);
     const { t } = useTranslation();
     const [date, setDate] = useState(currentDate);
+
+    const [years, setYears] = useState(
+        format(new Date(subMonths(currentDate, 1)), 'yyyy'),
+    );
+    const [monthses, setMonthses] = useState(
+        format(new Date(subMonths(currentDate, 1)), 'MM'),
+    );
+    const selectedMonth = useSelector(selectMonth);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        setYears(format(new Date(subMonths(date, 1)), 'yyyy'));
+        setMonthses(format(new Date(subMonths(date, 1)), 'MM'));
+    }, [date]);
 
     useEffect(() => {
         setDate(currentDate);
@@ -19,12 +37,16 @@ const CalendarPagination = ({ currentDate, changeMonth, onMonthHandler }) => {
     const handlePrev = () => {
         const newDate = subMonths(date, 1);
         setDate(newDate);
+
+        dispatch(setMonth({ year: years, month: monthses }));
         changeMonth(-1);
     };
 
     const handleNext = () => {
         const newDate = addMonths(date, 1);
         setDate(newDate);
+
+        dispatch(setMonth({ year: years, month: monthses }));
         changeMonth(+1);
     };
 

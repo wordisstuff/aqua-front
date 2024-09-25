@@ -1,14 +1,20 @@
 import { useTranslation } from 'react-i18next';
 import { format, isSameDay } from 'date-fns';
 import css from './ChooseDate.module.css';
+import { useSelector } from 'react-redux';
+import { selectDate } from '../../../../redux/water/selectors';
 
 function ChooseDate() {
+    const selectedDate = useSelector(selectDate);
+    console.log(selectedDate);
     const { t } = useTranslation();
-
-    const today = new Date();
-
-    const todayDateString = format(today, 'yyyy-MM-dd');
-
+    let renderDate;
+    const today = format(new Date(), 'yyyy-MM-dd');
+    if (today !== selectedDate) {
+        renderDate = selectedDate;
+    } else {
+        renderDate = today;
+    }
     const formatDisplayDate = date => {
         const dateObj = new Date(date);
         const day = String(dateObj.getDate()).padStart(2, '0');
@@ -17,9 +23,9 @@ function ChooseDate() {
     };
 
     const formattedDate =
-        todayDateString === format(today, 'yyyy-MM-dd')
+        renderDate === format(today, 'yyyy-MM-dd')
             ? t('WaterMainInfo.today')
-            : formatDisplayDate(todayDateString);
+            : formatDisplayDate(renderDate);
 
     return (
         <div className={css.chooseDateWrapper}>

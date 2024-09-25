@@ -10,7 +10,7 @@ function WaterItem({ data }) {
     const { t } = useTranslation();
     const { openModal } = useModalContext();
     // const { _id: id, count, date } = data;
-    console.log(data);
+    // console.log(data);
     const formatWaterCount = count => {
         const mlCount = count * 1000;
         return `${mlCount} ${t('DailyInfo.ml')}`;
