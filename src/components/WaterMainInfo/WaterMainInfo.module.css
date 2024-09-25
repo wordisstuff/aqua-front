@@ -1,4 +1,5 @@
 .mainbox {
+    position: relative;
     border-radius: 30px;
     width: inherit;
     height: 415px;
@@ -29,7 +30,6 @@
         padding-bottom: 64px;
         padding-top: 32px;
 
-
         background-size: 374px;
     }
 }
@@ -44,7 +44,6 @@
 }
 
 .logoicon {
-
     fill: #323f47;
     margin-bottom: 78px;
 }
@@ -53,6 +52,5 @@
     .logoicon {
         width: 155px;
         height: 24px;
-
     }
 }

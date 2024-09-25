@@ -10,6 +10,8 @@
     gap: 10px;
     align-items: center;
     margin-left: auto;
+    margin-right: 16px;
+    margin-top: 200px;
 
     border: none;
     color: #fff;
@@ -19,7 +21,6 @@
 .btnbox:hover {
     color: #9be1a0;
     stroke: #9be1a0;
-
 }
 
 /* .btnbox:focus{
@@ -37,14 +38,13 @@
 }
 
 .btntext {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 14px;
     line-height: 1.28571;
     letter-spacing: -0.01em;
     text-align: center;
 }
-
 
 @media only screen and (min-width: 768px) {
     .btntext {
@@ -57,5 +57,14 @@
     .btnicon {
         width: 24px;
         height: 24px;
+    }
+
+    .btnbox {
+        margin-top: 310px;
+    }
+}
+@media only screen and (min-width: 1440px) {
+    .btnbox {
+        margin-top: 460px;
     }
 }
