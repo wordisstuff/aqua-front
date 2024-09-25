@@ -1,19 +1,15 @@
 import * as Yup from 'yup';
 
-export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/;
-const passReg = /^(?=.*\d)(?=.*[a-z]).{ 6, }$/;
 export const signInSchema = Yup.object().shape({
     email: Yup.string()
-        // .matches(emailRegex, 'Invalid email format')
-        .required('Required'),
+        .email("Invalid email address") 
+        .required("Required"), 
+
     password: Yup.string()
-        // .matches(
-        //     passwordRegex,
-        //     'Password must be at least 6 characters long, include one uppercase letter, one number, and one special character',
-        // )
-        .required('Required'),
+        .min(8, "Password must be at least 8 characters long") 
+        .max(64, "Password must be at most 64 characters long")
+        .required("Required"), 
 });
 
 export const formValuesSignIn = {
