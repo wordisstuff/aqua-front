@@ -7,15 +7,16 @@ import {
     updateWaterAmount,
 } from './operation';
 import { tooltipClasses } from '@mui/material';
+import { format } from 'date-fns';
 
 export const INIT_STATE = {
-    selectedDate: null,
+    selectedDate: format(new Date(), 'yyyy-MM'),
     selectedArreyDate: [],
     errorDay: null,
     isLoadingDay: false,
     selectedMonth: {
-        year: new Date().getFullYear(),
-        month: new Date().getMonth() + 1,
+        year: null,
+        month: null,
     },
     monthData: [],
     errorMonth: null,
@@ -52,6 +53,9 @@ const waterSlice = createSlice({
             console.log('action', action);
             state.selectedDate = action.payload;
         },
+        setMonth(state, action) {
+            state.selectedMonth = action.payload;
+        },
         increaseMonth(state) {
             const newMonth = state.selectedMonth.month + 1;
             if (newMonth > 12) {
@@ -76,9 +80,10 @@ const waterSlice = createSlice({
             .addCase(apiGetWaterMonth.fulfilled, (state, action) => {
                 state.isLoadingMonth = false;
                 state.monthData = action.payload;
+                console.log(action.payload);
             })
             .addCase(apiGetWaterDay.fulfilled, (state, action) => {
-                console.log(action.payload.records);
+                console.log(action.payload);
                 state.isLoadingWaterDay = false;
                 state.waterPerDay = action.payload.records;
                 state.percentDay = action.payload.percentComplete;
@@ -117,5 +122,6 @@ const waterSlice = createSlice({
     },
 });
 
-export const { increaseMonth, decreaseMonth, setDate } = waterSlice.actions;
+export const { increaseMonth, decreaseMonth, setDate, setMonth } =
+    waterSlice.actions;
 export const waterReducer = waterSlice.reducer;

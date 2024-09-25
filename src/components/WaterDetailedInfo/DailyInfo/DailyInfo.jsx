@@ -8,11 +8,13 @@ import ChooseData from './ChooseDate/ChooseDate';
 import AddWaterDetailInfoBtn from './AddWaterDetailInfoBtn/AddWaterDetailInfoBtn';
 import HorizontalScroll from './HorizonalScroll/HorizonalScroll';
 import css from './DailyInfo.module.css';
+import { format } from 'date-fns';
 
 function DailyInfo() {
     const { t } = useTranslation();
     const waterDay = useSelector(selectWaterPerDay);
-    const currentDate = useSelector(selectDate);
+    // const currentDate = useSelector(selectDate);
+    const currentDate = format(new Date(), 'yyyy-MM-dd');
     const dispatch = useDispatch();
 
     useEffect(() => {

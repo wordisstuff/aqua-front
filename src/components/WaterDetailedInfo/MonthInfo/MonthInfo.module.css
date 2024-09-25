@@ -1,9 +1,3 @@
-.container {
-    position: relative;
-    box-sizing: border-box;
-    max-width: 100%;
-    overflow-x: hidden;
-}
 .loaderContainer {
     position: absolute;
     top: 0;
@@ -29,7 +23,7 @@
 
 @media (min-width: 768px) {
     .container {
-        padding: 0 32px 35px;
+        /* padding: 0 32px 35px; */
     }
     .containerToggle {
         gap: 20px;

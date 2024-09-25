@@ -10,15 +10,15 @@ const Calendar = ({
 }) => {
     return (
         <ul className={css.calendarWrapper}>
-            {monthItem.map(({ date, percentage }, index) => {
+            {monthItem.daysInMonth.map(({ day, percentComplete }, index) => {
                 const uniqueKey = index;
-                const isActiveItem = selectedDate === date;
+                const isActiveItem = selectedDate === day;
 
                 return (
                     <CalendarItem
                         key={uniqueKey}
-                        day={date}
-                        percentageConsumed={percentage}
+                        day={day}
+                        percentageConsumed={percentComplete}
                         onClick={onClick}
                         currentDate={currentDate}
                         selectedDate={selectedDate}

@@ -7,13 +7,12 @@ export const deleteWaterService = async waterId => {
 
 export const getWaterDayService = async date => {
     const { data } = await aquaApi.get(`water/daily/${date}`);
+
     return data;
 };
 
 export const getWaterMonthService = async date => {
-    const { data } = await aquaApi.get(
-        `/water/monthly/${date.year}/${date.month}`,
-    );
+    const data = await aquaApi.get(`/water/monthly/${date.year}/${date.month}`);
     return data;
 };
 
