@@ -130,17 +130,17 @@ export const UserSettingsModal = ({ setIsUserRefreshed }) => {
         }
     };
 
-    // useMemo(() => {
-    //     if (userData) {
-    //         setGender(userData.gender);
-    //         setName(userData.name);
-    //         setEmail(userData.email);
-    //         setWeight(userData.weight);
-    //         setTime(userData.activeTime ? userData.activeTime : '0');
-    //         setRequiredWater(userData.recommendedWater);
-    //         setWillWater(userData.recommendedWater);
-    //     }
-    // }, [userData]);
+    useMemo(() => {
+        if (userData) {
+            setGender(userData.gender);
+            setName(userData.name);
+            setEmail(userData.email);
+            setWeight(userData.weight);
+            setTime(userData.activeTime ? userData.activeTime : '0');
+            setRequiredWater(userData.recommendedWater);
+            setWillWater(userData.recommendedWater);
+        }
+    }, [userData]);
 
     // useMemo(() => {
     //     if (userData) {
