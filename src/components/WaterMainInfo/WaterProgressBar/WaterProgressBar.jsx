@@ -78,7 +78,7 @@ const WaterProgressBar = () => {
     const formatDate = date => {
         const dateObj = new Date(date);
         if (isToday(dateObj)) {
-            return t('waterMainInfo.today');
+            return t('ChooseDate.today');
         } else {
             const day = dateObj.getDate();
             const month = dateObj
