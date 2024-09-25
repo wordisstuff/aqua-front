@@ -10,7 +10,7 @@ const Calendar = ({
 }) => {
     return (
         <ul className={css.calendarWrapper}>
-            {monthItem.daysInMonth.map(({ day, percentComplete }, index) => {
+            {monthItem.daysInMonth && monthItem.daysInMonth.map(({ day, percentComplete }, index) => {
                 const uniqueKey = index;
                 const isActiveItem = selectedDate === day;
 
