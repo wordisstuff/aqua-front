@@ -18,7 +18,6 @@ const ForgotPage = () => {
             </Helmet>
             <Container>
                 <div className={css.containerPage}>
-                    <Languages />
                     <div className={css.containerForm}>
                         <ForgotPageForm />
                         {desktop && <Additional />}
