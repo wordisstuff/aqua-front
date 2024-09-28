@@ -15,6 +15,7 @@ import {
     selectMonth,
 } from '../../../redux/water/selectors.js';
 import { apiGetWaterMonth } from '../../../redux/water/operation.js';
+import WaterChart from './Calendar/WaterChart/WaterChart.jsx';
 
 const formatPercentage = percentage => {
     if (!percentage) return 0;
@@ -137,14 +138,17 @@ function MonthInfo() {
                     <Loader />
                 </div>
             )}
-
-            <Calendar
-                monthItem={selectedMonthData}
-                selectedDate={selectedDate}
-                currentDate={format(new Date(), 'yyyy-MM-dd')}
-                isActive={isActive}
-                onClick={handleDateClick}
-            />
+            {isActive ? (
+                <Calendar
+                    monthItem={selectedMonthData}
+                    selectedDate={selectedDate}
+                    currentDate={format(new Date(), 'yyyy-MM-dd')}
+                    isActive={isActive}
+                    onClick={handleDateClick}
+                />
+            ) : (
+                <WaterChart />
+            )}
         </div>
     );
 }
