@@ -139,8 +139,8 @@
 }
 
 @media screen and (min-resolution: 192dpi) and (min-width: 375px),
-screen and (min-resolution: 2dppx) and (min-width: 375px),
-screen and (min-device-pixel-ratio: 2) and (min-width: 375px) {
+    screen and (min-resolution: 2dppx) and (min-width: 375px),
+    screen and (min-device-pixel-ratio: 2) and (min-width: 375px) {
     .main {
         background-image: url('../../utils/images/mainPage/drinkingGirl_Mob@x2.webp');
     }
@@ -208,8 +208,8 @@ screen and (min-device-pixel-ratio: 2) and (min-width: 375px) {
 }
 
 @media screen and (min-resolution: 192dpi) and (min-width: 768px),
-screen and (min-resolution: 2dppx) and (min-width: 768px),
-screen and (min-device-pixel-ratio: 2) and (min-width: 768px) {
+    screen and (min-resolution: 2dppx) and (min-width: 768px),
+    screen and (min-device-pixel-ratio: 2) and (min-width: 768px) {
     .main {
         background-image: url('../../utils/images/mainPage/drinkingGirl_Tab@x2.webp');
     }
@@ -232,8 +232,8 @@ screen and (min-device-pixel-ratio: 2) and (min-width: 768px) {
 }
 
 @media screen and (min-resolution: 192dpi) and (min-width: 1440px),
-screen and (min-resolution: 2dppx) and (min-width: 1440px),
-screen and (min-device-pixel-ratio: 2) and (min-width: 1440px) {
+    screen and (min-resolution: 2dppx) and (min-width: 1440px),
+    screen and (min-device-pixel-ratio: 2) and (min-width: 1440px) {
     .main {
         background-image: url('../..//utils//images/mainPage/drinkingGirl_Desk@x2.webp');
     }
