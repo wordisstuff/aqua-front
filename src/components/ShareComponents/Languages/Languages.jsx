@@ -25,61 +25,72 @@ const Languages = () => {
                 data-aos-offset="0"
                 className={CSS.lang}
             >
-                <button className={CSS.langBtn} onClick={toggleModal}>
-                    <svg width="33" height="33" aria-label="Language switch">
-                        <use xlinkHref={`${icons}#${i18n.language}-flag`}></use>
-                    </svg>
-
-                    <svg
-                        width="16"
-                        height="16"
-                        className={`${CSS.arrowIcon} ${isOpen ? CSS.rotated : ''}`}
-                        aria-label="Arrow down"
-                    >
-                        <use xlinkHref={`${icons}#arrow-down`}></use>
-                    </svg>
-                </button>
-                {isOpen && (
-                    <div className={CSS.modalContainer} onClick={toggleModal}>
-                        <div
-                            className={CSS.modal}
-                            onClick={e => e.stopPropagation()}
+                <div className={CSS.flagBox}>
+                    <button className={CSS.langBtn} onClick={toggleModal}>
+                        <svg
+                            width="28"
+                            height="28"
+                            aria-label="Language switch"
                         >
-                            {i18n.language === 'ua' && (
-                                <button
-                                    className={CSS.modalBtn}
-                                    onClick={() => changeLanguage('us')}
-                                >
-                                    <svg
-                                        width="33"
-                                        height="33"
-                                        aria-label="Flag us"
+                            <use
+                                xlinkHref={`${icons}#${i18n.language}-flag`}
+                            ></use>
+                        </svg>
+
+                        <svg
+                            width="16"
+                            height="16"
+                            className={`${CSS.arrowIcon} ${isOpen ? CSS.rotated : ''}`}
+                            aria-label="Arrow down"
+                        >
+                            <use xlinkHref={`${icons}#arrow-down`}></use>
+                        </svg>
+                    </button>
+                    {isOpen && (
+                        <div
+                            className={CSS.modalContainer}
+                            onClick={toggleModal}
+                        >
+                            <div
+                                className={CSS.modal}
+                                onClick={e => e.stopPropagation()}
+                            >
+                                {i18n.language === 'ua' && (
+                                    <button
+                                        className={CSS.modalBtn}
+                                        onClick={() => changeLanguage('us')}
                                     >
-                                        <use
-                                            xlinkHref={`${icons}#us-flag`}
-                                        ></use>
-                                    </svg>
-                                </button>
-                            )}
-                            {i18n.language === 'us' && (
-                                <button
-                                    className={CSS.modalBtn}
-                                    onClick={() => changeLanguage('ua')}
-                                >
-                                    <svg
-                                        width="33"
-                                        height="33"
-                                        aria-label="Flag ua"
+                                        <svg
+                                            width="28"
+                                            height="28"
+                                            aria-label="Flag us"
+                                        >
+                                            <use
+                                                xlinkHref={`${icons}#us-flag`}
+                                            ></use>
+                                        </svg>
+                                    </button>
+                                )}
+                                {i18n.language === 'us' && (
+                                    <button
+                                        className={CSS.modalBtn}
+                                        onClick={() => changeLanguage('ua')}
                                     >
-                                        <use
-                                            xlinkHref={`${icons}#ua-flag`}
-                                        ></use>
-                                    </svg>
-                                </button>
-                            )}
+                                        <svg
+                                            width="28"
+                                            height="28"
+                                            aria-label="Flag ua"
+                                        >
+                                            <use
+                                                xlinkHref={`${icons}#ua-flag`}
+                                            ></use>
+                                        </svg>
+                                    </button>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </header>
         </div>
     );

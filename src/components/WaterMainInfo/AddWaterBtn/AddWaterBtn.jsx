@@ -21,7 +21,7 @@ const AddWaterDetailInfoBtn = () => {
                     href={`${icons}#plus-add-water`}
                 ></use>
             </svg>
-            <p className={css.btntext}>Add water</p>
+            <p className={css.btntext}>{t('WaterMainInfo.btn')}</p>
         </button>
     );
 };
