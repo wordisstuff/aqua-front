@@ -74,6 +74,10 @@ const WaterChart = () => {
         (i * 0.5).toFixed(1),
     );
 
+    const yAxisTickFormatter = value => {
+        return `${value} l`;
+    };
+
     return (
         <div className={CSS.graphContainer}>
             {totalAmount > 0 ? (
@@ -116,6 +120,7 @@ const WaterChart = () => {
                             domain={[0, 3.5]}
                             ticks={yAxisTicks}
                             tickCount={8}
+                            tickFormatter={yAxisTickFormatter}
                             label={{ angle: -90, position: 'insideLeft' }}
                             tickLine={false}
                             tickMargin={53}
