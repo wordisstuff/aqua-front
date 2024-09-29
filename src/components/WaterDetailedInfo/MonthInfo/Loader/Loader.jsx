@@ -1,17 +1,10 @@
-import { RotatingLines } from 'react-loader-spinner';
+import css from './Loader.module.css';
+const Loader = () => {
+  return (
+    <div className={css.wrapper}>
+      <span className={css.loader}></span>
+    </div>
+  );
+};
 
-export default function Loader({ addClass = '' }) {
-    return (
-        <div>
-            <RotatingLines
-                visible={true}
-                height="96"
-                width="96"
-                color="grey"
-                strokeWidth="5"
-                animationDuration="0.75"
-                ariaLabel="rotating-lines-loading"
-            />
-        </div>
-    );
-}
+export default Loader;

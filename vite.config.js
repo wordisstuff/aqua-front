@@ -7,4 +7,7 @@ export default defineConfig({
     build: {
         sourcemap: true,
     },
+    optimizeDeps: {
+        exclude: ['chunk-JVVZIASD.js?v=84b97b9a'],
+    },
 });

@@ -97,6 +97,7 @@
         "btn": "Add water"
     },
     "ChooseDate": {
+        "month": "Month",
         "today": "Today",
         "en": "uk-UA",
         "january": "January",
@@ -110,7 +111,8 @@
         "september": "September",
         "october": "October",
         "november": "November",
-        "december": "December"
+        "december": "December",
+        "errorOccurred": "errorOccurred"
     },
     "DailyInfo": {
         "info": "You havent drunk water yet, maybe its time to drink?",

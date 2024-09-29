@@ -1,30 +1,42 @@
 import { useTranslation } from 'react-i18next';
 import { useModalContext } from '../../../context/useContext.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDate } from '../../../redux/water/selectors.js';
+import { selectDate, selectMonth } from '../../../redux/water/selectors.js';
 import {
     apiDeleteWater,
     apiGetWaterDay,
+    apiGetWaterMonth,
     // apiGetWaterMonth,
 } from '../../../redux/water/operation.js';
 import toast from 'react-hot-toast';
 import css from './DeleteWater.module.css';
 
 const DeleteWater = ({ idForDel }) => {
-    console.log('id', idForDel);
+    // Added FooBar
+    const selectedMonth = useSelector(selectMonth);
+
     const { t } = useTranslation();
     const { closeModal } = useModalContext();
     const dispatch = useDispatch();
     const selectedDate = useSelector(selectDate);
-    // const loading = useSelector(selectLoading);
-    console.log(selectedDate);
 
     const handleDelete = async () => {
         try {
             dispatch(apiDeleteWater(idForDel));
             closeModal();
             toast.success(t('modals.delete.success'));
-            dispatch(apiGetWaterDay(selectedDate));
+
+            // Added FooBar
+            let timeout = setTimeout(() => {
+                dispatch(apiGetWaterDay(selectedDate));
+                dispatch(
+                    apiGetWaterMonth({
+                        year: selectedMonth.year,
+                        month: selectedMonth.month,
+                    }),
+                );
+                clearTimeout(timeout);
+            }, 500);
         } catch (error) {
             toast.error(t('modals.delete.error'));
         }

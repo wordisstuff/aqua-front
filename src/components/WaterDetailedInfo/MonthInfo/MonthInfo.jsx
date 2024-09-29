@@ -11,45 +11,22 @@ import css from './MonthInfo.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     selectMonthData,
-    selectPercentPerDay,
     selectMonth,
 } from '../../../redux/water/selectors.js';
 import { apiGetWaterMonth } from '../../../redux/water/operation.js';
-
-const formatPercentage = percentage => {
-    if (!percentage) return 0;
-    const value = parseFloat(percentage.replace('%', ''));
-    return isNaN(value) ? 0 : Math.floor(value);
-};
-
-const convertDate = (monthYear, dateStr) => {
-    const [monthName, day] = dateStr.split(', ');
-    const monthIndex = new Date(Date.parse(monthName + ' 1, 2020')).getMonth();
-    const year = monthYear.split('-')[0];
-    return format(new Date(year, monthIndex, day), 'yyyy-MM-dd');
-};
-
-const getMonthDaysArray = (year, month) => {
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    return Array.from({ length: daysInMonth }, (_, i) => {
-        const day = i + 1;
-        return format(new Date(year, month, day), 'yyyy-MM-dd');
-    });
-};
+import { useTranslation } from 'react-i18next';
 
 function MonthInfo() {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const selectedMonthData = useSelector(selectMonthData);
-    const percentPerDay = useSelector(selectPercentPerDay);
-
     const selectedMonth = useSelector(selectMonth);
-    console.log(selectedMonth);
-    console.log(selectedMonthData);
+
     const [isActive, setIsActive] = useState(true);
     const [currentMonth, setCurrentMonth] = useState(
         format(new Date(), 'yyyy-MM'),
     );
-    const [monthArray, setMonthArray] = useState([]);
+
     const [selectedDate, setSelectedDate] = useState(
         format(new Date(), 'yyyy-MM-dd'),
     );
@@ -58,31 +35,16 @@ function MonthInfo() {
 
     const year = parseInt(currentMonth.split('-')[0], 10);
     const month = parseInt(currentMonth.split('-')[1], 10) - 1;
-    const monthDay = getMonthDaysArray(year, month);
-    console.log(year, month);
+
     useEffect(() => {
-        const newMonth = Number(selectedMonth.month);
         dispatch(
             apiGetWaterMonth({
-                year: selectedMonth.year,
-                month: newMonth,
+                year: Number(selectedMonth.year),
+                month: Number(selectedMonth.month),
             }),
         );
-    }, [selectedMonth]);
-    const calendarArray = monthDay.map(date => {
-        const item = monthArray.find(
-            item => convertDate(currentMonth, item.date) === date,
-        );
-        // console.log(item, date);
+    }, [selectedMonth, dispatch]);
 
-        const percentage = percentPerDay || '0%';
-
-        return {
-            date,
-            percentage,
-        };
-    });
-    // console.log(calendarArray);
     const changeMonth = increment => {
         const newDate =
             increment > 0
@@ -99,21 +61,21 @@ function MonthInfo() {
 
     const handleDateClick = date => {
         setSelectedDate(date);
+        dispatch(
+            apiGetWaterMonth({
+                year: Number(selectedMonth.year),
+                month: Number(selectedMonth.month),
+            }),
+        );
     };
-
-    useEffect(() => {
-        setIsLoading(true);
-        // Имитация логики извлечения данных
-        // можем разместить свой запрос на выборку и обрабатывать ошибки здесь
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 1000);
-    }, [currentMonth]);
 
     return (
         <div className={css.container}>
             <div className={css.containerHeader}>
-                <CalendarTitle onTodayHandler={onTodayHandler} title="Month" />
+                <CalendarTitle
+                    onTodayHandler={onTodayHandler}
+                    title={t('ChooseDate.month')}
+                />
                 <div className={css.containerToggle}>
                     <CalendarPagination
                         currentDate={new Date(year, month, 1)}
@@ -128,7 +90,7 @@ function MonthInfo() {
             </div>
             {isError && (
                 <div className={css.errorMessage}>
-                    <p>An error occurred</p>
+                    <p>{t('ChooseDate.errorOccurred')}</p>
                 </div>
             )}
 
