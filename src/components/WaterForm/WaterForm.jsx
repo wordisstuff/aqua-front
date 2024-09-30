@@ -76,8 +76,6 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
             await waterSchema.validate(data, { abortEarly: false });
 
             const [hours, minutes] = data.time.split(':');
-            // dispatch(setDate(new Date().toISOString().split('T')[0]));
-            // console.log('selectedDate', selectedDate);
             const fullDateTime = `${selectedDate}T${hours}:${minutes}:00.000Z`;
 
             const newEntry = {
@@ -90,10 +88,10 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
                 closeModal();
                 toast.success(t('modals.addEdit.successAdd'));
 
-                // Added FooBar
                 setTimeout(() => {
-                    dispatch(apiGetWaterMonth(selectedMonth));
-                }, 500);
+                    dispatch(apiGetWaterDay(selectedDate)); // Оновлення денних даних
+                    dispatch(apiGetWaterMonth(selectedMonth)); // Оновлення місячних даних
+                }, 500); // Можна коригувати затримку за потреби
             } else if (operationType === 'edit' && waterId) {
                 dispatch(
                     updateWaterAmount({
@@ -104,19 +102,12 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
                 );
                 closeModal();
                 toast.success(t('modals.addEdit.successEdit'));
+
                 setTimeout(() => {
-                    dispatch(apiGetWaterMonth(selectedMonth));
+                    dispatch(apiGetWaterDay(selectedDate)); // Оновлення денних даних
+                    dispatch(apiGetWaterMonth(selectedMonth)); // Оновлення місячних даних
                 }, 500);
             }
-
-            // dispatch(apiGetWaterDay(selectedDate));
-
-            // if (
-            //     Number(selectedDate.split('-')[0]) === currentMonth.year &&
-            //     Number(selectedDate.split('-')[1]) === currentMonth.month
-            // ) {
-            //     dispatch(apiGetWaterMonth(currentMonth));
-            // }
         } catch (error) {
             toast.error(t('modals.addEdit.error'));
         }
