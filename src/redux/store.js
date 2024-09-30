@@ -26,7 +26,7 @@ const authPersistConfig = {
 const waterPersistConfig = {
     key: 'water',
     storage,
-    whitelist: ['selectedDateData', 'monthData', 'toggleInfo'],
+    whitelist: ['monthData', 'toggleInfo'],
 };
 
 const persistedAuth = persistReducer(authPersistConfig, authReducer);
