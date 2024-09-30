@@ -13,6 +13,7 @@
     background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
+    margin-top: 12px;
 }
 
 @media only screen and (max-width: 767px) and (min-resolution: 192dpi) {
@@ -40,6 +41,7 @@
         height: 736px;
 
         background-size: 472px;
+        margin-top: 2px;
     }
 }
 

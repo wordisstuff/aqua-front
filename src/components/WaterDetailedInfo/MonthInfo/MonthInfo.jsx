@@ -15,6 +15,28 @@ import {
 } from '../../../redux/water/selectors.js';
 import { apiGetWaterMonth } from '../../../redux/water/operation.js';
 import { useTranslation } from 'react-i18next';
+import WaterChart from './Calendar/WaterChart/WaterChart.jsx';
+
+const formatPercentage = percentage => {
+    if (!percentage) return 0;
+    const value = parseFloat(percentage.replace('%', ''));
+    return isNaN(value) ? 0 : Math.floor(value);
+};
+
+const convertDate = (monthYear, dateStr) => {
+    const [monthName, day] = dateStr.split(', ');
+    const monthIndex = new Date(Date.parse(monthName + ' 1, 2020')).getMonth();
+    const year = monthYear.split('-')[0];
+    return format(new Date(year, monthIndex, day), 'yyyy-MM-dd');
+};
+
+const getMonthDaysArray = (year, month) => {
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    return Array.from({ length: daysInMonth }, (_, i) => {
+        const day = i + 1;
+        return format(new Date(year, month, day), 'yyyy-MM-dd');
+    });
+};
 
 function MonthInfo() {
     const { t } = useTranslation();
@@ -99,14 +121,17 @@ function MonthInfo() {
                     <Loader />
                 </div>
             )}
-
-            <Calendar
-                monthItem={selectedMonthData}
-                selectedDate={selectedDate}
-                currentDate={format(new Date(), 'yyyy-MM-dd')}
-                isActive={isActive}
-                onClick={handleDateClick}
-            />
+            {isActive ? (
+                <Calendar
+                    monthItem={selectedMonthData}
+                    selectedDate={selectedDate}
+                    currentDate={format(new Date(), 'yyyy-MM-dd')}
+                    isActive={isActive}
+                    onClick={handleDateClick}
+                />
+            ) : (
+                <WaterChart />
+            )}
         </div>
     );
 }
