@@ -6,15 +6,17 @@ import { selectDate } from '../../../../redux/water/selectors';
 
 function ChooseDate() {
     const selectedDate = useSelector(selectDate);
-    console.log(selectedDate);
+
     const { t } = useTranslation();
     let renderDate;
     const today = format(new Date(), 'yyyy-MM-dd');
+
     if (today !== selectedDate) {
         renderDate = selectedDate;
     } else {
         renderDate = today;
     }
+
     const formatDisplayDate = date => {
         const dateObj = new Date(date);
         const day = String(dateObj.getDate()).padStart(2, '0');

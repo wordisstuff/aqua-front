@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import css from './CalendarItem.module.css';
-import { selectPercentPerDay } from '../../../../redux/water/selectors';
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
 import { apiGetWaterDay } from '../../../../redux/water/operation';
 import { setDate } from '../../../../redux/water/slice';
+
 const CalendarItem = ({ day, percentageConsumed, onClick, currentDate }) => {
     const dispatch = useDispatch();
-    const selectedPercentWater = useSelector(selectPercentPerDay);
 
     const dayNumber = parseInt(day.split('-')[2], 10);
     const cappedPercentage = Math.min(percentageConsumed, 100);
@@ -15,6 +15,7 @@ const CalendarItem = ({ day, percentageConsumed, onClick, currentDate }) => {
         dispatch(apiGetWaterDay(day));
         dispatch(setDate(day));
     };
+
     return (
         <div
             className={css.calendarItemWripper}

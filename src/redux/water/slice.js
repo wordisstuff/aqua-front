@@ -10,13 +10,13 @@ import { tooltipClasses } from '@mui/material';
 import { format } from 'date-fns';
 
 export const INIT_STATE = {
-    selectedDate: format(new Date(), 'yyyy-MM'),
+    selectedDate: new Date().toISOString().split('T')[0],
     selectedArreyDate: [],
     errorDay: null,
     isLoadingDay: false,
     selectedMonth: {
-        year: null,
-        month: null,
+        year: new Date().getFullYear(),
+        month: new Date().getMonth() + 1,
     },
     monthData: [],
     errorMonth: null,
@@ -30,7 +30,6 @@ export const INIT_STATE = {
     error: null,
 };
 
-// Общие обработчики состояний
 const handlePending = state => {
     state.loading = true;
     state.error = null;
@@ -44,7 +43,6 @@ const handleRejected = (state, action) => {
     state.error = action.payload;
 };
 
-// Основной slice
 const waterSlice = createSlice({
     name: 'water',
     initialState: INIT_STATE,
@@ -101,12 +99,15 @@ const waterSlice = createSlice({
                     water => water._id !== action.payload._id,
                 );
             })
+
             .addCase(addWater.fulfilled, (state, action) => {
-                console.log(state.selectedDate);
-                console.log(action.payload);
                 state.isLoading = false;
-                state.waterPerDay = [...state.waterPerDay, action.payload];
+                state.waterPerDay = [
+                    ...state.waterPerDay,
+                    action.payload.newEntry,
+                ];
             })
+
             .addMatcher(
                 action => action.type.endsWith('pending'),
                 handlePending,

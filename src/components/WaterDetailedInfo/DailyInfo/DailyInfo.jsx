@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { selectDate, selectWaterPerDay } from '../../../redux/water/selectors';
+import { selectWaterPerDay } from '../../../redux/water/selectors';
 import { apiGetWaterDay } from '../../../redux/water/operation';
 import WaterList from './WaterList/WaterList';
 import ChooseData from './ChooseDate/ChooseDate';
@@ -13,7 +13,7 @@ import { format } from 'date-fns';
 function DailyInfo() {
     const { t } = useTranslation();
     const waterDay = useSelector(selectWaterPerDay);
-    // const currentDate = useSelector(selectDate);
+
     const currentDate = format(new Date(), 'yyyy-MM-dd');
     const dispatch = useDispatch();
 

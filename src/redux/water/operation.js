@@ -35,13 +35,14 @@ export const apiGetWaterDay = createAsyncThunk(
 
 export const apiGetWaterMonth = createAsyncThunk(
     'water/getWaterMonth',
-    async (date, thunkAPI) => {
+    async (date, { rejectWithValue }) => {
+        console.log(date);
         try {
             const { data } = await getWaterMonthService(date);
             console.log(data);
             return data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     },
 );
@@ -50,12 +51,22 @@ export const apiGetWaterMonth = createAsyncThunk(
 
 export const addWater = createAsyncThunk(
     'water/addWater',
-    async (newEntry, thunkAPI) => {
+    async (newEntry, { rejectWithValue, getState }) => {
+        const { water } = getState();
+        console.log(water);
         try {
-            const { data } = await addWaterService(newEntry);
-            return data;
+            const res = await addWaterService(newEntry);
+
+            const dataMonth = await getWaterMonthService(water.selectedMonth);
+
+            console.log(dataMonth.data.daysInMonth);
+
+            return {
+                newEntry: res.data,
+                monthData: dataMonth.data.daysInMonth,
+            };
         } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     },
 );

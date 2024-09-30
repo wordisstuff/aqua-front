@@ -82,6 +82,7 @@
         "btn": "Додати воду"
     },
     "ChooseDate": {
+        "month": "Місяць",
         "today": "Сьогодні",
         "january": "Січень",
         "february": "Лютий",
@@ -94,7 +95,8 @@
         "september": "Вересень",
         "october": "Жовтень",
         "november": "Листопад",
-        "december": "Грудень"
+        "december": "Грудень",
+        "errorOccurred": "Сталася помилка"
     },
     "DailyInfo": {
         "info": "Ви поки ще не пили воду, можливо, саме час випити?",

@@ -28,7 +28,8 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
     const { closeModal } = useModalContext();
     const loading = useSelector(selectLoading);
     const selectedDate = useSelector(selectDate);
-    const currentMonth = useSelector(selectMonth);
+    // Added FooBar
+    const selectedMonth = useSelector(selectMonth);
 
     const defaultTime = () => {
         const currentTime = new Date();
@@ -71,14 +72,12 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
     //********************************************************************************/
 
     const onSubmit = async data => {
-        console.log('DATA', data);
-
         try {
             await waterSchema.validate(data, { abortEarly: false });
 
             const [hours, minutes] = data.time.split(':');
-            dispatch(setDate(new Date().toISOString().split('T')[0]));
-            console.log('selectedDate', selectedDate);
+            // dispatch(setDate(new Date().toISOString().split('T')[0]));
+            // console.log('selectedDate', selectedDate);
             const fullDateTime = `${selectedDate}T${hours}:${minutes}:00.000Z`;
 
             const newEntry = {
@@ -90,6 +89,11 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
                 dispatch(addWater(newEntry));
                 closeModal();
                 toast.success(t('modals.addEdit.successAdd'));
+
+                // Added FooBar
+                setTimeout(() => {
+                    dispatch(apiGetWaterMonth(selectedMonth));
+                }, 500);
             } else if (operationType === 'edit' && waterId) {
                 dispatch(
                     updateWaterAmount({
@@ -100,6 +104,9 @@ const WaterForm = ({ operationType, waterId, initialData }) => {
                 );
                 closeModal();
                 toast.success(t('modals.addEdit.successEdit'));
+                setTimeout(() => {
+                    dispatch(apiGetWaterMonth(selectedMonth));
+                }, 500);
             }
 
             // dispatch(apiGetWaterDay(selectedDate));
