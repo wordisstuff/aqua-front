@@ -11,6 +11,7 @@ import WelcomeWrap from '../ShareComponents/WelcomeWrap/WelcomeWrap.jsx';
 import style from './SignInForm.module.css';
 import { signInSchema, formValuesSignIn } from './Shema.js';
 import useCustomForm from '../../helpers/useHooks/useCustomForm.js';
+import { setDate } from '../../redux/water/slice.js';
 
 const SigninForm = () => {
     const { t } = useTranslation();
@@ -33,8 +34,13 @@ const SigninForm = () => {
 
     const onSubmit = async data => {
         try {
-            dispatch(logIn(data));
+            await dispatch(logIn(data)).unwrap();
             reset();
+
+            const today = new Date().toISOString().split('T')[0];
+            dispatch(setDate(today));
+
+            navigate('/calendar');
         } catch (error) {
             console.error(error);
         }
