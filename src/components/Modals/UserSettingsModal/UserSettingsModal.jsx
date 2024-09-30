@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/auth/selectors';
 import { currentUser, updateUser } from '../../../redux/auth/operation';
 
-export const UserSettingsModal = ({ setIsUserRefreshed }) => {
+export const UserSettingsModal = () => {
     const { t } = useTranslation();
     const user = useSelector(selectUser);
     const { closeModal } = useModalContext();
@@ -19,30 +19,33 @@ export const UserSettingsModal = ({ setIsUserRefreshed }) => {
     const [gender, setGender] = useState(userData.gender);
     const [email, setEmail] = useState(userData.email);
     const [weight, setWeight] = useState(userData.weight);
-    const [userAvatar, setUserAvatar] = useState(null);
+    const [userAvatar, setUserAvatar] = useState(userData.photo);
     const [requiredWater, setRequiredWater] = useState('1.5');
     const [willWater, setWillWater] = useState(userData.recommendedWater);
     const [time, setTime] = useState(userData.activeTime);
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const [newUserData, setNewUserData] = useState('');
-
-    useEffect(() => {
-        dispatch(currentUser);
-    }, [userData]);
+    console.log(user);
+    console.log(userAvatar);
+    // useEffect(() => {
+    //     dispatch(currentUser());
+    // }, []);
 
     const UserSchema = Yup.object().shape({
         gender: Yup.string(),
         name: Yup.string()
             .trim()
-            .min(3, t('modals.UserSettingsForm.validation.nameMin'))
-            .max(50, t('modals.UserSettingsForm.validation.nameMax')),
+            .min(2, t('modals.UserSettingsForm.validation.nameMin'))
+            .max(12, t('modals.UserSettingsForm.validation.nameMax')),
         email: Yup.string().email(
             t('modals.UserSettingsForm.validation.emailInvalid'),
         ),
-        weight: Yup.number().typeError(
-            t('modals.UserSettingsForm.validation.weightNumber'),
-        ),
+        photo: Yup.mixed(),
+        weight: Yup.number()
+            .min(30, t('modals.UserSettingsForm.validation.weightMin'))
+            .max(300, t('modals.UserSettingsForm.validation.weightMax'))
+            .typeError(t('modals.UserSettingsForm.validation.weightNumber')),
         activeTime: Yup.number().typeError(
             t('modals.UserSettingsForm.validation.timeNumber'),
         ),
@@ -86,6 +89,7 @@ export const UserSettingsModal = ({ setIsUserRefreshed }) => {
         const dataForValidation = {
             gender,
             name,
+            photo: userAvatar,
             email,
             weight,
             activeTime: time,
@@ -165,7 +169,7 @@ export const UserSettingsModal = ({ setIsUserRefreshed }) => {
     //     weight,
     //     willWater,
     // ]);
-
+    console.log('REturn');
     return (
         <>
             <div className={css.wrapper}>
@@ -176,7 +180,7 @@ export const UserSettingsModal = ({ setIsUserRefreshed }) => {
                             <div className={css.pic}>
                                 <img
                                     src={
-                                        userAvatar
+                                        userAvatar instanceof File
                                             ? URL.createObjectURL(userAvatar)
                                             : userData?.photo
                                     }

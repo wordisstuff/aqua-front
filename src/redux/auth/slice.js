@@ -13,7 +13,7 @@ export const INIT_STATE = {
         name: null,
         email: null,
         gender: null,
-        avatar: null,
+        photo: null,
         weight: null,
         activeTime: null,
         recommendedWater: null,
@@ -71,7 +71,10 @@ export const authSlice = createSlice({
             .addCase(currentUser.rejected, (state, action) => {
                 state.isRefreshing = false;
             })
-            .addCase(updateUser.fulfilled, (state, action) => {})
+            .addCase(updateUser.fulfilled, (state, action) => {
+                console.log(action.payload.user);
+                state.user = action.payload.user;
+            })
             .addCase(logOutUser.fulfilled, () => {
                 return INIT_STATE;
             })

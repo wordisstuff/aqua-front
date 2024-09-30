@@ -40,9 +40,9 @@ const UserBar = () => {
             <div className={css.userBarPanel}>
                 <button className={css.userBarBtn} onClick={togglePopover}>
                     {getFirstName(userMainInfo?.name)}
-                    {userMainInfo?.avatar ? (
+                    {userMainInfo?.photo ? (
                         <img
-                            src={userMainInfo.avatar}
+                            src={userMainInfo.photo}
                             alt="User's Avatar"
                             className={css.avatar}
                         />
