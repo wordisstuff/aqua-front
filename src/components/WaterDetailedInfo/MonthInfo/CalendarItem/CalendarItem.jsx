@@ -5,22 +5,15 @@ import { useDispatch } from 'react-redux';
 import { apiGetWaterDay } from '../../../../redux/water/operation';
 import { setDate } from '../../../../redux/water/slice';
 
-const CalendarItem = ({
-    day,
-    percentageConsumed,
-    onClick,
-    currentDate,
-    selectedDate,
-}) => {
+const CalendarItem = ({ day, percentageConsumed, onClick, currentDate }) => {
     const dispatch = useDispatch();
 
     const dayNumber = parseInt(day.split('-')[2], 10);
-    const cappedPercentage = Math.min(percentageConsumed, 100);
+    const cappedPercentage = Math.min(percentageConsumed, 100).toFixed(0);
 
     const handleOnClick = () => {
         dispatch(apiGetWaterDay(day));
         dispatch(setDate(day));
-        return day;
     };
 
     return (
@@ -31,7 +24,7 @@ const CalendarItem = ({
             <div
                 className={clsx(css.number, {
                     [css.bgHighlighted]: cappedPercentage < 100,
-                    [css.current]: selectedDate === day,
+                    [css.current]: currentDate === day,
                 })}
             >
                 {dayNumber}
