@@ -9,6 +9,7 @@ import { icons } from '../../utils/icons/index.js';
 import useCustomForm from '../../helpers/useHooks/useCustomForm.js';
 import toast from 'react-hot-toast';
 import style from './SignupForm.module.css';
+import { GoogleButton } from '../ShareComponents/GoogleButton/GoogleButton.jsx';
 
 const SignUpForm = () => {
     const navigate = useNavigate();
@@ -38,27 +39,28 @@ const SignUpForm = () => {
         setOpenRepeatPass(prevState => !prevState);
     };
 
-    const onSubmit = async (formData) => {
-     
-        delete formData.repeatPassword; 
+    const onSubmit = async formData => {
+        delete formData.repeatPassword;
         console.log('SignUpForm', formData);
-    
+
         try {
-       dispatch(registerUser(formData)).unwrap(); 
-            reset(); 
+            dispatch(registerUser(formData)).unwrap();
+            reset();
             navigate('/signIn');
         } catch (error) {
-          
             if (error.response?.status === 400) {
-                toast.error("Invalid registration data. Please check your input.");
+                toast.error(
+                    'Invalid registration data. Please check your input.',
+                );
             } else if (error.response?.status === 409) {
-                toast.error("Email already exists. Please use a different email.");
+                toast.error(
+                    'Email already exists. Please use a different email.',
+                );
             } else {
-                toast.error("An error occurred. Please try again later.");
+                toast.error('An error occurred. Please try again later.');
             }
         }
     };
-
 
     useEffect(() => {
         if (errors.password) {
@@ -72,21 +74,22 @@ const SignUpForm = () => {
         }
     }, [errors, t]);
 
-
-
     return (
         <WelcomeWrap
-        classNameLogo={style.form}
-        classNameWelcom={style.welcomPadding}
-      >
-        <div className={`${style.formBlock} ${style.formPosition}`}>
+            classNameLogo={style.form}
+            classNameWelcom={style.welcomPadding}
+        >
+            <div className={`${style.formBlock} ${style.formPosition}`}>
                 <h2 className={style.formTitle}>{t('signUpPage.signUp')}</h2>
 
-
-
-                <form className={style.mainForm} onSubmit={handleSubmit(onSubmit)}>
+                <form
+                    className={style.mainForm}
+                    onSubmit={handleSubmit(onSubmit)}
+                >
                     <div className={style.fieldThumb}>
-                        <label className={style.formLabel} htmlFor={emailId}>{t('signUpPage.email')}</label>
+                        <label className={style.formLabel} htmlFor={emailId}>
+                            {t('signUpPage.email')}
+                        </label>
                         <input
                             className={`${style.formInput} ${errors.email && style.errorName}`}
                             type="email"
@@ -100,74 +103,102 @@ const SignUpForm = () => {
                         )}
                     </div>
 
+                    <div className={style.fieldThumb}>
+                        <label className={style.formLabel} htmlFor={passId}>
+                            {t('signUpPage.password')}
+                        </label>
 
+                        <div className={style.passwordWrapper}>
+                            <input
+                                className={`${style.formInput} ${errors.password && style.errorName}`}
+                                type={openPass ? 'text' : 'password'}
+                                name="password"
+                                id={passId}
+                                placeholder={t('signUpPage.password')}
+                                {...register('password')}
+                            />
+                            <button
+                                type="button"
+                                onClick={handlePass}
+                                className={style.eyeBtn}
+                            >
+                                <svg className={style.iconEye}>
+                                    <use
+                                        xlinkHref={
+                                            openPass
+                                                ? `${icons}#eye`
+                                                : `${icons}#eye-off`
+                                        }
+                                    />
+                                </svg>
+                            </button>
+                        </div>
 
-
+                        {errors.password && (
+                            <span>{t('signUpPage.passwordSpanError')}</span>
+                        )}
+                    </div>
 
                     <div className={style.fieldThumb}>
-    <label className={style.formLabel} htmlFor={passId}>
-        {t('signUpPage.password')}
-    </label>
+                        <label
+                            className={style.formLabel}
+                            htmlFor={repeatPassId}
+                        >
+                            {t('signUpPage.repeatPassword')}
+                        </label>
 
-    <div className={style.passwordWrapper}>
-        <input
-            className={`${style.formInput} ${errors.password && style.errorName}`}
-            type={openPass ? 'text' : 'password'}
-            name="password"
-            id={passId}
-            placeholder={t('signUpPage.password')}
-            {...register('password')}
-        />
-        <button type="button" onClick={handlePass} className={style.eyeBtn}>
-            <svg className={style.iconEye}>
-                <use xlinkHref={openPass ? `${icons}#eye` : `${icons}#eye-off`} />
-            </svg>
-        </button>
-    </div>
-    
-    {errors.password && (
-        <span>{t('signUpPage.passwordSpanError')}</span>
-    )}
-</div>
-                    
-                    
-<div className={style.fieldThumb}>
-    <label className={style.formLabel} htmlFor={repeatPassId}>
-        {t('signUpPage.repeatPassword')}
-    </label>
+                        <div className={style.passwordWrapper}>
+                            <input
+                                className={`${style.formInput} ${style.formPhone} ${errors.repeatPassword && style.errorName}`}
+                                type={openRepeatPass ? 'text' : 'password'}
+                                name="repeatPassword"
+                                id={repeatPassId}
+                                placeholder={t('signUpPage.repeatPassword')}
+                                {...register('repeatPassword')}
+                            />
+                            <button
+                                type="button"
+                                onClick={handleRepeatPass}
+                                className={style.eyeBtn}
+                            >
+                                <svg className={style.iconEye}>
+                                    <use
+                                        xlinkHref={
+                                            openRepeatPass
+                                                ? `${icons}#eye`
+                                                : `${icons}#eye-off`
+                                        }
+                                    />
+                                </svg>
+                            </button>
+                        </div>
 
-    <div className={style.passwordWrapper}>
-        <input
-            className={`${style.formInput} ${style.formPhone} ${errors.repeatPassword && style.errorName}`}
-            type={openRepeatPass ? 'text' : 'password'}
-            name="repeatPassword"
-            id={repeatPassId}
-            placeholder={t('signUpPage.repeatPassword')}
-            {...register('repeatPassword')}
-        />
-        <button type="button" onClick={handleRepeatPass} className={style.eyeBtn}>
-            <svg className={style.iconEye}>
-                <use xlinkHref={openRepeatPass ? `${icons}#eye` : `${icons}#eye-off`} />
-            </svg>
-        </button>
-    </div>
+                        {errors.repeatPassword && (
+                            <span>
+                                {t('signUpPage.repeatPasswordpanError')}
+                            </span>
+                        )}
+                    </div>
 
-    {errors.repeatPassword && (
-        <span>{t('signUpPage.repeatPasswordpanError')}</span>
-    )}
-</div>
-
-<div >
-    <button  className={style.btnform} type="submit" disabled={!isDirty || !isValid}>
-        {t('signUpPage.signUp')}
-    </button>
-</div>
- </form>
+                    <div>
+                        <button
+                            className={style.btnform}
+                            type="submit"
+                            disabled={!isDirty || !isValid}
+                        >
+                            {t('signUpPage.signUp')}
+                        </button>
+                    </div>
+                </form>
 
                 <div className={style.haveAccountSignIn}>
-                    
-                    <p className={style.haveAccountText}>{t('signUpPage.textAlready')}</p>
-                    <NavLink to="/signin"  className={style.haveAccountForm}>{t('signUpPage.signIn')}</NavLink>
+                    <p className={style.haveAccountText}>
+                        {t('signUpPage.textAlready')}
+                    </p>
+                    <NavLink to="/signin" className={style.haveAccountForm}>
+                        {t('signUpPage.signIn')}
+                    </NavLink>
+                    <GoogleButton />
                 </div>
             </div>
         </WelcomeWrap>

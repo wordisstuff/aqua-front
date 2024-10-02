@@ -1,0 +1,14 @@
+.googleLogin {
+    width: 50%;
+    background-color: var(--accent);
+    border-radius: 30px;
+    border: transparent;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+
+    padding: 16px 0;
+    transition: background-color var(--animation);
+}
