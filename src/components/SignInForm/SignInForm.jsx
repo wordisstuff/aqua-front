@@ -12,6 +12,7 @@ import style from './SignInForm.module.css';
 import { signInSchema, formValuesSignIn } from './Shema.js';
 import useCustomForm from '../../helpers/useHooks/useCustomForm.js';
 import { setDate } from '../../redux/water/slice.js';
+import { GoogleButton } from '../ShareComponents/GoogleButton/GoogleButton.jsx';
 
 const SigninForm = () => {
     const { t } = useTranslation();
@@ -156,6 +157,7 @@ const SigninForm = () => {
                         >
                             {t('signInPage.forgotPassword')}
                         </NavLink>
+                        <GoogleButton type={'in'} />
                     </div>
                 </div>
             </div>
