@@ -51,40 +51,15 @@ const WaterProgressBar = () => {
 
     const percent = percentDay || 0;
 
-    const isToday = someDate => {
-        const today = new Date();
-        return (
-            someDate.getDate() === today.getDate() &&
-            someDate.getMonth() === today.getMonth() &&
-            someDate.getFullYear() === today.getFullYear()
-        );
-    };
-
-    const months = {
-        january: t('ChooseDate.january'),
-        february: t('ChooseDate.february'),
-        march: t('ChooseDate.march'),
-        april: t('ChooseDate.april'),
-        may: t('ChooseDate.may'),
-        june: t('ChooseDate.june'),
-        july: t('ChooseDate.july'),
-        august: t('ChooseDate.august'),
-        september: t('ChooseDate.september'),
-        october: t('ChooseDate.october'),
-        november: t('ChooseDate.november'),
-        december: t('ChooseDate.december'),
-    };
-
     const formatDate = date => {
-        const dateObj = new Date(date);
-        if (isToday(dateObj)) {
+        if (date === new Date().toISOString().split('T')[0]) {
             return t('ChooseDate.today');
         } else {
-            const day = dateObj.getDate();
-            const month = dateObj
+            const day = new Date(date).getUTCDate();
+            const m = new Date()
                 .toLocaleString('en-US', { month: 'long' })
                 .toLowerCase();
-            return `${day}, ${months[month]}`;
+            return `${day}, ${t(`ChooseDate.${m}`)}`;
         }
     };
 
