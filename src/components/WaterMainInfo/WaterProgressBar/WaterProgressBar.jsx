@@ -10,7 +10,7 @@ import {
 } from '../../../redux/water/selectors.js/';
 import { useEffect } from 'react';
 import { apiGetWaterDay } from '../../../redux/water/operation';
-import { useTranslation } from 'react-i18next';
+import formatDate from '../../../services/formatDate';
 
 const CustomTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -40,7 +40,6 @@ function ValueLabelComponent(props) {
     );
 }
 const WaterProgressBar = () => {
-    const { t } = useTranslation();
     const selectedDate = useSelector(selectDate);
     const percentDay = useSelector(selectPercentPerDay);
     const dispatch = useDispatch();
@@ -50,18 +49,6 @@ const WaterProgressBar = () => {
     }, [selectedDate, dispatch]);
 
     const percent = percentDay || 0;
-
-    const formatDate = date => {
-        if (date === new Date().toISOString().split('T')[0]) {
-            return t('ChooseDate.today');
-        } else {
-            const day = new Date(date).getUTCDate();
-            const m = new Date()
-                .toLocaleString('en-US', { month: 'long' })
-                .toLowerCase();
-            return `${day}, ${t(`ChooseDate.${m}`)}`;
-        }
-    };
 
     return (
         <div className={css.container} data-tour="step-3">
