@@ -1,11 +1,5 @@
-import {
-    apiGetWaterDay,
-    apiGetWaterMonth,
-} from '../../../../redux/water/operation';
-import {
-    selectMonthData,
-    selectPercentPerDay,
-} from '../../../../redux/water/selectors';
+import { apiGetWaterMonth } from '../../../../redux/water/operation';
+import { selectMonthData } from '../../../../redux/water/selectors';
 import CalendarItem from '../CalendarItem/CalendarItem';
 import css from './Calendar.module.css';
 import { useEffect } from 'react';
@@ -22,7 +16,6 @@ const Calendar = ({
     useEffect(() => {
         dispatch(apiGetWaterMonth(selectedPercentWater));
     }, [selectedPercentWater, dispatch]);
-    console.log('HOJO', selectedPercentWater);
 
     return (
         <ul className={css.calendarWrapper}>
@@ -30,7 +23,6 @@ const Calendar = ({
                 monthItem.daysInMonth.map(({ day, percentComplete }, index) => {
                     const uniqueKey = index;
                     const isActiveItem = selectedDate === day;
-                    console.log('PCN', percentComplete);
                     return (
                         <CalendarItem
                             key={uniqueKey}

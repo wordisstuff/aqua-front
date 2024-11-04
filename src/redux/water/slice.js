@@ -6,8 +6,6 @@ import {
     addWater,
     updateWaterAmount,
 } from './operation';
-import { tooltipClasses } from '@mui/material';
-import { format } from 'date-fns';
 
 export const INIT_STATE = {
     selectedDate: new Date().toISOString().split('T')[0],
@@ -15,8 +13,8 @@ export const INIT_STATE = {
     errorDay: null,
     isLoadingDay: false,
     selectedMonth: {
-        year: new Date().getFullYear(),
-        month: new Date().getMonth() + 1,
+        year: new Date().getUTCFullYear(),
+        month: new Date().getUTCMonth() + 1,
     },
     monthData: [],
     errorMonth: null,
@@ -48,7 +46,6 @@ const waterSlice = createSlice({
     initialState: INIT_STATE,
     reducers: {
         setDate(state, action) {
-            console.log('action', action);
             state.selectedDate = action.payload;
         },
         setMonth(state, action) {
@@ -78,23 +75,19 @@ const waterSlice = createSlice({
             .addCase(apiGetWaterMonth.fulfilled, (state, action) => {
                 state.isLoadingMonth = false;
                 state.monthData = action.payload;
-                console.log(action.payload);
             })
             .addCase(apiGetWaterDay.fulfilled, (state, action) => {
-                console.log(action.payload);
                 state.isLoadingWaterDay = false;
                 state.waterPerDay = action.payload.records;
                 state.percentDay = action.payload.percentComplete;
             })
             .addCase(updateWaterAmount.fulfilled, (state, action) => {
-                console.log(action.payload);
                 const idx = state.waterPerDay.findIndex(
                     water => water._id === action.payload._id,
                 );
                 state.waterPerDay[idx] = action.payload;
             })
             .addCase(apiDeleteWater.fulfilled, (state, action) => {
-                console.log(action.payload);
                 state.waterPerDay = state.waterPerDay.filter(
                     water => water._id !== action.payload._id,
                 );

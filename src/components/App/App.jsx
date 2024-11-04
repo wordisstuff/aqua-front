@@ -27,7 +27,6 @@ const App = () => {
     useEffect(() => {
         AOS.init();
     }, []);
-    console.log('APPPP');
 
     useEffect(() => {
         dispatch(currentUser());
