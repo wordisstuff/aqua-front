@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 const formatDate = (date, y) => {
     const { t } = useTranslation();
     const m = new Date(date)
-        .toLocaleString('default', { month: 'long' })
+        .toLocaleString('en-US', { month: 'long' })
         .toLowerCase();
     if (y) {
         const year = new Date(date).getUTCFullYear();

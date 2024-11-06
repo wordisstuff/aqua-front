@@ -92,6 +92,9 @@
 }
 
 .btnform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     background-color: var(--accent);
     border-radius: 30px;
