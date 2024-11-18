@@ -12,6 +12,7 @@ import VerifyEmail from '../VerifyEmail/VerifyEmail.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentUser } from '../../redux/auth/operation.js';
 import { selectIsRefreshing } from '../../redux/auth/selectors.js';
+import GoogleAuth from '../GoogleAuth/GoogleAuth.jsx';
 // import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.jsx';
 const ForgotPage = lazy(() => import('../../pages/ForgotPage/ForgotPage.jsx'));
 const SignUpPage = lazy(() => import('../../pages/SignUpPage/SignUpPage.jsx'));
@@ -65,6 +66,7 @@ const App = () => {
                         }
                     />
                     <Route path="/verify/:token" element={<VerifyEmail />} />
+                    <Route path="/google/:code" element={<GoogleAuth />} />
                     <Route
                         path="/water"
                         element={

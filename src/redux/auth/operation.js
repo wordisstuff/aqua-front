@@ -154,7 +154,8 @@ export const googleRedirect = createAsyncThunk(
     '/auth/googleOAuthUrl',
     async (_, { rejectWithValue }) => {
         try {
-            const { data } = await aquaApi.get('/auth/google-redirect');
+            const { data } = await aquaApi.get('/auth/get-oauth');
+            console.log(data);
             return data.data.url;
         } catch (error) {
             toast.error('Failed to get Google OAuth Url');
@@ -167,7 +168,7 @@ export const googleLogin = createAsyncThunk(
     '/auth/googleLogin',
     async (authCode, { rejectWithValue }) => {
         try {
-            const { data } = await aquaApi.get('/auth/google', {
+            const { data } = await aquaApi.post('/auth/google', {
                 code: authCode,
             });
             setAuthHeader(data.data.token);
