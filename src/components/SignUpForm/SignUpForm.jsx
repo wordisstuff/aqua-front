@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { googleRedirect, registerUser } from '../../redux/auth/operation.js';
 import { formValuesSignUp, signUpSchema } from './SignupShema.js';
 import { useTranslation } from 'react-i18next';
@@ -9,12 +9,15 @@ import { icons } from '../../utils/icons/index.js';
 import useCustomForm from '../../helpers/useHooks/useCustomForm.js';
 import toast from 'react-hot-toast';
 import style from './SignupForm.module.css';
+import { selectGoogleUrl } from '../../redux/auth/selectors.js';
 
 const SignUpForm = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const [openPass, setOpenPass] = useState(false);
     const [openRepeatPass, setOpenRepeatPass] = useState(false);
+
+    const selectedGoogleUrl = useSelector(selectGoogleUrl);
 
     const emailId = useId();
     const passId = useId();
@@ -62,6 +65,9 @@ const SignUpForm = () => {
     };
 
     useEffect(() => {
+        if (selectedGoogleUrl) {
+            window.location.href = selectedGoogleUrl;
+        }
         if (errors.password) {
             toast.error(t('signUpPage.passwordSpanError'));
         } else if (errors.email) {
@@ -71,10 +77,10 @@ const SignUpForm = () => {
         } else if (errors.repeatPassword) {
             toast.error(t('signUpPage.repeatPasswordpanErrorTwo'));
         }
-    }, [errors, t]);
+    }, [errors, t, selectedGoogleUrl]);
 
     const handleGoogleAuth = () => {
-        console.log('handleGoogleAuth');
+        console.log('handleGoogleAuth', selectedGoogleUrl);
         dispatch(googleRedirect());
     };
 

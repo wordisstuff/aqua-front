@@ -6,6 +6,7 @@ import {
     currentUser,
     updateUser,
     googleLogin,
+    googleRedirect,
 } from './operation';
 
 export const INIT_STATE = {
@@ -24,6 +25,7 @@ export const INIT_STATE = {
     isLoggedIn: false,
     isRefreshing: false,
     error: null,
+    googleUrl: null,
 };
 
 // data;
@@ -78,6 +80,10 @@ export const authSlice = createSlice({
             })
             .addCase(logOutUser.fulfilled, () => {
                 return INIT_STATE;
+            })
+            .addCase(googleRedirect.fulfilled, (state, action) => {
+                console.log(action.payload);
+                state.googleUrl = action.payload;
             })
             .addCase(googleLogin.fulfilled, (state, action) => {
                 state.user = action.payload.user;
