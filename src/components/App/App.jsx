@@ -36,6 +36,7 @@ const App = () => {
     return (
         <>
             <Routes>
+                <Route path="/auth/google" element={<GoogleAuth />} />
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />
                     <Route
@@ -66,7 +67,6 @@ const App = () => {
                         }
                     />
                     <Route path="/verify/:token" element={<VerifyEmail />} />
-                    <Route path="/google/:code" element={<GoogleAuth />} />
                     <Route
                         path="/water"
                         element={
