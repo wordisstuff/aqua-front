@@ -168,13 +168,13 @@ export const googleLogin = createAsyncThunk(
     '/auth/googleLogin',
     async (authCode, { rejectWithValue }) => {
         try {
-            const { data } = await aquaApi.post('/auth/google', {
+            const resp = await aquaApi.post('/auth/google', {
                 code: authCode,
             });
-            console.log(data);
-            // setAuthHeader(data.data.token);
-            // const currentUserProfile = await aquaApi.get('/auth/current');
-            // return { ...data.data, user: currentUserProfile.data };
+            console.log(resp);
+            setAuthHeader(data.data.token);
+            const currentUserProfile = await aquaApi.get('/auth/current');
+            return { ...data.data, user: currentUserProfile.data };
         } catch (error) {
             toast.error('Failed to login with Google');
             console.log(error);
