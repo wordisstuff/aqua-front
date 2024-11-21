@@ -16,7 +16,6 @@ const VerifyEmail = () => {
     useEffect(() => {
         if (token) {
             dispatch(setToken({ token }));
-            // dispatch(currentUser());
         }
     }, [dispatch, token]);
 

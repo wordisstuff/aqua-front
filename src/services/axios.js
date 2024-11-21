@@ -34,7 +34,6 @@ export const initInterceptor = store => {
         },
         async error => {
             if (error.response && error.response.status === 401) {
-                console.log(error);
                 try {
                     const { data } = await aquaApi.post('auth/refresh');
                     setAuthHeader(data.data.token);

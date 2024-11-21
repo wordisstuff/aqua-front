@@ -28,21 +28,6 @@ export const INIT_STATE = {
     googleUrl: null,
 };
 
-// data;
-// activeTime;
-// createdAt;
-// email;
-// gender;
-// name;
-// photo;
-// recommendedWater;
-// token;
-// updatedAt;
-// verifyByEmail;
-// verifyToken;
-// weight;
-// _id;
-
 export const authSlice = createSlice({
     name: 'auth',
     initialState: INIT_STATE,
@@ -86,8 +71,10 @@ export const authSlice = createSlice({
                 state.googleUrl = action.payload;
             })
             .addCase(googleLogin.fulfilled, (state, action) => {
-                state.user = action.payload.user;
+                console.log(action.payload);
+                state.user = { ...state.user, ...action.payload.user };
                 state.token = action.payload.token;
+                state.user.verifyByEmail = true;
                 state.isLoggedIn = true;
             })
             .addCase(googleLogin.rejected, (state, action) => {
