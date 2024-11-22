@@ -72,9 +72,11 @@ export const authSlice = createSlice({
             })
             .addCase(googleLogin.fulfilled, (state, action) => {
                 console.log(action.payload);
-                state.user = { ...state.user, ...action.payload.user };
+                state.user.name = action.payload.user.name;
+                state.user.email = action.payload.user.email;
+                state.user.photo = action.payload.user.photo;
                 state.token = action.payload.token;
-                state.user.verifyByEmail = true;
+                state.user.verifyByEmail = action.payload.user.verifyByEmail;
                 state.isLoggedIn = true;
             })
             .addCase(googleLogin.rejected, (state, action) => {
