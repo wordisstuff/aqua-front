@@ -2,18 +2,13 @@ import { useTranslation } from 'react-i18next';
 import CSS from './Languages.module.css';
 import { icons } from '../../../utils/icons';
 import { useState } from 'react';
+import clsx from 'clsx';
 
 const Languages = () => {
     const { i18n } = useTranslation();
-    const [isOpen, setIsOpen] = useState(false);
 
     const changeLanguage = lng => {
         i18n.changeLanguage(lng);
-        setIsOpen(false);
-    };
-
-    const toggleModal = () => {
-        setIsOpen(!isOpen);
     };
 
     return (
@@ -26,70 +21,28 @@ const Languages = () => {
                 className={CSS.lang}
             >
                 <div className={CSS.flagBox}>
-                    <button className={CSS.langBtn} onClick={toggleModal}>
-                        <svg
-                            width="28"
-                            height="28"
-                            aria-label="Language switch"
-                        >
-                            <use
-                                xlinkHref={`${icons}#${i18n.language}-flag`}
-                            ></use>
-                        </svg>
-
-                        <svg
-                            width="16"
-                            height="16"
-                            className={`${CSS.arrowIcon} ${isOpen ? CSS.rotated : ''}`}
-                            aria-label="Arrow down"
-                        >
-                            <use xlinkHref={`${icons}#arrow-down`}></use>
+                    <button
+                        className={clsx(
+                            CSS.flagBtn,
+                            i18n.language === 'us' && CSS.active,
+                        )}
+                        onClick={() => changeLanguage('us')}
+                    >
+                        <svg className={CSS.icon} aria-label="Flag us">
+                            <use xlinkHref={`${icons}#us-flag`}></use>
                         </svg>
                     </button>
-                    {isOpen && (
-                        <div
-                            className={CSS.modalContainer}
-                            onClick={toggleModal}
-                        >
-                            <div
-                                className={CSS.modal}
-                                onClick={e => e.stopPropagation()}
-                            >
-                                {i18n.language === 'ua' && (
-                                    <button
-                                        className={CSS.modalBtn}
-                                        onClick={() => changeLanguage('us')}
-                                    >
-                                        <svg
-                                            width="28"
-                                            height="28"
-                                            aria-label="Flag us"
-                                        >
-                                            <use
-                                                xlinkHref={`${icons}#us-flag`}
-                                            ></use>
-                                        </svg>
-                                    </button>
-                                )}
-                                {i18n.language === 'us' && (
-                                    <button
-                                        className={CSS.modalBtn}
-                                        onClick={() => changeLanguage('ua')}
-                                    >
-                                        <svg
-                                            width="28"
-                                            height="28"
-                                            aria-label="Flag ua"
-                                        >
-                                            <use
-                                                xlinkHref={`${icons}#ua-flag`}
-                                            ></use>
-                                        </svg>
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                    )}
+                    <button
+                        className={clsx(
+                            CSS.flagBtn,
+                            i18n.language === 'ua' && CSS.active,
+                        )}
+                        onClick={() => changeLanguage('ua')}
+                    >
+                        <svg className={CSS.icon} aria-label="Flag ua">
+                            <use xlinkHref={`${icons}#ua-flag`}></use>
+                        </svg>
+                    </button>
                 </div>
             </header>
         </div>
