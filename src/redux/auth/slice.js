@@ -76,7 +76,7 @@ export const authSlice = createSlice({
                 state.user.email = action.payload.user.email;
                 state.user.photo = action.payload.user.photo;
                 state.token = action.payload.token;
-                state.user.verifyByEmail = action.payload.user.verifyByEmail;
+                state.user.verifyByEmail = true;
                 state.isLoggedIn = true;
             })
             .addCase(googleLogin.rejected, (state, action) => {
