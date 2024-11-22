@@ -22,7 +22,8 @@ const GoogleAuth = () => {
     }, [dispatch]);
     useEffect(() => {
         if (isLoggedIn) {
-            navigate('/water');
+            window.location.href = 'https://aqua-front-nine.vercel.app/water';
+            // navigate('/water');
         }
     }, [isLoggedIn, navigate]);
     return <Loader />;
