@@ -14,6 +14,7 @@ const UserBar = () => {
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const { openModal } = useContext(Context);
     const userMainInfo = useSelector(selectUser);
+    console.log("USER INFO",userMainInfo)
 
     const togglePopover = () => {
         setIsPopoverOpen(!isPopoverOpen);
