@@ -4,13 +4,7 @@ import CalendarItem from '../CalendarItem/CalendarItem';
 import css from './Calendar.module.css';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-const Calendar = ({
-    monthItem,
-    onClick,
-    currentDate,
-    selectedDate,
-    isActive,
-}) => {
+const Calendar = ({ monthItem, onClick, currentDate, selectedDate }) => {
     const dispatch = useDispatch();
     const selectedPercentWater = useSelector(selectMonthData);
     useEffect(() => {

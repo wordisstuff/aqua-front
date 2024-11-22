@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
-import addMonths from 'date-fns/addMonths';
-import subMonths from 'date-fns/subMonths';
 import format from 'date-fns/format';
 import Calendar from './Calendar/Calendar.jsx';
 import CalendarPagination from './CalendarPagination/CalendarPagination.jsx';
 import CalendarTitle from './CalendarTitle/CalendarTitle.jsx';
 import CalendarToggle from './CalendarToogle/CalendarToogle.jsx';
-import Loader from './Loader/Loader.jsx';
 import css from './MonthInfo.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -24,19 +21,10 @@ function MonthInfo() {
     const selectedMonth = useSelector(selectMonth);
 
     const [isActive, setIsActive] = useState(true);
-    const [currentMonth, setCurrentMonth] = useState(
-        format(new Date(), 'yyyy-MM'),
-    );
 
     const [selectedDate, setSelectedDate] = useState(
         format(new Date(), 'yyyy-MM-dd'),
     );
-    const [isLoading, setIsLoading] = useState(false);
-    const [isError, setIsError] = useState(false);
-
-    const year = parseInt(currentMonth.split('-')[0], 10);
-    const month = parseInt(currentMonth.split('-')[1], 10) - 1;
-
     useEffect(() => {
         dispatch(
             apiGetWaterMonth({
@@ -49,7 +37,6 @@ function MonthInfo() {
     const onTodayHandler = () => {
         const today = format(new Date(), 'yyyy-MM-dd');
         setSelectedDate(today);
-        setCurrentMonth(format(new Date(), 'yyyy-MM'));
     };
 
     const handleDateClick = date => {
@@ -77,17 +64,6 @@ function MonthInfo() {
                     />
                 </div>
             </div>
-            {isError && (
-                <div className={css.errorMessage}>
-                    <p>{t('ChooseDate.errorOccurred')}</p>
-                </div>
-            )}
-
-            {isLoading && (
-                <div className={css.loaderContainer}>
-                    <Loader />
-                </div>
-            )}
             {isActive ? (
                 <Calendar
                     monthItem={selectedMonthData}

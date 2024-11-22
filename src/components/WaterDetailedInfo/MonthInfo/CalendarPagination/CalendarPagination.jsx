@@ -1,6 +1,5 @@
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import css from './CalendarPagination.module.css';
-import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMonth } from '../../../../redux/water/selectors';
 import { decreaseMonth, increaseMonth } from '../../../../redux/water/slice';
@@ -8,14 +7,11 @@ import formatDate from '../../../../services/formatDate';
 import disabledBtn from '../../../../services/disabledBnt';
 
 const CalendarPagination = ({ onMonthHandler }) => {
-    const { t } = useTranslation();
-
     const { year, month } = useSelector(selectMonth);
     const dispatch = useDispatch();
     const handlePrev = () => {
         dispatch(decreaseMonth());
     };
-
     const handleNext = () => {
         dispatch(increaseMonth());
     };
