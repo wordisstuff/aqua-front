@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { googleRedirect, registerUser } from '../../redux/auth/operation.js';
+import { registerUser } from '../../redux/auth/operation.js';
 import { formValuesSignUp, signUpSchema } from './SignupShema.js';
 import { useTranslation } from 'react-i18next';
 import WelcomeWrap from '../ShareComponents/WelcomeWrap/WelcomeWrap.jsx';
@@ -9,16 +9,13 @@ import { icons } from '../../utils/icons/index.js';
 import useCustomForm from '../../helpers/useHooks/useCustomForm.js';
 import toast from 'react-hot-toast';
 import style from './SignupForm.module.css';
-import { selectGoogleUrl } from '../../redux/auth/selectors.js';
+import { GoogleButton } from '../ShareComponents/GoogleButton/GoogleButton.jsx';
 
 const SignUpForm = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const [openPass, setOpenPass] = useState(false);
     const [openRepeatPass, setOpenRepeatPass] = useState(false);
-
-    const selectedGoogleUrl = useSelector(selectGoogleUrl);
-
     const emailId = useId();
     const passId = useId();
     const repeatPassId = useId();
@@ -65,9 +62,6 @@ const SignUpForm = () => {
     };
 
     useEffect(() => {
-        if (selectedGoogleUrl) {
-            window.location.href = selectedGoogleUrl;
-        }
         if (errors.password) {
             toast.error(t('signUpPage.passwordSpanError'));
         } else if (errors.email) {
@@ -77,12 +71,7 @@ const SignUpForm = () => {
         } else if (errors.repeatPassword) {
             toast.error(t('signUpPage.repeatPasswordpanErrorTwo'));
         }
-    }, [errors, t, selectedGoogleUrl]);
-
-    const handleGoogleAuth = () => {
-        console.log('handleGoogleAuth', selectedGoogleUrl);
-        dispatch(googleRedirect());
-    };
+    }, [errors, t]);
 
     return (
         <WelcomeWrap
@@ -199,17 +188,7 @@ const SignUpForm = () => {
                             {t('signUpPage.signUp')}
                         </button>
                     </div>
-                    <div className={style.googleBox}>
-                        <button
-                            className={style.googleBtn}
-                            type="button"
-                            onClick={handleGoogleAuth}
-                        >
-                            <svg className={style.googleSvg}>
-                                <use xlinkHref={`${icons}#google`}></use>
-                            </svg>
-                        </button>
-                    </div>
+                    <GoogleButton />
                 </form>
                 <div className={style.haveAccountSignIn}>
                     <p className={style.haveAccountText}>

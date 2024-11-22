@@ -1,23 +1,34 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { googleLogin } from '../../../redux/auth/operation';
-import css from './GoogleButton.module.css';
-import { useTranslation } from 'react-i18next';
-export const GoogleButton = ({ type }) => {
-    const { t } = useTranslation();
-    const dispatch = useDispatch();
+import { useDispatch, useSelector } from 'react-redux';
+import { googleRedirect } from '../../../redux/auth/operation';
+import CSS from './GoogleButton.module.css';
+import { icons } from '../../../utils/icons/index';
+import { selectGoogleUrl } from '../../../redux/auth/selectors';
+import { useEffect } from 'react';
 
-    const handleGoogleLogin = async () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const authCode = urlParams.get('code');
-        dispatch(googleLogin(authCode));
+export const GoogleButton = () => {
+    const selectedGoogleUrl = useSelector(selectGoogleUrl);
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (selectedGoogleUrl) {
+            window.location.href = selectedGoogleUrl;
+        }
+    }, [selectedGoogleUrl]);
+    const handleGoogleAuth = () => {
+        dispatch(googleRedirect());
     };
 
     return (
-        <button className={css.googleLogin} onclick={handleGoogleLogin}>
-            {type === 'in'
-                ? t('googleButton.googleInBtn')
-                : t('googleButton.googleUpBtn')}
-        </button>
+        <div className={CSS.googleBox}>
+            <button
+                className={CSS.googleBtn}
+                type="button"
+                onClick={handleGoogleAuth}
+            >
+                <svg className={CSS.googleSvg}>
+                    <use xlinkHref={`${icons}#google`}></use>
+                </svg>
+            </button>
+        </div>
     );
 };
