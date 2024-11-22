@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { googleLogin } from '../../redux/auth/operation';
+import { currentUser, googleLogin } from '../../redux/auth/operation';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../helpers/useHooks/useAuth';
 import Loader from '../Loader/Loader';
@@ -17,6 +17,7 @@ const GoogleAuth = () => {
     useEffect(() => {
         if (code) {
             dispatch(googleLogin(code));
+            dispatch(currentUser())
         }
     }, [dispatch]);
     useEffect(() => {
