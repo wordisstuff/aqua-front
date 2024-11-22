@@ -17,7 +17,7 @@ const GoogleAuth = () => {
     useEffect(() => {
         if (code) {
             dispatch(googleLogin(code));
-            dispatch(currentUser())
+            // dispatch(currentUser())
         }
     }, [dispatch]);
     useEffect(() => {
