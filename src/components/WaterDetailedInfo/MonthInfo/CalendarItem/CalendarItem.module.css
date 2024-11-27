@@ -23,7 +23,7 @@
 }
 .number.active,
 .number:hover {
-    background: #323f47;
+    background: var(--white);
     color: #9be1a0;
 }
 .bgHighlighted {

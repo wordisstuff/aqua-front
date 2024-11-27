@@ -1,12 +1,14 @@
 import clsx from 'clsx';
 import css from './CalendarItem.module.css';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { apiGetWaterDay } from '../../../../redux/water/operation';
 import { setDate } from '../../../../redux/water/slice';
+import { selectDate } from '../../../../redux/water/selectors';
 
 const CalendarItem = ({ day, percentageConsumed, onClick, currentDate }) => {
     const dispatch = useDispatch();
+    const activeDate = useSelector(selectDate);
 
     const dayNumber = parseInt(day.split('-')[2], 10);
     const cappedPercentage = Math.min(percentageConsumed, 100).toFixed(0);
@@ -25,6 +27,7 @@ const CalendarItem = ({ day, percentageConsumed, onClick, currentDate }) => {
                 className={clsx(css.number, {
                     [css.bgHighlighted]: cappedPercentage < 100,
                     [css.current]: currentDate === day,
+                    [css.active]: activeDate === day,
                 })}
             >
                 {dayNumber}
