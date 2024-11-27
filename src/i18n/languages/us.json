@@ -2,10 +2,12 @@
     "page": {
         "reset": "Reset your password",
         "forgot": "Forgot page",
-        "notFound": "Wrong place",
+        "notFound": "Page not found !",
         "signIn": "Sign In",
         "signUp": "Sign Up",
-        "tracker": "Tracker Page"
+        "tracker": "Tracker Page",
+        "presGoBack": "Press «Go Back» to return.",
+        "goBack": "«Go Back»"
     },
     "welcomeSection": {
         "mainText": "Record daily water intake and track",

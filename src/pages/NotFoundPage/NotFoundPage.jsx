@@ -14,16 +14,18 @@ const NotFoundPage = () => {
             <div className={css.containerPage404}>
                 <Container>
                     <div className={css.table}>
-                        <h2 className={style.titlePage}>404</h2>
-                        <p>Page Not Found</p>
+                        <h2 className={css.titlePage}>404</h2>
+                        <p>{t('page.notFound')}</p>
                     </div>
-                    <div className={css.arrow}></div>
+                    {/* <div className={css.arrow}></div> */}
                     <p className={css.message}>
-                        {`Press "Go Back" to return.`}
+                    {t('page.presGoBack')}
                     </p>
+                    <div className={css.btnBox}>
                     <NavLink to="/" className={css.goBack}>
-                        Go Back
+                    {t('page.goBack')}
                     </NavLink>
+                    </div>
                 </Container>
             </div>
         </>
