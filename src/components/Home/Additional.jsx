@@ -7,9 +7,12 @@ import getRandomColor from '../../services/getRandomColor';
 import customer1 from '../../utils/images/mainPage/customer1_Desk_Tab@x2.png';
 import customer2 from '../../utils/images/mainPage/customer2_Desk_Tab@x2.webp';
 import customer3 from '../../utils/images/mainPage/customer3_Desk_Tab@x2.webp';
+import { useDispatch } from 'react-redux';
+import { getUsers } from '../../redux/users/operation';
 
 const Additional = () => {
     const { t } = useTranslation();
+    const dispatch = useDispatch()
     const [avatars, setAvatars] = useState([customer1, customer2, customer3]);
     const usersCount = 12;
     //const loading = Math.random() < 0.5;
@@ -18,6 +21,8 @@ const Additional = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        dispatch(getUsers())
+
         const timer = setTimeout(() => {
             setLoading(false);
         }, 3000);
