@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import CSS from './Languages.module.css';
 import { icons } from '../../../utils/icons';
-import { useState } from 'react';
 import clsx from 'clsx';
 
 const Languages = () => {
