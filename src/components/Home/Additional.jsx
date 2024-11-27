@@ -4,28 +4,25 @@ import { icons } from '../../utils/icons';
 import { useTranslation } from 'react-i18next';
 import { Hearts } from 'react-loader-spinner';
 import getRandomColor from '../../services/getRandomColor';
-import customer1 from '../../utils/images/mainPage/customer1_Desk_Tab@x2.png';
-import customer2 from '../../utils/images/mainPage/customer2_Desk_Tab@x2.webp';
-import customer3 from '../../utils/images/mainPage/customer3_Desk_Tab@x2.webp';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../../redux/users/operation';
+import {
+    selectUsersAvatars,
+    selectUsersCount,
+} from '../../redux/users/selectors';
 
 const Additional = () => {
     const { t } = useTranslation();
-    const dispatch = useDispatch()
-    const [avatars, setAvatars] = useState([customer1, customer2, customer3]);
-    const usersCount = 12;
-    //const loading = Math.random() < 0.5;
-    const avBasePath = '../../utils/images/mainPage/';
-    const userAvatar = [1, 2, 3];
+    const dispatch = useDispatch();
+    const avatarsArr = useSelector(selectUsersAvatars);
+    const usersCount = useSelector(selectUsersCount);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        dispatch(getUsers())
-
+        dispatch(getUsers());
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 3000);
+        }, 1000);
         return () => {
             clearTimeout(timer);
         };
@@ -60,15 +57,18 @@ const Additional = () => {
                     </div>
                 ) : (
                     <div className={CSS.happy}>
-                        {avatars.map((avatar, idx) => (
-                            <div key={idx} className={CSS.customer}>
-                                <img
-                                    className={CSS.avater}
-                                    src={avatar}
-                                    alt="user avatar"
-                                />
-                            </div>
-                        ))}
+                        {avatarsArr
+                            .filter(
+                                avatar =>
+                                    avatar !== 'null' &&
+                                    typeof avatar === 'string' &&
+                                    !avatar.startsWith('//www.gravatar.com'),
+                            )
+                            .map((avatar, idx) => (
+                                <div key={idx} className={CSS.customer}>
+                                    <img className={CSS.avater} src={avatar} />
+                                </div>
+                            ))}
                         <div className={CSS.custNum}>+{usersCount}</div>
                     </div>
                 )}

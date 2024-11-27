@@ -4,7 +4,6 @@ import CSS from './Home.module.css';
 import Welcome from './Welcome';
 
 const Home = () => {
-    console.log('GGGGGGGG');
     return (
         <>
             <Container>

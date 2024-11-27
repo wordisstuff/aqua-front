@@ -1,17 +1,11 @@
 import axios from 'axios';
 import { setToken } from '../redux/auth/slice';
 
-// const URLA = 'http://localhost:8080'
-
-// const URLA = 'https://aqua-back.onrender.com';
-
 const URLA = () =>
     window.location.hostname === 'localhost'
         ? 'http://localhost:8080'
         : 'https://aqua-back.onrender.com';
 
-console.log(URLA());
-// Створення екземпляру axios
 export const aquaApi = axios.create({
     baseURL: URLA(),
     withCredentials: true,
